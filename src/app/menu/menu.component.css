@@ -1,0 +1,27 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar-light {
+    font: normal normal normal 16px/1.4em helvetica-w01-light, helvetica-w02-light, sans-serif;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #E99F86;
+    padding: 20px;
+}
+
+.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
+    color: #DE5021;
+    font-weight: normal;
+}
+
+.profile {
+    background-color: rgba(65, 186, 174, 0.74);
+    border: solid rgba(43, 104, 156, 1) 0px;
+    cursor: pointer;
+    color: #fff;
+    height: 40px;
+    width: 142px;
+    border-radius: 20px;
+}
