@@ -1,30 +1,55 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { ProfileComponent } from './profile/profile.component';
-import { CalendarComponent } from './profile/calendar/calendar.component';
-import { SchemaComponent } from './profile/schema/schema.component';
-import { InternshipComponent } from './profile/internship/internship.component';
 import { MenuComponent } from './menu/menu.component';
+import { CalendarComponent } from './calendar/calendar.component';
+import { SchemaComponent } from './schema/schema.component';
+import { FillOutSchemaComponent } from './schema/fill-out-schema/fill-out-schema.component';
+import { PreviousSchemaComponent } from './schema/previous-schema/previous-schema.component';
+import { FillOutReflectionComponent } from './reflection/fill-out-reflection/fill-out-reflection.component';
+import { NotesComponent } from './reflection/notes/notes.component';
+import { ReflectionComponent } from './reflection/reflection.component';
+import { ProfileComponent } from './profile/profile.component';
 import { LearningComponent } from './profile/learning/learning.component';
-import { PreviousInternshipComponent } from './profile/previous-internship/previous-internship.component';
+import { InternshipComponent } from './profile/internship/internship.component';
+import { SettingsComponent } from './profile/settings/settings.component';
+import { HelpComponent } from './profile/help/help.component';
 
+const routes: Routes = [
+  { path: "", component: CalendarComponent },
+  { path: "erfaringsskema", component: SchemaComponent },
+  { path: "udfyld-erfaringsskema", component: FillOutSchemaComponent },
+  { path: "tidligere-erfaringsskema", component: PreviousSchemaComponent },
+  { path: "refleksionsark", component: FillOutReflectionComponent },
+  { path: "noter", component: NotesComponent },
+  { path: "laeringsstatistik", component: LearningComponent },
+  { path: "praktik", component: InternshipComponent },
+  { path: "indstillinger", component: SettingsComponent },
+  { path: "hjaelp", component: HelpComponent }
+]
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProfileComponent,
     CalendarComponent,
-    SchemaComponent,
-    InternshipComponent,
     MenuComponent,
+    SchemaComponent,
+    FillOutSchemaComponent,
+    PreviousSchemaComponent,
+    FillOutReflectionComponent,
+    NotesComponent,
+    ReflectionComponent,
+    ProfileComponent,
     LearningComponent,
-    PreviousInternshipComponent
+    InternshipComponent,
+    SettingsComponent,
+    HelpComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]
