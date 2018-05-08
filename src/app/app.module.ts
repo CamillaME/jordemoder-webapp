@@ -19,6 +19,7 @@ import { LearningComponent } from './profile/learning/learning.component';
 import { InternshipComponent } from './profile/internship/internship.component';
 import { SettingsComponent } from './profile/settings/settings.component';
 import { HelpComponent } from './profile/help/help.component';
+import { PreviousReflectionComponent } from './reflection/previous-reflection/previous-reflection.component';
 
 const routes: Routes = [
   { path: "", component: CalendarComponent },
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: "udfyld-erfaringsskema", component: FillOutSchemaComponent },
   { path: "tidligere-erfaringsskema", component: PreviousSchemaComponent },
   { path: "refleksionsark", component: FillOutReflectionComponent },
+  { path: "tidligere-refleksionsark", component: PreviousReflectionComponent },
   { path: "noter", component: NotesComponent },
   { path: "laeringsstatistik", component: LearningComponent },
   { path: "praktik", component: InternshipComponent },
@@ -48,7 +50,8 @@ const routes: Routes = [
     LearningComponent,
     InternshipComponent,
     SettingsComponent,
-    HelpComponent
+    HelpComponent,
+    PreviousReflectionComponent
   ],
   imports: [
     BrowserModule,

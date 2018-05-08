@@ -1,0 +1,41 @@
+@primarycolor:#E99F86;
+@secondcolor:#DE5021;
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar-light {
+    font: normal normal normal 16px/1.4em helvetica-w01-light, helvetica-w02-light, sans-serif;
+    margin-bottom: 100px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: @primarycolor;
+    padding: 20px;
+}
+
+.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
+    color: @secondcolor;
+    font-weight: normal;
+}
+
+.dropdown-menu {
+    border: 0;
+    left: 50%;
+    right: auto;
+    text-align: center;
+    transform: translate(-50%, 0);
+}
+
+.dropdown-item {
+    color: @primarycolor;
+}
+
+.dropdown-item:focus, .dropdown-item:hover {
+    background-color: transparent;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+    background-color: transparent;
+}
