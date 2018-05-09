@@ -1,0 +1,52 @@
+body {
+  font-size: 14px;
+}
+.reflection {
+  background-color: rgba(204, 204, 204, 0.14);
+  padding: 10px;
+}
+h2 {
+  color: #41BAAE;
+  font: normal normal normal 18px/1.4em futura-lt-w01-light, sans-serif;
+  display: inline;
+}
+#reflectionCount {
+  color: #A0A09F;
+}
+#title {
+  background-color: transparent;
+  border: none;
+}
+input {
+  outline: none;
+  color: #A0A09F;
+  font: normal normal normal 18px/1.4em futura-lt-w01-light, sans-serif;
+  max-width: 100%;
+}
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #A0A09F;
+  font: normal normal normal 18px/1.4em futura-lt-w01-light, sans-serif;
+  opacity: 1;
+  /* Firefox */
+}
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #A0A09F;
+  font: normal normal normal 18px/1.4em futura-lt-w01-light, sans-serif;
+}
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #A0A09F;
+  font: normal normal normal 18px/1.4em futura-lt-w01-light, sans-serif;
+}
+.line {
+  padding-top: 50px;
+  border-bottom: 2px solid #605e5e;
+}
+strong {
+  color: #2F2E2E;
+}
+strong + span {
+  font-style: italic;
+}

@@ -1,0 +1,67 @@
+@third-color:#41BAAE;
+@grey:#A0A09F;
+@black:#2F2E2E;
+
+body {
+    font-size: 14px;
+}
+
+.reflection {
+    background-color: rgba(204, 204, 204, 0.14);
+    padding: 10px;
+}
+
+h2 {
+    color: @third-color;
+    font: normal normal normal 18px/1.4em futura-lt-w01-light,sans-serif;
+    display: inline;
+}
+
+#reflectionCount {
+    color: @grey;
+}
+
+#title {
+    background-color: transparent;
+    // border-bottom: 2px solid black;
+    // border-top: none;
+    // border-left: none;
+    // border-right: none;
+    border: none;
+}
+
+input {
+    outline: none;
+    color: @grey;
+    font: normal normal normal 18px/1.4em futura-lt-w01-light,sans-serif;
+    max-width: 100%;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: @grey;
+    font: normal normal normal 18px/1.4em futura-lt-w01-light,sans-serif;
+    opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: @grey;
+    font: normal normal normal 18px/1.4em futura-lt-w01-light,sans-serif;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: @grey;
+    font: normal normal normal 18px/1.4em futura-lt-w01-light,sans-serif;
+}
+
+.line {
+    padding-top: 50px;
+    border-bottom: 2px solid rgba(96, 94, 94, 1);
+}
+
+strong {
+    color: @black;
+}
+
+strong + span {
+    font-style: italic;
+}
