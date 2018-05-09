@@ -18,10 +18,14 @@ body {
 }
 .dropdown-menu {
   border: 0;
-  left: 50%;
-  right: auto;
-  text-align: center;
-  transform: translate(-50%, 0);
+}
+@media (min-width: 992px) {
+  .dropdown-menu {
+    left: 50%;
+    right: auto;
+    text-align: center;
+    transform: translate(-50%, 0);
+  }
 }
 .dropdown-item {
   color: #E99F86;
@@ -33,4 +37,9 @@ body {
 .dropdown-item.active,
 .dropdown-item:active {
   background-color: transparent;
+  color: #DE5021;
+  font-weight: normal;
+}
+.navbar-light .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(222,80,33)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }

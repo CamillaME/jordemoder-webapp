@@ -6,43 +6,42 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="/">Vagtplan
-          <span class="sr-only">(current)</span>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Vagtplan
         </a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="false">
+          aria-expanded="false" [ngClass]="schemaClass()">
           Erfaringsskema
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" routerLink="erfaringsskema">Overordnet erfaringsskema</a>
-          <!-- <a class="dropdown-item" routerLink="udfyld-erfaringsskema">Udfyld erfaringsskema</a>
-          <a class="dropdown-item" routerLink="tidligere-erfaringsskema">Tidligere erfaringsskemaer</a> -->
+          <a class="dropdown-item" routerLink="udfyld-erfaringsskema" routerLinkActive="active">Udfyld erfaringsskema</a>
+          <a class="dropdown-item" routerLink="tidligere-erfaringsskema" routerLinkActive="active">Tidligere erfaringsskemaer</a>
         </div>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="false">
+          aria-expanded="false" [ngClass]="reflectionClass()">
           Refleksionsark
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" routerLink="refleksionsark">Opret nyt refleksionsark</a>
-          <a class="dropdown-item" routerLink="tidligere-refleksionsark">Tidligere refleksionsark</a>
-          <a class="dropdown-item" routerLink="noter">Mine noter</a>
+          <a class="dropdown-item" routerLink="udfyld-refleksionsark" routerLinkActive="active">Udfyld refleksionsark</a>
+          <a class="dropdown-item" routerLink="tidligere-refleksionsark" routerLinkActive="active">Tidligere refleksionsark</a>
+          <a class="dropdown-item" routerLink="noter" routerLinkActive="active">Mine noter</a>
         </div>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="false">
+          aria-expanded="false" [ngClass]="profileClass()">
           Profil
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" routerLink="laeringsstatistik">Læringsstatistik</a>
-          <a class="dropdown-item" routerLink="praktik">Praktikforløb</a>
-          <a class="dropdown-item" routerLink="indstillinger">Indstillinger</a>
-          <a class="dropdown-item" routerLink="hjaelp">Hjælp</a>
+          <a class="dropdown-item" routerLink="min-profil" routerLinkActive="active">Min profil</a>
+          <a class="dropdown-item" routerLink="laeringsstatistik" routerLinkActive="active">Læringsstatistik</a>
+          <a class="dropdown-item" routerLink="praktik" routerLinkActive="active">Praktikforløb</a>
+          <a class="dropdown-item" routerLink="indstillinger" routerLinkActive="active">Indstillinger</a>
+          <a class="dropdown-item" routerLink="hjaelp" routerLinkActive="active">Hjælp</a>
         </div>
       </li>
     </ul>

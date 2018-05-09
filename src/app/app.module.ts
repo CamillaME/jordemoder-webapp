@@ -23,16 +23,17 @@ import { PreviousReflectionComponent } from './reflection/previous-reflection/pr
 
 const routes: Routes = [
   { path: "", component: CalendarComponent },
-  { path: "erfaringsskema", component: SchemaComponent },
+  // { path: "erfaringsskema", component: SchemaComponent },
   { path: "udfyld-erfaringsskema", component: FillOutSchemaComponent },
   { path: "tidligere-erfaringsskema", component: PreviousSchemaComponent },
-  { path: "refleksionsark", component: FillOutReflectionComponent },
+  { path: "udfyld-refleksionsark", component: FillOutReflectionComponent },
   { path: "tidligere-refleksionsark", component: PreviousReflectionComponent },
   { path: "noter", component: NotesComponent },
   { path: "laeringsstatistik", component: LearningComponent },
   { path: "praktik", component: InternshipComponent },
   { path: "indstillinger", component: SettingsComponent },
-  { path: "hjaelp", component: HelpComponent }
+  { path: "hjaelp", component: HelpComponent },
+  { path: "min-profil", component: ProfileComponent }
 ]
 
 @NgModule({
