@@ -20,10 +20,10 @@ import { InternshipComponent } from './profile/internship/internship.component';
 import { SettingsComponent } from './profile/settings/settings.component';
 import { HelpComponent } from './profile/help/help.component';
 import { PreviousReflectionComponent } from './reflection/previous-reflection/previous-reflection.component';
+import { EuSchemaComponent } from './schema/eu-schema/eu-schema.component';
 
 const routes: Routes = [
   { path: "", component: CalendarComponent },
-  // { path: "erfaringsskema", component: SchemaComponent },
   { path: "udfyld-erfaringsskema", component: FillOutSchemaComponent },
   { path: "tidligere-erfaringsskema", component: PreviousSchemaComponent },
   { path: "udfyld-refleksionsark", component: FillOutReflectionComponent },
@@ -33,7 +33,8 @@ const routes: Routes = [
   { path: "praktik", component: InternshipComponent },
   { path: "indstillinger", component: SettingsComponent },
   { path: "hjaelp", component: HelpComponent },
-  { path: "min-profil", component: ProfileComponent }
+  { path: "min-profil", component: ProfileComponent },
+  { path: "eu-erfaringsskema", component: EuSchemaComponent }
 ]
 
 @NgModule({
@@ -52,7 +53,8 @@ const routes: Routes = [
     InternshipComponent,
     SettingsComponent,
     HelpComponent,
-    PreviousReflectionComponent
+    PreviousReflectionComponent,
+    EuSchemaComponent
   ],
   imports: [
     BrowserModule,
