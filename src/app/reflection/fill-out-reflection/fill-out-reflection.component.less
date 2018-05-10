@@ -56,12 +56,22 @@ input {
 .line {
     padding-top: 50px;
     border-bottom: 2px solid rgba(96, 94, 94, 1);
+    margin-bottom: 20px;
+}
+
+.thin-line {
+    border-bottom: 1.5px solid rgba(96, 94, 94, 1);
+    margin-bottom: 20px;
 }
 
 strong {
     color: @black;
 }
 
-strong + span {
+.line strong + span {
     font-style: italic;
+}
+
+.thin-line strong + span {
+    font-style: normal;
 }
