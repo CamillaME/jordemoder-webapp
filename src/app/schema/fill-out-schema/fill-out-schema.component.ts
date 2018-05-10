@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from 'angularfire2/firestore';
 
 @Component({
   selector: 'app-fill-out-schema',
@@ -7,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FillOutSchemaComponent implements OnInit {
 
-  constructor() { }
+  constructor(private db: AngularFirestore) {
+    db.firestore.settings({ timestampsInSnapshots: true});
+   }
+
+   OnAddDate(){
+   }
 
   ngOnInit() {
   }
