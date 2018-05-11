@@ -3,32 +3,49 @@ import { AngularFireDatabase, snapshotChanges } from 'angularfire2/database';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 
-export interface Experienceschema { name: string; dates: Date; }
-export interface ExperienceschemaId extends Experienceschema { id: string;}
+// export interface Experienceschema { name: string; dates: Date; }
+// export interface ExperienceschemaId extends Experienceschema { id: string; }
 
 @Component({
   selector: 'app-fill-out-schema',
   templateUrl: './fill-out-schema.component.html',
   styleUrls: ['./fill-out-schema.component.css']
 })
+
 export class FillOutSchemaComponent implements OnInit {
+
+  sdf: Date;
 
   constructor(private db: AngularFirestore) {
     db.firestore.settings({ timestampsInSnapshots: true});
-    this.experienceSchemaCol = db.collection<Experienceschema>('expSchema');
-    this.experienceSchemas = this.experienceSchemaCol.snapshotChanges().map(actions => {
-      return actions.map(a=> {
-        const data = a.payload.doc.data() as Experienceschema;
-        const id = a.payload.doc.id;
-        return { id, ...data };
-      })
-    })
-   }
+    // this.experienceSchemaCol = db.collection<Experienceschema>('expSchema');
+    // this.experienceSchemas = this.experienceSchemaCol.snapshotChanges().map(actions => {
+    //   return actions.map(a => {
+    //     const data = a.payload.doc.data() as Experienceschema;
+    //     const id = a.payload.doc.id;
+    //     return { id, ...data };
+    //   });
+    // });
+  }
 
-  experienceSchemaCol: AngularFirestoreCollection<Experienceschema>;
-  experienceSchemas: Observable<ExperienceschemaId[]>;
+  // docId: string = this.randomDocNumber();
+  // id: string;
+
+  experienceSchemaCol: AngularFirestoreCollection<any>;
+  experienceSchemas: Observable<any[]>;
+
+  // randomDocNumber() {
+  //   var text = '';
+  //   var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+  //   for (var i = 0; i < 5; i++)
+  //     text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+  //   return text;
+  //   }
 
   OnAddDate(){
+    this.db.collection('Experienceschema').doc('first').push({test: this.sdf});
   }
 
   ngOnInit() {
