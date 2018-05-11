@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase, snapshotChanges } from 'angularfire2/database';
+import { FirebaseApp } from 'angularfire2';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 
@@ -45,7 +46,11 @@ export class FillOutSchemaComponent implements OnInit {
   //   }
 
   OnAddDate(){
-    this.db.collection('Experienceschema').doc('first').push({test: this.sdf});
+    // this.db.collection('Experienceschema').doc('first').push({test: this.sdf});
+    const docDate = db.database.array('docDate');
+    this.
+    
+    docDate.push(this.sdf);
   }
 
   ngOnInit() {
