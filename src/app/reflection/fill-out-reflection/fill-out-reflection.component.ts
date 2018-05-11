@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FirebaseApp } from 'angularfire2';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-fill-out-reflection',
@@ -10,7 +13,12 @@ export class FillOutReflectionComponent implements OnInit {
   date: string;
   reflectionCount: string;
 
-  constructor() { }
+  reflectionCol: AngularFirestoreCollection<any>;
+  reflections: Observable<any[]>;
+
+  constructor(private db: AngularFirestore) {
+    db.firestore.settings({ timestampsInSnapshots: true });
+  }
 
   getDate() {
     let today = "";
@@ -24,12 +32,18 @@ export class FillOutReflectionComponent implements OnInit {
   }
 
   getReflectionNumber() {
-    this.reflectionCount = "" + "/13";
+    let self = this;
+
+    this.db.collection("ReflectionSheet").ref.get().then(function (querySnapshot) {
+      self.reflectionCount = querySnapshot.docs.length + "/13";
+    });
   }
 
   ngOnInit() {
     this.getDate();
     this.getReflectionNumber();
+    this.reflectionCol = this.db.collection('ReflectionSheet');
+    this.reflections = this.reflectionCol.valueChanges();
   }
 
 }
