@@ -9,7 +9,5 @@ export class ReflectionComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() { }
 }

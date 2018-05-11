@@ -22,35 +22,54 @@ h2 {
 }
 
 #title {
-    background-color: transparent;
+    font: normal normal normal 18px/1.4em futura-lt-w01-light,sans-serif;
+    // background-color: transparent;
     // border-bottom: 2px solid black;
     // border-top: none;
     // border-left: none;
     // border-right: none;
-    border: none;
+    // border: none;
 }
 
 input {
     outline: none;
     color: @grey;
-    font: normal normal normal 18px/1.4em futura-lt-w01-light,sans-serif;
     max-width: 100%;
+    background-color: transparent;
+    border: none;
 }
 
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: @grey;
+#title::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     font: normal normal normal 18px/1.4em futura-lt-w01-light,sans-serif;
     opacity: 1; /* Firefox */
 }
 
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: @grey;
+#title:-ms-input-placeholder { /* Internet Explorer 10-11 */
     font: normal normal normal 18px/1.4em futura-lt-w01-light,sans-serif;
 }
 
-::-ms-input-placeholder { /* Microsoft Edge */
-    color: @grey;
+#title::-ms-input-placeholder { /* Microsoft Edge */
     font: normal normal normal 18px/1.4em futura-lt-w01-light,sans-serif;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    resize: none;
+    padding: 5px;
+}
+
+textarea::placeholder, input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: @grey;
+    opacity: 1; /* Firefox */
+}
+
+textarea:-ms-input-placeholder, input::placeholder { /* Internet Explorer 10-11 */
+    color: @grey;
+}
+
+textarea::-ms-input-placeholder, input::placeholder { /* Microsoft Edge */
+    color: @grey;
 }
 
 .line {
@@ -74,4 +93,24 @@ strong {
 
 .thin-line strong + span {
     font-style: normal;
+}
+
+.description {
+    margin-top: 30px;
+}
+
+.btn-success, .btn-success:hover {
+    background-color: @third-color;
+    border-color: @third-color;
+}
+
+.btn-success:not(:disabled):not(.disabled).active, .btn-success:not(:disabled):not(.disabled):active, .show>.btn-success.dropdown-toggle {
+    background-color: @third-color;
+    border-color: @third-color;  
+}
+
+.btn-success.focus, .btn-success:focus {
+    background-color: @third-color;
+    border-color: @third-color; 
+    box-shadow: none;  
 }

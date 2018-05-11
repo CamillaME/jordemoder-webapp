@@ -20,15 +20,18 @@
     <div class="row">
       <div class="col-12 col-md-4">
         <strong>Underviser</strong>
-        <span>Anne Mette Krøgh</span>
+        <!-- <span>Anne Mette Krøgh</span> -->
+        <input id="teacher" name="teacher" type="text" placeholder="Indtast her..." [(ngModel)]="teacher">
       </div>
       <div class="col-12 col-md-4">
         <strong>Refleksion nr.</strong>
-        <span>11/13</span>
+        <!-- <span>11/13</span> -->
+        <input id="reflectionCount" name="reflectionCount" type="text" placeholder="Indtast her..." [(ngModel)]="reflectionCount">
       </div>
       <div class="col-12 col-md-4">
         <strong>Fødsel</strong>
-        <span>14</span>
+        <!-- <span>14</span> -->
+        <input id="birth" name="birth" type="number" placeholder="Indtast her..." [(ngModel)]="birth">
       </div>
       <div class="col-12">
         <div class="thin-line">
@@ -36,59 +39,72 @@
       </div>
     </div>
     <div class="row">
-        <div class="col-12 col-md-4">
-          <strong>Vagt nr.</strong>
-          <span>16</span>
-        </div>
-        <div class="col-12 col-md-4">
-          <strong>Uge i perioden</strong>
-          <span>5</span>
-        </div>
-        <div class="col-12 col-md-4">
-          <strong>Dato</strong>
-          <span>25.11.2017</span>
-        </div>
-        <div class="col-12">
-          <div class="thin-line">
-          </div>
+      <div class="col-12 col-md-4">
+        <strong>Vagt nr.</strong>
+        <!-- <span>16</span> -->
+        <input id="number" name="number" type="number" placeholder="Indtast her..." [(ngModel)]="number">
+      </div>
+      <div class="col-12 col-md-4">
+        <strong>Uge i perioden</strong>
+        <!-- <span>5</span> -->
+        <input id="week" name="week" type="number" placeholder="Indtast her..." [(ngModel)]="week">
+      </div>
+      <div class="col-12 col-md-4">
+        <strong>Dato</strong>
+        <!-- <span>25.11.2017</span> -->
+        <input id="date" name="date" type="date" data-date-format="DD MMMM YYYY" [(ngModel)]="date">
+      </div>
+      <div class="col-12">
+        <div class="thin-line">
         </div>
       </div>
-    <!-- <div class="form-group">
-      <label for="title">Titel</label>
-      <input type="text" class="form-control" id="title" placeholder="Titel">
     </div>
-    <div class="form-group">
-      <label for="student">Jordemorder studerende</label>
-      <input type="text" class="form-control" id="student" placeholder="Studerende">
+    <div class="row description">
+      <div class="col-12">
+        <strong>Beskrivelse af forløbet / situationen</strong> (kvinden/familien)
+      </div>
+      <div class="col-12">
+        <textarea id="birthDescription" name="birthDescription" placeholder="Indtast en beskrivelse af forløbet/situationen her..."
+          [(ngModel)]="birthDescription"></textarea>
+      </div>
     </div>
-    <div class="form-group">
-      <label for="lecturer">Underviser</label>
-      <input type="text" class="form-control" id="lecturer" placeholder="Underviser">
+    <div class="row description">
+      <div class="col-12">
+        <strong>Jdm.faglige overvejelser for omsorgen / observationer / handlingsforslag</strong>
+      </div>
+      <div class="col-12">
+        <textarea id="considerations" name="considerations" placeholder="Indtast de jdm.faglige overvejelser for omsorgen/observationer/handlingsforslag her..."
+          [(ngModel)]="considerations"></textarea>
+      </div>
     </div>
-    <div class="form-group">
-      <label for="reflectionnumber">Refleksion nr.</label>
-      <input type="text" class="form-control" id="reflectionnumber" placeholder="Refleksion nr.">
+    <div class="row description">
+      <div class="col-12">
+        <strong>Individuelle mål</strong>
+      </div>
+      <div class="col-12">
+        <textarea id="individualGoals" name="individualGoals" placeholder="Indtast dine individuelle mål her..." [(ngModel)]="individualGoals"></textarea>
+      </div>
     </div>
-    <div class="form-group">
-      <label for="birth">Fødsel</label>
-      <input type="text" class="form-control" id="birth" placeholder="Fødsel">
+    <div class="row description">
+      <div class="col-12">
+        <strong>Refleksion</strong>
+      </div>
+      <div class="col-12">
+        <textarea id="reflection" name="reflection" placeholder="Indtast din refleksion her..." [(ngModel)]="reflection"></textarea>
+      </div>
     </div>
-    <div class="form-group">
-      <label for="plannumber">Vagt nr.</label>
-      <input type="text" class="form-control" id="plannumber" placeholder="Vagt nr.">
+    <div class="row description">
+      <div class="col-12">
+        <strong>Litteratur</strong>
+      </div>
+      <div class="col-12">
+        <textarea id="literature" name="literature" placeholder="Indtast den brugte litteratur her..." [(ngModel)]="literature"></textarea>
+      </div>
     </div>
-    <div class="form-group">
-      <label for="weeknumber">Uge i perioden</label>
-      <input type="number" class="form-control" id="weeknumber" placeholder="Uge i perioden">
+    <div class="row description">
+      <div class="col-12">
+        <button type="submit" class="btn btn-success">Opret refleksionsark</button>
+      </div>
     </div>
-    <div class="form-group">
-      <label for="date">Dato</label>
-      <input type="date" class="form-control" id="date" placeholder="Dato">
-    </div>
-    <div class="form-group">
-      <label for="description">Beskrivelse af forløbet/situationen (kvinden/familien)</label>
-      <textarea class="form-control" id="description" placeholder="Beskrivelse af forløbet/situationen (kvinden/familien)"></textarea>
-    </div>
-    <button type="submit" class="btn btn-success">Opret refleksionsark</button> -->
   </form>
 </div>

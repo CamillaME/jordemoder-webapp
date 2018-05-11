@@ -3,7 +3,7 @@ body {
 }
 .navbar-light {
   font: normal normal normal 16px/1.4em helvetica-w01-light, helvetica-w02-light, sans-serif;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 }
 .navbar-light .navbar-nav .nav-link {
   color: #E99F86;

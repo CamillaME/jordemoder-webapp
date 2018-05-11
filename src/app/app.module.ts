@@ -5,6 +5,8 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { environment } from '../environments/environment';
+import { FormsModule } from '@angular/forms';
+
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { CalendarComponent } from './calendar/calendar.component';
@@ -60,7 +62,8 @@ const routes: Routes = [
     BrowserModule,
     RouterModule.forRoot(routes),
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
