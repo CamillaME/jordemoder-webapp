@@ -23,6 +23,7 @@ import { SettingsComponent } from './profile/settings/settings.component';
 import { HelpComponent } from './profile/help/help.component';
 import { PreviousReflectionComponent } from './reflection/previous-reflection/previous-reflection.component';
 import { EuSchemaComponent } from './schema/eu-schema/eu-schema.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: "", component: CalendarComponent },
@@ -36,7 +37,8 @@ const routes: Routes = [
   { path: "indstillinger", component: SettingsComponent },
   { path: "hjaelp", component: HelpComponent },
   { path: "min-profil", component: ProfileComponent },
-  { path: "eu-erfaringsskema", component: EuSchemaComponent }
+  { path: "eu-erfaringsskema", component: EuSchemaComponent },
+  { path: "login", component: LoginComponent }
 ]
 
 @NgModule({
@@ -56,7 +58,8 @@ const routes: Routes = [
     SettingsComponent,
     HelpComponent,
     PreviousReflectionComponent,
-    EuSchemaComponent
+    EuSchemaComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
