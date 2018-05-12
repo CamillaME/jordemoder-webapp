@@ -37,7 +37,8 @@ const routes: Routes = [
   { path: "indstillinger", component: SettingsComponent },
   { path: "hjaelp", component: HelpComponent },
   { path: "min-profil", component: ProfileComponent },
-  { path: "eu-erfaringsskema", component: EuSchemaComponent }
+  { path: "eu-erfaringsskema", component: EuSchemaComponent },
+  { path: "login", component: LoginComponent }
 ]
 
 @NgModule({
