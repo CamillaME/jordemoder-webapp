@@ -23,6 +23,7 @@ import { SettingsComponent } from './profile/settings/settings.component';
 import { HelpComponent } from './profile/help/help.component';
 import { PreviousReflectionComponent } from './reflection/previous-reflection/previous-reflection.component';
 import { EuSchemaComponent } from './schema/eu-schema/eu-schema.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: "", component: CalendarComponent },
@@ -56,7 +57,8 @@ const routes: Routes = [
     SettingsComponent,
     HelpComponent,
     PreviousReflectionComponent,
-    EuSchemaComponent
+    EuSchemaComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
