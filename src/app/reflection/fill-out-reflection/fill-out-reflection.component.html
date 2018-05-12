@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-12">
         <h2>Refleksionsark
-          <span id="reflectionCount">11 - </span>
+          <span id="reflectionSheetNumber">{{sheetNumber}} - </span>
           <input type="text" id="title" name="title" placeholder="Titel på refleksionsark" [(ngModel)]="title">
         </h2>
       </div>
@@ -26,7 +26,7 @@
       <div class="col-12 col-md-4">
         <strong>Refleksion nr.</strong>
         <!-- <span>11/13</span> -->
-        <input id="reflectionCount" name="reflectionCount" type="text" [(ngModel)]="reflectionCount">
+        <input id="reflectionCount" name="reflectionCount" type="text" [(ngModel)]="reflectionCount" disabled>
       </div>
       <div class="col-12 col-md-4">
         <strong>Fødsel</strong>
@@ -91,6 +91,14 @@
       </div>
       <div class="col-12">
         <textarea id="reflection" name="reflection" placeholder="Indtast din refleksion her..." [(ngModel)]="reflection"></textarea>
+      </div>
+    </div>
+    <div class="row description">
+      <div class="col-12">
+        <strong>Hvad vil jeg arbejde videre med</strong>
+      </div>
+      <div class="col-12">
+        <textarea id="continueWith" name="continueWith" placeholder="Indtast hvad du vil arbejde videre med her..." [(ngModel)]="continueWith"></textarea>
       </div>
     </div>
     <div class="row description">

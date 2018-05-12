@@ -13,18 +13,21 @@ import { Reflection } from '../../Models/reflection.model';
 })
 export class FillOutReflectionComponent implements OnInit {
 
-  date: string;
-  reflectionCount: string;
-  title: string;
-  teacher: string;
-  reflection: string;
-  birth: string;
-  number: number;
-  week: string;
-  description: string;
-  considerations: string;
-  individualGoals: string;
-  literature: string
+  date: string = "";
+  reflectionCount: number = null;
+  title: string = "";
+  teacher: string = "";
+  reflection: string = "";
+  birth: number = null;
+  number: number = null;
+  week: number = null;
+  birthDescription: string = "";
+  considerations: string = "";
+  individualGoals: string = "";
+  literature: string = "";
+  continueWith: string = "";
+
+  sheetNumber: number;
 
   reflectionCol: AngularFirestoreCollection<any>;
   reflections: Observable<any[]>;
@@ -47,14 +50,16 @@ export class FillOutReflectionComponent implements OnInit {
   getReflectionNumber() {
     let self = this;
 
-    this.db.collection("ReflectionSheet").ref.get().then(function (querySnapshot) {
-      self.reflectionCount = (querySnapshot.docs.length + 1) + "/13";
+    this.db.collection("ReflectionSheet", ref => ref.where("Term", "==", "4. semester")).ref.get().then(function (querySnapshot) {
+      self.reflectionCount = (querySnapshot.docs.length + 1);
+      self.sheetNumber = self.reflectionCount;
     });
   }
 
   onSubmit() {
-    // this.reflectionService.addReflection();
     this.reflectionService.addReflection(
+      "Julie Bang Larsen",
+      "4. semester",
       this.title,
       this.teacher,
       this.reflectionCount,
@@ -62,11 +67,15 @@ export class FillOutReflectionComponent implements OnInit {
       this.number,
       this.week,
       this.date,
-      this.description,
+      this.birthDescription,
       this.considerations,
       this.individualGoals,
       this.reflection,
-      this.literature);
+      this.continueWith,
+      this.literature,
+      "Dette er en kommentar",
+      "Dette er en kommentar",
+      "12-02-2018 Jdm. Anne Mette Dahl Krøgh");
   }
 
   ngOnInit() {

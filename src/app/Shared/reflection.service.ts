@@ -13,13 +13,33 @@ export class ReflectionService {
     constructor(private db: AngularFirestore) {
     }
 
-    addReflection(title: string, teacher: string, reflectionNumber: string, birth: string, number: number, week: string, date: string, description: string, considerations: string, individualGoals: string, reflection: string, literature: string) {
+    addReflection(fullName: string,
+        term: string,
+        title: string,
+        teacher: string,
+        reflectionNumber: number,
+        birth: number,
+        number: number,
+        week: number,
+        date: string,
+        description: string,
+        considerations: string,
+        individualGoals: string,
+        reflection: string,
+        continueWith: string,
+        literature: string,
+        commentsOnReflection: string,
+        commentsOnActions: string,
+        signatureAndDate: string
+    ) {
         const db = firebase.firestore();
         const ref = db.collection('ReflectionSheet').doc();
         const id = ref.id;
 
         this.db.collection('ReflectionSheet').doc(id).set({
             "Id": id,
+            "FullName": fullName,
+            "Term": term,
             "Title": title,
             "Teacher": teacher,
             "SheetNumber": reflectionNumber,
@@ -31,7 +51,11 @@ export class ReflectionService {
             "Jdm. academic considerations for care mm.": considerations,
             "Individual goals": individualGoals,
             "ReflectionText": reflection,
-            "Literature": literature
+            "What will I continue with?": continueWith,
+            "Literature": literature,
+            "Comments on reflection": commentsOnReflection,
+            "Comments on seen actions": commentsOnActions,
+            "Signature + date": signatureAndDate
         });
     }
 }
