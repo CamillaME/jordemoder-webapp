@@ -1,0 +1,100 @@
+body {
+  font-size: 14px;
+}
+.reflection {
+  background-color: rgba(204, 204, 204, 0.14);
+  padding: 10px;
+}
+h2 {
+  color: #41BAAE;
+  font: normal normal normal 18px/1.4em futura-lt-w01-light, sans-serif;
+  display: inline;
+}
+#reflectionSheetNumber {
+  color: #A0A09F;
+}
+#title {
+  font: normal normal normal 18px/1.4em futura-lt-w01-light, sans-serif;
+}
+input {
+  outline: none;
+  color: #A0A09F;
+  max-width: 100%;
+  background-color: transparent;
+  border: none;
+}
+#title::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  font: normal normal normal 18px/1.4em futura-lt-w01-light, sans-serif;
+  opacity: 1;
+  /* Firefox */
+}
+#title:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  font: normal normal normal 18px/1.4em futura-lt-w01-light, sans-serif;
+}
+#title::-ms-input-placeholder {
+  /* Microsoft Edge */
+  font: normal normal normal 18px/1.4em futura-lt-w01-light, sans-serif;
+}
+textarea {
+  width: 100%;
+  height: 100px;
+  resize: none;
+  padding: 5px;
+}
+textarea::placeholder,
+input::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #A0A09F;
+  opacity: 1;
+  /* Firefox */
+}
+textarea:-ms-input-placeholder,
+input::placeholder {
+  /* Internet Explorer 10-11 */
+  color: #A0A09F;
+}
+textarea::-ms-input-placeholder,
+input::placeholder {
+  /* Microsoft Edge */
+  color: #A0A09F;
+}
+.line {
+  padding-top: 50px;
+  border-bottom: 2px solid #605e5e;
+  margin-bottom: 20px;
+}
+.thin-line {
+  border-bottom: 1.5px solid #605e5e;
+  margin-bottom: 20px;
+}
+strong {
+  color: #2F2E2E;
+}
+.line strong + span {
+  font-style: italic;
+}
+.thin-line strong + span {
+  font-style: normal;
+}
+.description {
+  margin-top: 30px;
+}
+.btn-success,
+.btn-success:hover {
+  background-color: #41BAAE;
+  border-color: #41BAAE;
+}
+.btn-success:not(:disabled):not(.disabled).active,
+.btn-success:not(:disabled):not(.disabled):active,
+.show > .btn-success.dropdown-toggle {
+  background-color: #41BAAE;
+  border-color: #41BAAE;
+}
+.btn-success.focus,
+.btn-success:focus {
+  background-color: #41BAAE;
+  border-color: #41BAAE;
+  box-shadow: none;
+}

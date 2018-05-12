@@ -1,0 +1,116 @@
+@third-color:#41BAAE;
+@grey:#A0A09F;
+@black:#2F2E2E;
+
+body {
+    font-size: 14px;
+}
+
+.reflection {
+    background-color: rgba(204, 204, 204, 0.14);
+    padding: 10px;
+}
+
+h2 {
+    color: @third-color;
+    font: normal normal normal 18px/1.4em futura-lt-w01-light,sans-serif;
+    display: inline;
+}
+
+#reflectionSheetNumber {
+    color: @grey;
+}
+
+#title {
+    font: normal normal normal 18px/1.4em futura-lt-w01-light,sans-serif;
+    // background-color: transparent;
+    // border-bottom: 2px solid black;
+    // border-top: none;
+    // border-left: none;
+    // border-right: none;
+    // border: none;
+}
+
+input {
+    outline: none;
+    color: @grey;
+    max-width: 100%;
+    background-color: transparent;
+    border: none;
+}
+
+#title::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    font: normal normal normal 18px/1.4em futura-lt-w01-light,sans-serif;
+    opacity: 1; /* Firefox */
+}
+
+#title:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    font: normal normal normal 18px/1.4em futura-lt-w01-light,sans-serif;
+}
+
+#title::-ms-input-placeholder { /* Microsoft Edge */
+    font: normal normal normal 18px/1.4em futura-lt-w01-light,sans-serif;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    resize: none;
+    padding: 5px;
+}
+
+textarea::placeholder, input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: @grey;
+    opacity: 1; /* Firefox */
+}
+
+textarea:-ms-input-placeholder, input::placeholder { /* Internet Explorer 10-11 */
+    color: @grey;
+}
+
+textarea::-ms-input-placeholder, input::placeholder { /* Microsoft Edge */
+    color: @grey;
+}
+
+.line {
+    padding-top: 50px;
+    border-bottom: 2px solid rgba(96, 94, 94, 1);
+    margin-bottom: 20px;
+}
+
+.thin-line {
+    border-bottom: 1.5px solid rgba(96, 94, 94, 1);
+    margin-bottom: 20px;
+}
+
+strong {
+    color: @black;
+}
+
+.line strong + span {
+    font-style: italic;
+}
+
+.thin-line strong + span {
+    font-style: normal;
+}
+
+.description {
+    margin-top: 30px;
+}
+
+.btn-success, .btn-success:hover {
+    background-color: @third-color;
+    border-color: @third-color;
+}
+
+.btn-success:not(:disabled):not(.disabled).active, .btn-success:not(:disabled):not(.disabled):active, .show>.btn-success.dropdown-toggle {
+    background-color: @third-color;
+    border-color: @third-color;  
+}
+
+.btn-success.focus, .btn-success:focus {
+    background-color: @third-color;
+    border-color: @third-color; 
+    box-shadow: none;  
+}

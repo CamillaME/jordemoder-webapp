@@ -47,15 +47,19 @@ export class ReflectionService {
             "ShiftNumber": number,
             "Week": week,
             "Date": date,
-            "Description of the course/situation": description,
-            "Jdm. academic considerations for care mm.": considerations,
-            "Individual goals": individualGoals,
+            "DescriptionOfTheCourse/Situation": description,
+            "JdmAcademicConsiderationsForCareMm": considerations,
+            "IndividualGoals": individualGoals,
             "ReflectionText": reflection,
-            "What will I continue with?": continueWith,
+            "WhatWillIContinueWith": continueWith,
             "Literature": literature,
-            "Comments on reflection": commentsOnReflection,
-            "Comments on seen actions": commentsOnActions,
-            "Signature + date": signatureAndDate
+            "CommentsOnReflection": commentsOnReflection,
+            "CommentsOnSeenActions": commentsOnActions,
+            "SignatureAndDate": signatureAndDate
         });
+    }
+
+    getReflection(id) {
+        return this.db.collection('ReflectionSheet', ref => ref.where("Id", "==", id));
     }
 }

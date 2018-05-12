@@ -24,6 +24,7 @@ import { HelpComponent } from './profile/help/help.component';
 import { PreviousReflectionComponent } from './reflection/previous-reflection/previous-reflection.component';
 import { EuSchemaComponent } from './schema/eu-schema/eu-schema.component';
 import { LoginComponent } from './login/login.component';
+import { EditReflectionComponent } from './reflection/edit-reflection/edit-reflection.component';
 
 const routes: Routes = [
   { path: "", component: CalendarComponent },
@@ -38,7 +39,8 @@ const routes: Routes = [
   { path: "hjaelp", component: HelpComponent },
   { path: "min-profil", component: ProfileComponent },
   { path: "eu-erfaringsskema", component: EuSchemaComponent },
-  { path: "login", component: LoginComponent }
+  { path: "login", component: LoginComponent },
+  { path: "rediger-refleksionsark/:id", component: EditReflectionComponent }
 ]
 
 @NgModule({
@@ -59,7 +61,8 @@ const routes: Routes = [
     HelpComponent,
     PreviousReflectionComponent,
     EuSchemaComponent,
-    LoginComponent
+    LoginComponent,
+    EditReflectionComponent
   ],
   imports: [
     BrowserModule,

@@ -8,7 +8,7 @@ import { Reflection } from '../../Models/reflection.model';
 @Component({
   selector: 'app-fill-out-reflection',
   templateUrl: './fill-out-reflection.component.html',
-  styleUrls: ['./fill-out-reflection.component.less'],
+  styleUrls: ['../reflection.component.less'],
   providers: [ReflectionService]
 })
 export class FillOutReflectionComponent implements OnInit {

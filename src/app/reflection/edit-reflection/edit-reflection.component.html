@@ -1,11 +1,11 @@
 <h1>Udfyld refleksionsark</h1>
-<div class="reflection">
+<div class="reflection" *ngFor="let r of reflections | async">
   <form>
     <div class="row">
       <div class="col-12">
         <h2>Refleksionsark
           <span id="reflectionSheetNumber">{{sheetNumber}} - </span>
-          <input type="text" id="title" name="title" placeholder="Titel på refleksionsark" [(ngModel)]="title">
+          <input type="text" id="title" name="title"placeholder="Titel på refleksionsark" [(ngModel)]="r.Title">
         </h2>
       </div>
     </div>
@@ -21,17 +21,17 @@
       <div class="col-12 col-md-4">
         <strong>Underviser</strong>
         <!-- <span>Anne Mette Krøgh</span> -->
-        <input id="teacher" name="teacher" type="text" placeholder="Indtast her..." [(ngModel)]="teacher">
+        <input id="teacher" name="teacher" type="text" placeholder="Indtast her..." [(ngModel)]="r.Teacher">
       </div>
       <div class="col-12 col-md-4">
         <strong>Refleksion nr.</strong>
         <!-- <span>11/13</span> -->
-        <input id="reflectionCount" name="reflectionCount" type="text" [(ngModel)]="reflectionCount" disabled>
+        <input id="reflectionCount" name="reflectionCount" type="text" [(ngModel)]="r.SheetNumber" disabled>
       </div>
       <div class="col-12 col-md-4">
         <strong>Fødsel</strong>
         <!-- <span>14</span> -->
-        <input id="birth" name="birth" type="number" placeholder="Indtast her..." [(ngModel)]="birth">
+        <input id="birth" name="birth" type="number" placeholder="Indtast her..." [(ngModel)]="r.Birth">
       </div>
       <div class="col-12">
         <div class="thin-line">
@@ -42,17 +42,17 @@
       <div class="col-12 col-md-4">
         <strong>Vagt nr.</strong>
         <!-- <span>16</span> -->
-        <input id="number" name="number" type="number" placeholder="Indtast her..." [(ngModel)]="number">
+        <input id="number" name="number" type="number" placeholder="Indtast her..." [(ngModel)]="r.ShiftNumber">
       </div>
       <div class="col-12 col-md-4">
         <strong>Uge i perioden</strong>
         <!-- <span>5</span> -->
-        <input id="week" name="week" type="number" placeholder="Indtast her..." [(ngModel)]="week">
+        <input id="week" name="week" type="number" placeholder="Indtast her..." [(ngModel)]="r.Week">
       </div>
       <div class="col-12 col-md-4">
         <strong>Dato</strong>
         <!-- <span>25.11.2017</span> -->
-        <input id="date" name="date" type="date" data-date-format="DD MMMM YYYY" [(ngModel)]="date">
+        <input id="date" name="date" type="date" data-date-format="DD MMMM YYYY" [(ngModel)]="r.Date">
       </div>
       <div class="col-12">
         <div class="thin-line">
@@ -65,7 +65,7 @@
       </div>
       <div class="col-12">
         <textarea id="birthDescription" name="birthDescription" placeholder="Indtast en beskrivelse af forløbet/situationen her..."
-          [(ngModel)]="birthDescription"></textarea>
+          [(ngModel)]="r.DescriptionOfTheCourse/Situation"></textarea>
       </div>
     </div>
     <div class="row description">
@@ -74,7 +74,7 @@
       </div>
       <div class="col-12">
         <textarea id="considerations" name="considerations" placeholder="Indtast de jdm.faglige overvejelser for omsorgen/observationer/handlingsforslag her..."
-          [(ngModel)]="considerations"></textarea>
+          [(ngModel)]="r.JdmAcademicConsiderationsForCareMm"></textarea>
       </div>
     </div>
     <div class="row description">
@@ -82,7 +82,7 @@
         <strong>Individuelle mål</strong>
       </div>
       <div class="col-12">
-        <textarea id="individualGoals" name="individualGoals" placeholder="Indtast dine individuelle mål her..." [(ngModel)]="individualGoals"></textarea>
+        <textarea id="individualGoals" name="individualGoals" placeholder="Indtast dine individuelle mål her..." [(ngModel)]="r.IndividualGoals"></textarea>
       </div>
     </div>
     <div class="row description">
@@ -90,7 +90,7 @@
         <strong>Refleksion</strong>
       </div>
       <div class="col-12">
-        <textarea id="reflection" name="reflection" placeholder="Indtast din refleksion her..." [(ngModel)]="reflection"></textarea>
+        <textarea id="reflection" name="reflection" placeholder="Indtast din refleksion her..." [(ngModel)]="r.ReflectionText"></textarea>
       </div>
     </div>
     <div class="row description">
@@ -98,7 +98,7 @@
         <strong>Hvad vil jeg arbejde videre med</strong>
       </div>
       <div class="col-12">
-        <textarea id="continueWith" name="continueWith" placeholder="Indtast hvad du vil arbejde videre med her..." [(ngModel)]="continueWith"></textarea>
+        <textarea id="continueWith" name="continueWith" placeholder="Indtast hvad du vil arbejde videre med her..." [(ngModel)]="r.WhatWillIContinueWith"></textarea>
       </div>
     </div>
     <div class="row description">
@@ -106,13 +106,16 @@
         <strong>Litteratur</strong>
       </div>
       <div class="col-12">
-        <textarea id="literature" name="literature" placeholder="Indtast den brugte litteratur her..." [(ngModel)]="literature"></textarea>
+        <textarea id="literature" name="literature" placeholder="Indtast den brugte litteratur her..." [(ngModel)]="r.Literature"></textarea>
       </div>
     </div>
     <div class="row description">
       <div class="col-12">
-        <button type="submit" class="btn btn-success" (click)="onSubmit()">Opret refleksionsark</button>
+        <button type="submit" class="btn btn-success" (click)="onUpdate()">Opdater refleksionsark</button>
       </div>
     </div>
   </form>
 </div>
+<!-- <div *ngFor="let reflection of reflections | async">
+  {{reflection.FullName}}
+</div> -->
