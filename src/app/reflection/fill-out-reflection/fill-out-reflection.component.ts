@@ -4,6 +4,7 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { Observable } from 'rxjs/Observable';
 import { ReflectionService } from '../../Shared/reflection.service';
 import { Reflection } from '../../Models/reflection.model';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-fill-out-reflection',
@@ -27,12 +28,10 @@ export class FillOutReflectionComponent implements OnInit {
   literature: string = "";
   continueWith: string = "";
 
-  sheetNumber: number;
-
   reflectionCol: AngularFirestoreCollection<any>;
   reflections: Observable<any[]>;
 
-  constructor(private db: AngularFirestore, private reflectionService: ReflectionService) {
+  constructor(private db: AngularFirestore, private reflectionService: ReflectionService, private router: Router) {
     db.firestore.settings({ timestampsInSnapshots: true });
   }
 
@@ -52,12 +51,14 @@ export class FillOutReflectionComponent implements OnInit {
 
     this.db.collection("ReflectionSheet", ref => ref.where("Term", "==", "4. semester")).ref.get().then(function (querySnapshot) {
       self.reflectionCount = (querySnapshot.docs.length + 1);
-      self.sheetNumber = self.reflectionCount;
     });
   }
 
   onSubmit() {
+    var idBefore = this.db.createId();
+
     this.reflectionService.addReflection(
+      idBefore,
       "Julie Bang Larsen",
       "4. semester",
       this.title,
@@ -76,6 +77,8 @@ export class FillOutReflectionComponent implements OnInit {
       "Dette er en kommentar",
       "Dette er en kommentar",
       "12-02-2018 Jdm. Anne Mette Dahl Krøgh");
+
+    this.router.navigateByUrl('rediger-refleksionsark/' + idBefore);
   }
 
   ngOnInit() {

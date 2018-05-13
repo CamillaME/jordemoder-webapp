@@ -3,7 +3,7 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { Reflection } from '../Models/reflection.model';
 import { DocumentReference } from '@firebase/firestore-types';
 
-import * as firebase from 'firebase';
+// import * as firebase from 'firebase';
 
 @Injectable()
 export class ReflectionService {
@@ -13,7 +13,8 @@ export class ReflectionService {
     constructor(private db: AngularFirestore) {
     }
 
-    addReflection(fullName: string,
+    addReflection(id: string,
+        fullName: string,
         term: string,
         title: string,
         teacher: string,
@@ -32,9 +33,9 @@ export class ReflectionService {
         commentsOnActions: string,
         signatureAndDate: string
     ) {
-        const db = firebase.firestore();
-        const ref = db.collection('ReflectionSheet').doc();
-        const id = ref.id;
+        // const db = firebase.firestore();
+        // const ref = db.collection('ReflectionSheet').doc();
+        // id = ref.id;
 
         this.db.collection('ReflectionSheet').doc(id).set({
             "Id": id,
@@ -47,7 +48,7 @@ export class ReflectionService {
             "ShiftNumber": number,
             "Week": week,
             "Date": date,
-            "DescriptionOfTheCourse/Situation": description,
+            "DescriptionOfTheCourseSituation": description,
             "JdmAcademicConsiderationsForCareMm": considerations,
             "IndividualGoals": individualGoals,
             "ReflectionText": reflection,
@@ -57,6 +58,50 @@ export class ReflectionService {
             "CommentsOnSeenActions": commentsOnActions,
             "SignatureAndDate": signatureAndDate
         });
+    }
+
+    updateReflection(id: string,
+        fullName: string,
+        term: string,
+        title: string,
+        teacher: string,
+        reflectionNumber: number,
+        birth: number,
+        number: number,
+        week: number,
+        date: string,
+        description: string,
+        considerations: string,
+        individualGoals: string,
+        reflection: string,
+        continueWith: string,
+        literature: string,
+        commentsOnReflection: string,
+        commentsOnActions: string,
+        signatureAndDate: string) {
+
+        this.db.collection('ReflectionSheet').doc(id).update({
+            "Id": id,
+            "FullName": fullName,
+            "Term": term,
+            "Title": title,
+            "Teacher": teacher,
+            "SheetNumber": reflectionNumber,
+            "Birth": birth,
+            "ShiftNumber": number,
+            "Week": week,
+            "Date": date,
+            "DescriptionOfTheCourseSituation": description,
+            "JdmAcademicConsiderationsForCareMm": considerations,
+            "IndividualGoals": individualGoals,
+            "ReflectionText": reflection,
+            "WhatWillIContinueWith": continueWith,
+            "Literature": literature,
+            "CommentsOnReflection": commentsOnReflection,
+            "CommentsOnSeenActions": commentsOnActions,
+            "SignatureAndDate": signatureAndDate
+        });
+
     }
 
     getReflection(id) {
