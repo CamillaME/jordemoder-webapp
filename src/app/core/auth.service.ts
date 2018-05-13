@@ -17,5 +17,31 @@ interface User {
 @Injectable()
 export class AuthService {
 
-  constructor() { }
+  user: Observable<User>;
+
+  constructor(private dbAuth: AngularFireAuth, private db: AngularFirestore, private router: Router) {
+    this.user = this.dbAuth.authState.switchMap(user => {
+      if (user) {
+        return  this.db.doc<User>('users/${user.uid}').valueChanges()
+      }else {
+        return Observable.of(null)
+      }
+    })
+   }
+
+   private updateUserData(user) {
+     const userRef: AngularFirestoreDocument<any> = this.db.doc('users/${user.uid}');
+     const data: User = {
+       uid: user.uid,
+       email: user.email,
+       displayName: user.displayName
+     }
+     return userRef.set(data, {merge: true})
+   }
+
+   signOut(){
+     this.dbAuth.auth.signOut().then(() => {
+       this.router.navigate(['/']);
+     })
+   }
 }
