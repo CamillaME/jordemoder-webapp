@@ -3,6 +3,8 @@ import { AngularFireDatabase, snapshotChanges } from 'angularfire2/database';
 import { FirebaseApp } from 'angularfire2';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
+import { SchemaService } from '../../Shared/schema.service';
+import { Schema } from '../../Models/schema.model';
 
 // export interface Experienceschema { name: string; dates: Date; }
 // export interface ExperienceschemaId extends Experienceschema { id: string; }
@@ -10,14 +12,16 @@ import { Observable } from 'rxjs/Observable';
 @Component({
   selector: 'app-fill-out-schema',
   templateUrl: './fill-out-schema.component.html',
-  styleUrls: ['./fill-out-schema.component.css']
+  styleUrls: ['./fill-out-schema.component.css'],
+  providers: [SchemaService]
 })
 
 export class FillOutSchemaComponent implements OnInit {
 
   sdf: Date;
+  dates: Schema[] = [];
 
-  constructor(private db: AngularFirestore) {
+  constructor(private db: AngularFirestore, private schemaService: SchemaService) {
     db.firestore.settings({ timestampsInSnapshots: true});
     // this.experienceSchemaCol = db.collection<Experienceschema>('expSchema');
     // this.experienceSchemas = this.experienceSchemaCol.snapshotChanges().map(actions => {
@@ -51,6 +55,8 @@ export class FillOutSchemaComponent implements OnInit {
     // this.
     
     // docDate.push(this.sdf);
+
+    this.schemaService.saveDate(this.dates).subscribe(response => console.log(response));
   }
 
   ngOnInit() {

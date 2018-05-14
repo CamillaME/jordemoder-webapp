@@ -7,6 +7,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
 import { CoreModule } from './core/core.module';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
@@ -71,7 +72,8 @@ const routes: Routes = [
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     FormsModule,
-    CoreModule
+    CoreModule,
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]
