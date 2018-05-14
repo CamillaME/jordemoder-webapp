@@ -8,6 +8,6 @@ export class SchemaService {
     constructor(private http: Http){}
 
     saveDate(dates: Schema[]){
-        return this.http.post('https://jordemoder-app.firebaseio.com/Experienceschema/first/test.json', dates);
+        return this.http.post('https://jordemoder-app.firebaseio.com/Experienceschema/test.json', dates);
     }
 }

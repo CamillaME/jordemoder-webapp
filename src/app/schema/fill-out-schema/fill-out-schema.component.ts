@@ -23,6 +23,10 @@ export class FillOutSchemaComponent implements OnInit {
 
   constructor(private db: AngularFirestore, private schemaService: SchemaService) {
     db.firestore.settings({ timestampsInSnapshots: true});
+
+    var dateNow = Date.now;
+    let date1 = new Schema('dateNow');
+    this.dates.push(date1);
     // this.experienceSchemaCol = db.collection<Experienceschema>('expSchema');
     // this.experienceSchemas = this.experienceSchemaCol.snapshotChanges().map(actions => {
     //   return actions.map(a => {

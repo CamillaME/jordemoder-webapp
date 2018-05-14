@@ -1,3 +1,3 @@
 export class Schema{
-    constructor(public date: Date){}
+    constructor(public date: string){}
 }
