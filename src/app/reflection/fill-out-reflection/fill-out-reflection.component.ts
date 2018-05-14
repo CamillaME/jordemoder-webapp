@@ -78,7 +78,7 @@ export class FillOutReflectionComponent implements OnInit {
       "Dette er en kommentar",
       "12-02-2018 Jdm. Anne Mette Dahl Krøgh");
 
-    this.router.navigateByUrl('rediger-refleksionsark/' + idBefore);
+    this.router.navigateByUrl('refleksionsark/' + idBefore);
   }
 
   ngOnInit() {
