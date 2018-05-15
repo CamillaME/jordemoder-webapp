@@ -47,20 +47,21 @@ export class FillOutSchemaComponent implements OnInit {
   //   return text;
   //   }
 
-  OnAddDate(){
+  OnAddDate() {
     // this.db.collection('Experienceschema').doc('first').push({test: this.sdf});
     // const docDate = db.database.array('docDate');
     // this.
-    
     // docDate.push(this.sdf);
     this.db.collection('Experienceschema').doc('first').set({
-      'test':[{
+      'test': [{
         'Date': this.date
       }]
     });
   }
 
   ngOnInit() {
+    this.experienceSchemaCol = this.db.collection('Experienceschema');
+    this.experienceSchemas = this.experienceSchemaCol.valueChanges();
   }
 
 }
