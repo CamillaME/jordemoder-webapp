@@ -4,7 +4,7 @@
   <div class="nav nav-tabs" id="nav-tab" role="tablist">
     <a *ngFor="let r of reflections | async" class="nav-item nav-link" [ngClass]="{'active':r.SheetNumber == 1}" id="{{r.Id}}-tab"
       data-toggle="tab" href="#{{r.Id}}" role="tab" [attr.aria-controls]="r.Id">
-      Ark {{r.SheetNumber}}
+      Ark <span>{{r.SheetNumber}}</span>
     </a>
   </div>
 </nav>
