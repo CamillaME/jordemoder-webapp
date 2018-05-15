@@ -4,134 +4,142 @@
   <div class="nav nav-tabs" id="nav-tab" role="tablist">
     <a *ngFor="let r of reflections | async" class="nav-item nav-link" [ngClass]="{'active':r.SheetNumber == 1}" id="{{r.Id}}-tab"
       data-toggle="tab" href="#{{r.Id}}" role="tab" [attr.aria-controls]="r.Id">
-      Ark <span>{{r.SheetNumber}}</span>
+      Ark
+      <span>{{r.SheetNumber}}</span>
     </a>
   </div>
 </nav>
 <div class="tab-content" id="nav-tabContent">
   <div *ngFor="let r of reflections | async" class="tab-pane fade" [ngClass]="{'show active':r.SheetNumber == 1}" id="{{r.Id}}"
     role="tabpanel" [attr.aria-labelledby]="labelledBy">
-    <div class="reflection">
-      <div class="row">
-        <div class="col-12">
-          <h2>Refleksionsark
-            <span id="reflectionSheetNumber">{{r.SheetNumber}} - </span>
-            <span id="title">{{r.Title}}</span>
-          </h2>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <div class="line">
-            <strong>Jordemorder studerende</strong>
-            <span>{{r.FullName}}, {{r.Term}}</span>
+    <div id="reflection-{{r.Id}}" class="reflection">
+      <form>
+        <div class="row">
+          <div class="col-12">
+            <h2>Refleksionsark
+              <span id="reflectionSheetNumber">{{r.SheetNumber}} - </span>
+              <span id="title">{{r.Title}}</span>
+            </h2>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-12 col-md-4">
-          <strong>Underviser</strong>
-          <span>{{r.Teacher}}</span>
-        </div>
-        <div class="col-12 col-md-4">
-          <strong>Refleksion nr.</strong>
-          <span>{{r.SheetNumber}}</span>
-        </div>
-        <div class="col-12 col-md-4">
-          <strong>Fødsel</strong>
-          <span>{{r.Birth}}</span>
-        </div>
-        <div class="col-12">
-          <div class="thin-line">
+        <div class="row">
+          <div class="col-12">
+            <div class="line">
+              <strong>Jordemorder studerende</strong>
+              <span>{{r.FullName}}, {{r.Term}}</span>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-12 col-md-4">
-          <strong>Vagt nr.</strong>
-          <span>{{r.ShiftNumber}}</span>
-        </div>
-        <div class="col-12 col-md-4">
-          <strong>Uge i perioden</strong>
-          <span>{{r.Week}}</span>
-        </div>
-        <div class="col-12 col-md-4">
-          <strong>Dato</strong>
-          <span>{{r.Date | date: 'dd.MM.yyyy'}}</span>
-        </div>
-        <div class="col-12">
-          <div class="thin-line">
+        <div class="row">
+          <div class="col-12 col-md-4">
+            <strong>Underviser</strong>
+            <span>{{r.Teacher}}</span>
+          </div>
+          <div class="col-12 col-md-4">
+            <strong>Refleksion nr.</strong>
+            <span>{{r.SheetNumber}}</span>
+          </div>
+          <div class="col-12 col-md-4">
+            <strong>Fødsel</strong>
+            <span>{{r.Birth}}</span>
+          </div>
+          <div class="col-12">
+            <div class="thin-line">
+            </div>
           </div>
         </div>
-      </div>
-      <div class="row description">
-        <div class="col-12">
-          <strong>Beskrivelse af forløbet / situationen</strong> (kvinden/familien)
-        </div>
-        <div class="col-12">
-          <span>{{r.DescriptionOfTheCourseSituation}}</span>
-        </div>
-      </div>
-      <div class="row description">
-        <div class="col-12">
-          <strong>Jdm.faglige overvejelser for omsorgen / observationer / handlingsforslag</strong>
-        </div>
-        <div class="col-12">
-          <span>{{r.JdmAcademicConsiderationsForCareMm}}</span>
-        </div>
-      </div>
-      <div class="row description">
-        <div class="col-12">
-          <strong>Individuelle mål</strong>
-        </div>
-        <div class="col-12">
-          <span>{{r.IndividualGoals}}</span>
-        </div>
-      </div>
-      <div class="row description">
-        <div class="col-12">
-          <strong>Refleksion</strong>
-        </div>
-        <div class="col-12">
-          <span>{{r.ReflectionText}}</span>
-        </div>
-      </div>
-      <div class="row description">
-        <div class="col-12">
-          <strong>Hvad vil jeg arbejde videre med</strong>
-        </div>
-        <div class="col-12">
-          <span>{{r.WhatWillIContinueWith}}</span>
-        </div>
-      </div>
-      <div class="row description">
-        <div class="col-12">
-          <strong>Litteratur</strong>
-        </div>
-        <div class="col-12">
-          <span>{{r.Literature}}</span>
-        </div>
-      </div>
-      <div class="row description">
-        <div class="col-12">
-          <div class="comment">
-            <strong>Kommentarer på refleksion</strong>
-            <p>
-              {{r.CommentsOnReflection}}
-            </p>
+        <div class="row">
+          <div class="col-12 col-md-4">
+            <strong>Vagt nr.</strong>
+            <span>{{r.ShiftNumber}}</span>
+          </div>
+          <div class="col-12 col-md-4">
+            <strong>Uge i perioden</strong>
+            <span>{{r.Week}}</span>
+          </div>
+          <div class="col-12 col-md-4">
+            <strong>Dato</strong>
+            <span>{{r.Date | date: 'dd.MM.yyyy'}}</span>
+          </div>
+          <div class="col-12">
+            <div class="thin-line">
+            </div>
           </div>
         </div>
-      </div>
-      <div class="row description">
-        <div class="col-12">
-          <div class="comment">
-            <strong>Kommentarer på sete handlinger</strong>
-            <p>
-              {{r.CommentsOnSeenActions}}
-            </p>
+        <div class="row description">
+          <div class="col-12">
+            <strong>Beskrivelse af forløbet / situationen</strong> (kvinden/familien)
+          </div>
+          <div class="col-12">
+            <span>{{r.DescriptionOfTheCourseSituation}}</span>
           </div>
         </div>
-      </div>
+        <div class="row description">
+          <div class="col-12">
+            <strong>Jdm.faglige overvejelser for omsorgen / observationer / handlingsforslag</strong>
+          </div>
+          <div class="col-12">
+            <span>{{r.JdmAcademicConsiderationsForCareMm}}</span>
+          </div>
+        </div>
+        <div class="row description">
+          <div class="col-12">
+            <strong>Individuelle mål</strong>
+          </div>
+          <div class="col-12">
+            <span>{{r.IndividualGoals}}</span>
+          </div>
+        </div>
+        <div class="row description">
+          <div class="col-12">
+            <strong>Refleksion</strong>
+          </div>
+          <div class="col-12">
+            <span>{{r.ReflectionText}}</span>
+          </div>
+        </div>
+        <div class="row description">
+          <div class="col-12">
+            <strong>Hvad vil jeg arbejde videre med</strong>
+          </div>
+          <div class="col-12">
+            <span>{{r.WhatWillIContinueWith}}</span>
+          </div>
+        </div>
+        <div class="row description">
+          <div class="col-12">
+            <strong>Litteratur</strong>
+          </div>
+          <div class="col-12">
+            <span>{{r.Literature}}</span>
+          </div>
+        </div>
+        <div class="row description">
+          <div class="col-12">
+            <div class="comment">
+              <strong>Kommentarer på refleksion</strong>
+              <p>
+                {{r.CommentsOnReflection}}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row description">
+          <div class="col-12">
+            <div class="comment">
+              <strong>Kommentarer på sete handlinger</strong>
+              <p>
+                {{r.CommentsOnSeenActions}}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row description">
+          <div class="col-12">
+            <button type="submit" class="btn btn-success" (click)="onDownload(r.Title, r.Id)">Download refleksionsark</button>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 </div>
