@@ -27,6 +27,7 @@ import { PreviousReflectionComponent } from './reflection/previous-reflection/pr
 import { EuSchemaComponent } from './schema/eu-schema/eu-schema.component';
 import { LoginComponent } from './login/login.component';
 import { EditReflectionComponent } from './reflection/edit-reflection/edit-reflection.component';
+import { TermComponent } from './reflection/previous-reflection/term/term.component';
 
 const routes: Routes = [
   { path: "", component: CalendarComponent },
@@ -64,7 +65,8 @@ const routes: Routes = [
     PreviousReflectionComponent,
     EuSchemaComponent,
     LoginComponent,
-    EditReflectionComponent
+    EditReflectionComponent,
+    TermComponent
   ],
   imports: [
     BrowserModule,

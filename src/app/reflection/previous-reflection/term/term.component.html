@@ -1,0 +1,11 @@
+<ul>
+  <li *ngFor="let term of terms">
+    <div (click)="onTest(term.name)" class="term">
+      <h2>
+        {{term.name}}s praktik
+        <i class="fa fa-angle-down" aria-hidden="true" *ngIf="term.angleDown"></i>
+        <i class="fa fa-angle-right" aria-hidden="true" *ngIf="term.angleRight"></i>
+      </h2>
+    </div>
+  </li>
+</ul>

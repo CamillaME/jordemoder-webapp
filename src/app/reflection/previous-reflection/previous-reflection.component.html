@@ -1,28 +1,5 @@
 <h1>Tidligere refleksionsark</h1>
-<ul>
-  <li>
-    <h2>
-      7. semester
-    </h2>
-    <i class="fa fa-angle-down" aria-hidden="true"></i>
-  </li>
-  <li>
-    <h2>
-      6. semester
-    </h2>
-  </li>
-  <li>
-    <h2>
-      4. semester
-    </h2>
-  </li>
-  <li>
-    <h2>
-      2. semester
-    </h2>
-  </li>
-</ul>
-
+<app-term (reflectionChanged)="reflectionChangedHandler($event)"></app-term>
 <nav>
   <div class="nav nav-tabs" id="nav-tab" role="tablist">
     <a *ngFor="let r of reflections | async" class="nav-item nav-link" [ngClass]="{'active':r.SheetNumber == 1}" id="{{r.Id}}-tab"
@@ -133,6 +110,26 @@
         </div>
         <div class="col-12">
           <span>{{r.Literature}}</span>
+        </div>
+      </div>
+      <div class="row description">
+        <div class="col-12">
+          <div class="comment">
+            <strong>Kommentarer på refleksion</strong>
+            <p>
+              {{r.CommentsOnReflection}}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="row description">
+        <div class="col-12">
+          <div class="comment">
+            <strong>Kommentarer på sete handlinger</strong>
+            <p>
+              {{r.CommentsOnSeenActions}}
+            </p>
+          </div>
         </div>
       </div>
     </div>

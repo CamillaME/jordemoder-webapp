@@ -110,3 +110,38 @@ ul {
   padding-left: 0;
   padding-top: 20px;
 }
+.fa-angle-down,
+.fa-angle-right {
+  color: #41BAAE;
+  padding-left: 10px;
+  font-size: 25px;
+  vertical-align: bottom;
+}
+.term {
+  cursor: pointer;
+  display: inline-block;
+}
+.comment {
+  background-color: #41BAAE;
+  padding: 10px;
+  position: relative;
+  margin-bottom: 40px;
+}
+.comment:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 10%;
+  width: 0;
+  height: 0;
+  border: 50px solid transparent;
+  border-top-color: #41BAAE;
+  border-bottom: 0;
+  border-left: 0;
+  margin-left: -10px;
+  margin-bottom: -40px;
+  transform: rotate(80deg);
+}
+.comment p {
+  color: #e7e7e7;
+}
