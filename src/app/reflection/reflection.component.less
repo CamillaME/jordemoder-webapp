@@ -1,6 +1,7 @@
 @third-color:#41BAAE;
 @grey:#A0A09F;
 @black:#2F2E2E;
+@secondcolor:#DE5021;
 
 body {
     font-size: 14px;
@@ -29,6 +30,7 @@ h2 {
     // border-left: none;
     // border-right: none;
     // border: none;
+    color: @grey;
 }
 
 input {
@@ -113,4 +115,18 @@ strong {
     background-color: @third-color;
     border-color: @third-color; 
     box-shadow: none;  
+}
+
+ul li h2 {
+    color: @secondcolor;
+}
+
+li {
+    list-style: none;
+    padding-bottom: 10px;
+}
+
+ul {
+    padding-left: 0;
+    padding-top: 20px;
 }

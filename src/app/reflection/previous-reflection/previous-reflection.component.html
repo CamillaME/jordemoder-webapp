@@ -1,3 +1,140 @@
-<p>
-  previous-reflection works!
-</p>
+<h1>Tidligere refleksionsark</h1>
+<ul>
+  <li>
+    <h2>
+      7. semester
+    </h2>
+    <i class="fa fa-angle-down" aria-hidden="true"></i>
+  </li>
+  <li>
+    <h2>
+      6. semester
+    </h2>
+  </li>
+  <li>
+    <h2>
+      4. semester
+    </h2>
+  </li>
+  <li>
+    <h2>
+      2. semester
+    </h2>
+  </li>
+</ul>
+
+<nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <a *ngFor="let r of reflections | async" class="nav-item nav-link" [ngClass]="{'active':r.SheetNumber == 1}" id="{{r.Id}}-tab"
+      data-toggle="tab" href="#{{r.Id}}" role="tab" [attr.aria-controls]="r.Id">
+      Ark {{r.SheetNumber}}
+    </a>
+  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+  <div *ngFor="let r of reflections | async" class="tab-pane fade" [ngClass]="{'show active':r.SheetNumber == 1}" id="{{r.Id}}"
+    role="tabpanel" [attr.aria-labelledby]="labelledBy">
+    <div class="reflection">
+      <div class="row">
+        <div class="col-12">
+          <h2>Refleksionsark
+            <span id="reflectionSheetNumber">{{r.SheetNumber}} - </span>
+            <span id="title">{{r.Title}}</span>
+          </h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="line">
+            <strong>Jordemorder studerende</strong>
+            <span>{{r.FullName}}, {{r.Term}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-4">
+          <strong>Underviser</strong>
+          <span>{{r.Teacher}}</span>
+        </div>
+        <div class="col-12 col-md-4">
+          <strong>Refleksion nr.</strong>
+          <span>{{r.SheetNumber}}</span>
+        </div>
+        <div class="col-12 col-md-4">
+          <strong>Fødsel</strong>
+          <span>{{r.Birth}}</span>
+        </div>
+        <div class="col-12">
+          <div class="thin-line">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-4">
+          <strong>Vagt nr.</strong>
+          <span>{{r.ShiftNumber}}</span>
+        </div>
+        <div class="col-12 col-md-4">
+          <strong>Uge i perioden</strong>
+          <span>{{r.Week}}</span>
+        </div>
+        <div class="col-12 col-md-4">
+          <strong>Dato</strong>
+          <span>{{r.Date | date: 'dd.MM.yyyy'}}</span>
+        </div>
+        <div class="col-12">
+          <div class="thin-line">
+          </div>
+        </div>
+      </div>
+      <div class="row description">
+        <div class="col-12">
+          <strong>Beskrivelse af forløbet / situationen</strong> (kvinden/familien)
+        </div>
+        <div class="col-12">
+          <span>{{r.DescriptionOfTheCourseSituation}}</span>
+        </div>
+      </div>
+      <div class="row description">
+        <div class="col-12">
+          <strong>Jdm.faglige overvejelser for omsorgen / observationer / handlingsforslag</strong>
+        </div>
+        <div class="col-12">
+          <span>{{r.JdmAcademicConsiderationsForCareMm}}</span>
+        </div>
+      </div>
+      <div class="row description">
+        <div class="col-12">
+          <strong>Individuelle mål</strong>
+        </div>
+        <div class="col-12">
+          <span>{{r.IndividualGoals}}</span>
+        </div>
+      </div>
+      <div class="row description">
+        <div class="col-12">
+          <strong>Refleksion</strong>
+        </div>
+        <div class="col-12">
+          <span>{{r.ReflectionText}}</span>
+        </div>
+      </div>
+      <div class="row description">
+        <div class="col-12">
+          <strong>Hvad vil jeg arbejde videre med</strong>
+        </div>
+        <div class="col-12">
+          <span>{{r.WhatWillIContinueWith}}</span>
+        </div>
+      </div>
+      <div class="row description">
+        <div class="col-12">
+          <strong>Litteratur</strong>
+        </div>
+        <div class="col-12">
+          <span>{{r.Literature}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

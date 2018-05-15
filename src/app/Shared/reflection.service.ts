@@ -13,7 +13,9 @@ export class ReflectionService {
     constructor(private db: AngularFirestore) {
     }
 
-    addReflection(id: string,
+    addReflection(
+        userID: string,
+        id: string,
         fullName: string,
         term: string,
         title: string,
@@ -38,6 +40,7 @@ export class ReflectionService {
         // id = ref.id;
 
         this.db.collection('ReflectionSheet').doc(id).set({
+            "UserID": userID,
             "Id": id,
             "FullName": fullName,
             "Term": term,
@@ -60,7 +63,9 @@ export class ReflectionService {
         });
     }
 
-    updateReflection(id: string,
+    updateReflection(
+        userID: string,
+        id: string,
         fullName: string,
         term: string,
         title: string,
@@ -81,6 +86,7 @@ export class ReflectionService {
         signatureAndDate: string) {
 
         this.db.collection('ReflectionSheet').doc(id).update({
+            "UserID": userID,
             "Id": id,
             "FullName": fullName,
             "Term": term,
@@ -106,5 +112,9 @@ export class ReflectionService {
 
     getReflection(id) {
         return this.db.collection('ReflectionSheet', ref => ref.where("Id", "==", id));
+    }
+
+    getReflectionByTermAndUserID(term, userID) {
+        return this.db.collection('ReflectionSheet', ref => ref.where("Term", "==", term).where("UserID", "==", userID));
     }
 }

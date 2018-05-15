@@ -58,6 +58,7 @@ export class FillOutReflectionComponent implements OnInit {
     var idBefore = this.db.createId();
 
     this.reflectionService.addReflection(
+      "RandomUserID",
       idBefore,
       "Julie Bang Larsen",
       "4. semester",

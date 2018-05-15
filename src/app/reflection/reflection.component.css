@@ -15,6 +15,7 @@ h2 {
 }
 #title {
   font: normal normal normal 18px/1.4em futura-lt-w01-light, sans-serif;
+  color: #A0A09F;
 }
 input {
   outline: none;
@@ -97,4 +98,15 @@ strong {
   background-color: #41BAAE;
   border-color: #41BAAE;
   box-shadow: none;
+}
+ul li h2 {
+  color: #DE5021;
+}
+li {
+  list-style: none;
+  padding-bottom: 10px;
+}
+ul {
+  padding-left: 0;
+  padding-top: 20px;
 }

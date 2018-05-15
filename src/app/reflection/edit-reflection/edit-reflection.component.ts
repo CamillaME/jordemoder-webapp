@@ -56,6 +56,7 @@ export class EditReflectionComponent implements OnInit {
 
   onUpdate() {
     this.reflectionService.updateReflection(
+      "RandomUserID",
       this.route.snapshot.params["id"],
       "Julie Bang Larsen",
       "4. semester",
