@@ -6,7 +6,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/switchMap'
+import 'rxjs/add/operator/switchMap';
 
 interface User {
   uid: string;
@@ -24,19 +24,26 @@ export class AuthService {
     this.user = this.dbAuth.authState.switchMap(user => {
       if (user) {
         return  this.db.doc<User>('users/${user.uid}').valueChanges()
-      }else {
+      } else {
         return Observable.of(null)
       }
-    })
+    });
    }
 
-   private onLogin(user){
-     firebase.auth().signInWithEmailAndPassword(user.email, user.password).catch(function(error) {
+   onCreateUser(email, password) {
+     firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+     });
+   }
+
+   onLogin(email, password) {
+     firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
       var errorCode = error.code;
       var errorMessage = error.message;
       console.log(errorCode);
-      console.log(errorMessage);    
-     })
+      console.log(errorMessage);
+     });
    }
 
    signOut(){
@@ -46,6 +53,6 @@ export class AuthService {
       var errorMessage = error.message;
       console.log(errorCode);
       console.log(errorMessage);
-     })
+     });
    }
 }
