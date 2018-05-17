@@ -12,6 +12,7 @@ interface User {
   uid: string;
   email: string;
   displayName: string;
+  password: string;
 }
 
 @Injectable()
@@ -29,19 +30,22 @@ export class AuthService {
     })
    }
 
-   private updateUserData(user) {
-     const userRef: AngularFirestoreDocument<any> = this.db.doc('users/${user.uid}');
-     const data: User = {
-       uid: user.uid,
-       email: user.email,
-       displayName: user.displayName
-     }
-     return userRef.set(data, {merge: true})
+   private onLogin(user){
+     firebase.auth().signInWithEmailAndPassword(user.email, user.password).catch(function(error) {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      console.log(errorCode);
+      console.log(errorMessage);    
+     })
    }
 
    signOut(){
-     this.dbAuth.auth.signOut().then(() => {
-       this.router.navigate(['/']);
+     firebase.auth().signOut().then(function(){
+     }).catch(function(error){
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      console.log(errorCode);
+      console.log(errorMessage);
      })
    }
 }

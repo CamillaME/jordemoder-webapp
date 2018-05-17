@@ -30,6 +30,7 @@ import { EditReflectionComponent } from './reflection/edit-reflection/edit-refle
 import { TermComponent } from './reflection/previous-reflection/term/term.component';
 
 import * as jsPDF from 'jspdf';
+import { AuthGuard } from './core/auth.guard';
 
 const routes: Routes = [
   { path: "", component: CalendarComponent },
@@ -42,7 +43,7 @@ const routes: Routes = [
   { path: "praktik", component: InternshipComponent },
   { path: "indstillinger", component: SettingsComponent },
   { path: "hjaelp", component: HelpComponent },
-  { path: "min-profil", component: ProfileComponent },
+  { path: "min-profil", component: ProfileComponent, canActivate: [AuthGuard] },
   { path: "eu-erfaringsskema", component: EuSchemaComponent },
   { path: "login", component: LoginComponent },
   { path: "refleksionsark/:id", component: EditReflectionComponent }
@@ -79,7 +80,7 @@ const routes: Routes = [
     CoreModule,
     HttpModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
