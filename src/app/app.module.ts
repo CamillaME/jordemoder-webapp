@@ -29,8 +29,6 @@ import { LoginComponent } from './login/login.component';
 import { EditReflectionComponent } from './reflection/edit-reflection/edit-reflection.component';
 import { TermComponent } from './reflection/previous-reflection/term/term.component';
 
-import * as jsPDF from 'jspdf';
-
 const routes: Routes = [
   { path: "", component: CalendarComponent },
   { path: "udfyld-erfaringsskema", component: FillOutSchemaComponent },
