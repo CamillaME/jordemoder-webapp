@@ -30,7 +30,7 @@ import { EditReflectionComponent } from './reflection/edit-reflection/edit-refle
 import { TermComponent } from './reflection/previous-reflection/term/term.component';
 
 import * as jsPDF from 'jspdf';
-import { AuthGuard } from './core/auth.guard';
+import { AuthGuard } from './core/authGuard.service';
 
 const routes: Routes = [
   { path: "", component: CalendarComponent },
