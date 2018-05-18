@@ -29,6 +29,8 @@ import { LoginComponent } from './login/login.component';
 import { EditReflectionComponent } from './reflection/edit-reflection/edit-reflection.component';
 import { TermComponent } from './reflection/previous-reflection/term/term.component';
 
+import { AuthGuard } from './core/authGuard.service';
+
 const routes: Routes = [
   { path: "", component: CalendarComponent },
   { path: "udfyld-erfaringsskema", component: FillOutSchemaComponent },
@@ -40,7 +42,7 @@ const routes: Routes = [
   { path: "praktik", component: InternshipComponent },
   { path: "indstillinger", component: SettingsComponent },
   { path: "hjaelp", component: HelpComponent },
-  { path: "min-profil", component: ProfileComponent },
+  { path: "min-profil", component: ProfileComponent, canActivate: [AuthGuard] },
   { path: "eu-erfaringsskema", component: EuSchemaComponent },
   { path: "login", component: LoginComponent },
   { path: "refleksionsark/:id", component: EditReflectionComponent }
@@ -77,7 +79,7 @@ const routes: Routes = [
     CoreModule,
     HttpModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
