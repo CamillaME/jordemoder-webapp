@@ -42,7 +42,7 @@ const routes: Routes = [
   { path: "praktik", component: InternshipComponent },
   { path: "indstillinger", component: SettingsComponent },
   { path: "hjaelp", component: HelpComponent },
-  { path: "min-profil", component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: "min-profil", component: ProfileComponent },
   { path: "eu-erfaringsskema", component: EuSchemaComponent },
   { path: "login", component: LoginComponent },
   { path: "refleksionsark/:id", component: EditReflectionComponent }
