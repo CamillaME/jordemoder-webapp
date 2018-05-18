@@ -4,6 +4,7 @@ import { FirebaseApp } from 'angularfire2';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 
+import * as firebase from 'firebase';
 
 // export interface Experienceschema { name: string; dates: Date; }
 // export interface ExperienceschemaId extends Experienceschema { id: string; }
@@ -19,7 +20,7 @@ export class FillOutSchemaComponent implements OnInit {
   date: Date;
 
   constructor(private db: AngularFirestore) {
-    db.firestore.settings({ timestampsInSnapshots: true});
+    db.firestore.settings({ timestampsInSnapshots: true });
 
     // this.experienceSchemaCol = db.collection<Experienceschema>('expSchema');
     // this.experienceSchemas = this.experienceSchemaCol.snapshotChanges().map(actions => {
@@ -52,6 +53,7 @@ export class FillOutSchemaComponent implements OnInit {
     // const docDate = db.database.array('docDate');
     // this.
     // docDate.push(this.sdf);
+
     this.db.collection('Experienceschema').doc('first').set({
       'test': [{
         'Date': this.date

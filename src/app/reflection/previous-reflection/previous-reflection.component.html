@@ -136,7 +136,8 @@
         </div>
         <div class="row description">
           <div class="col-12">
-            <button type="submit" class="btn btn-success" (click)="onDownload(r.Title, r.Id)">Download refleksionsark</button>
+            <button id="download" type="submit" class="btn btn-success" (click)="onDownload(false, r.Title, r.Id, r.SheetNumber, r.FullName, r.Term, r.Teacher, r.Birth, r.ShiftNumber, r.Week, r.Date, r.DescriptionOfTheCourseSituation, r.JdmAcademicConsiderationsForCareMm, r.IndividualGoals, r.ReflectionText, r.WhatWillIContinueWith, r.Literature, r.CommentsOnReflection, r.CommentsOnSeenActions, r.SignatureAndDate)">Download</button>
+            <button id="print" type="submit" class="btn btn-success" (click)="onDownload(true, r.Title, r.Id, r.SheetNumber, r.FullName, r.Term, r.Teacher, r.Birth, r.ShiftNumber, r.Week, r.Date, r.DescriptionOfTheCourseSituation, r.JdmAcademicConsiderationsForCareMm, r.IndividualGoals, r.ReflectionText, r.WhatWillIContinueWith, r.Literature, r.CommentsOnReflection, r.CommentsOnSeenActions, r.SignatureAndDate)">Print</button>
           </div>
         </div>
       </form>
