@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { config } from './reflection.config';
 import { Reflection } from '../Models/reflection.model';
 import { DocumentReference } from '@firebase/firestore-types';
+import { Observable } from 'rxjs/Observable';
 
 // import * as firebase from 'firebase';
 
@@ -11,103 +13,17 @@ export class ReflectionService {
     private reflectionDoc: AngularFirestoreDocument<Reflection>;
 
     constructor(private db: AngularFirestore) {
+        db.firestore.settings({ timestampsInSnapshots: true });
+
+        this.reflections = db.collection<Reflection>(config.collection_endpoint);
     }
 
-    addReflection(
-        userID: string,
-        id: string,
-        fullName: string,
-        term: string,
-        title: string,
-        teacher: string,
-        reflectionNumber: number,
-        birth: number,
-        number: number,
-        week: number,
-        date: string,
-        description: string,
-        considerations: string,
-        individualGoals: string,
-        reflection: string,
-        continueWith: string,
-        literature: string,
-        commentsOnReflection: string,
-        commentsOnActions: string,
-        signatureAndDate: string
-    ) {
-        // const db = firebase.firestore();
-        // const ref = db.collection('ReflectionSheet').doc();
-        // id = ref.id;
-
-        this.db.collection('ReflectionSheet').doc(id).set({
-            "UserID": userID,
-            "Id": id,
-            "FullName": fullName,
-            "Term": term,
-            "Title": title,
-            "Teacher": teacher,
-            "SheetNumber": reflectionNumber,
-            "Birth": birth,
-            "ShiftNumber": number,
-            "Week": week,
-            "Date": date,
-            "DescriptionOfTheCourseSituation": description,
-            "JdmAcademicConsiderationsForCareMm": considerations,
-            "IndividualGoals": individualGoals,
-            "ReflectionText": reflection,
-            "WhatWillIContinueWith": continueWith,
-            "Literature": literature,
-            "CommentsOnReflection": commentsOnReflection,
-            "CommentsOnSeenActions": commentsOnActions,
-            "SignatureAndDate": signatureAndDate
-        });
+    addReflection(id, reflection: Reflection) {
+        this.reflections.doc(id).set(reflection);
     }
 
-    updateReflection(
-        userID: string,
-        id: string,
-        fullName: string,
-        term: string,
-        title: string,
-        teacher: string,
-        reflectionNumber: number,
-        birth: number,
-        number: number,
-        week: number,
-        date: string,
-        description: string,
-        considerations: string,
-        individualGoals: string,
-        reflection: string,
-        continueWith: string,
-        literature: string,
-        commentsOnReflection: string,
-        commentsOnActions: string,
-        signatureAndDate: string) {
-
-        this.db.collection('ReflectionSheet').doc(id).update({
-            "UserID": userID,
-            "Id": id,
-            "FullName": fullName,
-            "Term": term,
-            "Title": title,
-            "Teacher": teacher,
-            "SheetNumber": reflectionNumber,
-            "Birth": birth,
-            "ShiftNumber": number,
-            "Week": week,
-            "Date": date,
-            "DescriptionOfTheCourseSituation": description,
-            "JdmAcademicConsiderationsForCareMm": considerations,
-            "IndividualGoals": individualGoals,
-            "ReflectionText": reflection,
-            "WhatWillIContinueWith": continueWith,
-            "Literature": literature,
-            "CommentsOnReflection": commentsOnReflection,
-            "CommentsOnSeenActions": commentsOnActions,
-            "SignatureAndDate": signatureAndDate
-        });
-
+    updateReflection(id, reflection: Reflection) {
+        this.reflections.doc(id).update(reflection);
     }
 
     getReflection(id) {
@@ -115,6 +31,6 @@ export class ReflectionService {
     }
 
     getReflectionByTermAndUserID(term, userID) {
-        return this.db.collection('ReflectionSheet', ref => ref.where("Term", "==", term).where("UserID", "==", userID));
+        return this.db.collection('ReflectionSheet', ref => ref.where("Term", "==", term).where("UserID", "==", userID).orderBy("SheetNumber"));
     }
 }

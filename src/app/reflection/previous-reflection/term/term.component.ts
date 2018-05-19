@@ -24,7 +24,7 @@ export class TermComponent implements OnInit {
 
   constructor(private reflectionService: ReflectionService) { }
 
-  onTest(term) {
+  getReflections(term) {
     this.reflections = this.reflectionService.getReflectionByTermAndUserID(term, "RandomUserID").valueChanges();
 
     this.reflections.forEach(item => {

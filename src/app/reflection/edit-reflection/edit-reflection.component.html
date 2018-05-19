@@ -1,6 +1,6 @@
 <h1>Udfyld refleksionsark</h1>
 <div class="reflection" *ngFor="let r of reflections | async">
-  <form (ngSubmit)="onSubmit()">
+  <form>
     <div class="row">
       <div class="col-12">
         <h2>Refleksionsark
@@ -90,7 +90,7 @@
         <strong>Refleksion</strong>
       </div>
       <div class="col-12">
-        <textarea id="reflection" name="reflection" placeholder="Indtast din refleksion her..." [(ngModel)]="reflection"></textarea>
+        <textarea id="reflectionText" name="reflectionText" placeholder="Indtast din refleksion her..." [(ngModel)]="reflectionText"></textarea>
       </div>
     </div>
     <div class="row description">
@@ -111,7 +111,7 @@
     </div>
     <div class="row description">
       <div class="col-12">
-        <button type="submit" class="btn btn-success" (click)="onUpdate()">Opdater refleksionsark</button>
+        <button type="button" class="btn btn-success" (click)="onUpdate()">Opdater refleksionsark</button>
       </div>
     </div>
   </form>

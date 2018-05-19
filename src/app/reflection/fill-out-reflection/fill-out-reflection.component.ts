@@ -3,6 +3,7 @@ import { FirebaseApp } from 'angularfire2';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { ReflectionService } from '../../Shared/reflection.service';
+import { config } from '../../Shared/reflection.config';
 import { Reflection } from '../../Models/reflection.model';
 import { Router } from "@angular/router";
 
@@ -18,7 +19,7 @@ export class FillOutReflectionComponent implements OnInit {
   reflectionCount: number = null;
   title: string = "";
   teacher: string = "";
-  reflection: string = "";
+  reflectionText: string = "";
   birth: number = null;
   number: number = null;
   week: number = null;
@@ -28,7 +29,6 @@ export class FillOutReflectionComponent implements OnInit {
   literature: string = "";
   continueWith: string = "";
 
-  reflectionCol: AngularFirestoreCollection<any>;
   reflections: Observable<any[]>;
 
   constructor(private db: AngularFirestore, private reflectionService: ReflectionService, private router: Router) {
@@ -57,36 +57,37 @@ export class FillOutReflectionComponent implements OnInit {
   onSubmit() {
     var idBefore = this.db.createId();
 
-    this.reflectionService.addReflection(
-      "RandomUserID",
-      idBefore,
-      "Julie Bang Larsen",
-      "4. semester",
-      this.title,
-      this.teacher,
-      this.reflectionCount,
-      this.birth,
-      this.number,
-      this.week,
-      this.date,
-      this.birthDescription,
-      this.considerations,
-      this.individualGoals,
-      this.reflection,
-      this.continueWith,
-      this.literature,
-      "Dette er en kommentar",
-      "Dette er en kommentar",
-      "12-02-2018 Jdm. Anne Mette Dahl Krøgh");
+    let reflection = {
+      UserID: "RandomUserID",
+      Id: idBefore,
+      FullName: "Julie Bang Larsen",
+      Term: "4. semester",
+      Title: this.title,
+      Teacher: this.teacher,
+      SheetNumber: this.reflectionCount,
+      Birth: this.birth,
+      ShiftNumber: this.number,
+      Week: this.week,
+      Date: this.date,
+      DescriptionOfTheCourseSituation: this.birthDescription,
+      JdmAcademicConsiderationsForCareMm: this.considerations,
+      IndividualGoals: this.individualGoals,
+      ReflectionText: this.reflectionText,
+      WhatWillIContinueWith: this.continueWith,
+      Literature: this.literature,
+      CommentsOnReflection: "Dette er en kommentar",
+      CommentsOnSeenActions: "Dette er en kommentar",
+      SignatureAndDate: "12-02-2018 Jdm. Anne Mette Dahl Krøgh"
+    };
 
+    this.reflectionService.addReflection(idBefore, reflection);
     this.router.navigateByUrl('refleksionsark/' + idBefore);
   }
 
   ngOnInit() {
     this.getDate();
     this.getReflectionNumber();
-    this.reflectionCol = this.db.collection('ReflectionSheet');
-    this.reflections = this.reflectionCol.valueChanges();
+    this.reflections = this.db.collection(config.collection_endpoint).valueChanges();
   }
 
 }
