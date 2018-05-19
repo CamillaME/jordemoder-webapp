@@ -20,7 +20,7 @@ export class EditReflectionComponent implements OnInit {
   reflectionCount: number = null;
   title: string = "";
   teacher: string = "";
-  reflection: string = "";
+  reflectionText: string = "";
   birth: number = null;
   number: number = null;
   week: number = null;
@@ -48,35 +48,62 @@ export class EditReflectionComponent implements OnInit {
       this.birthDescription = item[0].DescriptionOfTheCourseSituation;
       this.considerations = item[0].JdmAcademicConsiderationsForCareMm;
       this.individualGoals = item[0].IndividualGoals;
-      this.reflection = item[0].ReflectionText;
+      this.reflectionText = item[0].ReflectionText;
       this.continueWith = item[0].WhatWillIContinueWith;
       this.literature = item[0].Literature;
     });
   }
 
   onUpdate() {
-    this.reflectionService.updateReflection(
-      "RandomUserID",
-      this.route.snapshot.params["id"],
-      "Julie Bang Larsen",
-      "4. semester",
-      this.title,
-      this.teacher,
-      this.reflectionCount,
-      this.birth,
-      this.number,
-      this.week,
-      this.date,
-      this.birthDescription,
-      this.considerations,
-      this.individualGoals,
-      this.reflection,
-      this.continueWith,
-      this.literature,
-      "Dette er en kommentar",
-      "Dette er en kommentar",
-      "12-02-2018 Jdm. Anne Mette Dahl Krøgh");
+    let reflection = {
+      UserID: "RandomUserID",
+      Id: this.route.snapshot.params["id"],
+      FullName: "Julie Bang Larsen",
+      Term: "4. semester",
+      Title: this.title,
+      Teacher: this.teacher,
+      SheetNumber: this.reflectionCount,
+      Birth: this.birth,
+      ShiftNumber: this.number,
+      Week: this.week,
+      Date: this.date,
+      DescriptionOfTheCourseSituation: this.birthDescription,
+      JdmAcademicConsiderationsForCareMm: this.considerations,
+      IndividualGoals: this.individualGoals,
+      ReflectionText: this.reflectionText,
+      WhatWillIContinueWith: this.continueWith,
+      Literature: this.literature,
+      CommentsOnReflection: "Dette er en kommentar",
+      CommentsOnSeenActions: "Dette er en kommentar",
+      SignatureAndDate: "12-02-2018 Jdm. Anne Mette Dahl Krøgh"
+    };
+
+    this.reflectionService.updateReflection(this.route.snapshot.params["id"], reflection);
   }
+
+  // onUpdate() {
+  //   this.reflectionService.updateReflection(
+  //     "RandomUserID",
+  //     this.route.snapshot.params["id"],
+  //     "Julie Bang Larsen",
+  //     "4. semester",
+  //     this.title,
+  //     this.teacher,
+  //     this.reflectionCount,
+  //     this.birth,
+  //     this.number,
+  //     this.week,
+  //     this.date,
+  //     this.birthDescription,
+  //     this.considerations,
+  //     this.individualGoals,
+  //     this.reflection,
+  //     this.continueWith,
+  //     this.literature,
+  //     "Dette er en kommentar",
+  //     "Dette er en kommentar",
+  //     "12-02-2018 Jdm. Anne Mette Dahl Krøgh");
+  // }
 
   ngOnInit() {
     this.reflections = this.reflectionService.getReflection(this.route.snapshot.params["id"]).valueChanges();

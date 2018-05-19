@@ -19,19 +19,13 @@ export class PreviousReflectionComponent implements OnInit {
 
   reflections;
   labelledBy: string;
+  SheetNumber;
 
   constructor(private db: AngularFirestore, private reflectionService: ReflectionService) {
     db.firestore.settings({ timestampsInSnapshots: true });
-
-    // this.reflections = this.reflectionService.getReflectionByTermAndUserID("4. semester", "RandomUserID").valueChanges();
-
-    // this.reflections.forEach(item => {
-    //   this.labelledBy = item[0].Id + "-tab";
-    // });
   }
 
   ngOnInit() {
-    // this.reflections = this.reflectionService.getReflectionByTermAndUserID("4. semester", "RandomUserID").valueChanges();
   }
 
   reflectionChangedHandler(reflections) {

@@ -84,7 +84,7 @@
         <strong>Refleksion</strong>
       </div>
       <div class="col-12">
-        <textarea id="reflection" name="reflection" placeholder="Indtast din refleksion her..." [(ngModel)]="reflection"></textarea>
+        <textarea id="reflectionText" name="reflectionText" placeholder="Indtast din refleksion her..." [(ngModel)]="reflectionText"></textarea>
       </div>
     </div>
     <div class="row description">
@@ -105,7 +105,7 @@
     </div>
     <div class="row description">
       <div class="col-12">
-        <button type="submit" class="btn btn-success" (click)="onSubmit()">Opret refleksionsark</button>
+        <button type="button" class="btn btn-success" (click)="onSubmit()">Opret refleksionsark</button>
       </div>
     </div>
   </form>
