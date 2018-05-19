@@ -1,5 +1,6 @@
 body {
   font-size: 14px;
+  font-family: helvetica-w01-bold, helvetica-w02-bold, helvetica-lt-w10-bold, sans-serif;
 }
 .reflection {
   background-color: rgba(204, 204, 204, 0.14);
@@ -165,4 +166,9 @@ a.nav-item.nav-link span {
 .nav-tabs {
   border-bottom: 1px solid #fff;
   margin-bottom: 1px;
+}
+pre {
+  font-size: 1rem;
+  font-weight: normal;
+  font-family: helvetica-w01-bold, helvetica-w02-bold, helvetica-lt-w10-bold, sans-serif;
 }

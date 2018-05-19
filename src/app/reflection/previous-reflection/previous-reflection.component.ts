@@ -9,6 +9,8 @@ import * as pdfMake from 'pdfmake/build/pdfmake.js';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts.js';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
+import * as firebase from 'firebase/app';
+
 @Component({
   selector: 'app-previous-reflection',
   templateUrl: './previous-reflection.component.html',
@@ -21,7 +23,7 @@ export class PreviousReflectionComponent implements OnInit {
   labelledBy: string;
   SheetNumber;
 
-  constructor(private db: AngularFirestore, private reflectionService: ReflectionService) {
+  constructor(private db: AngularFirestore, private reflectionService: ReflectionService, private router: Router) {
     db.firestore.settings({ timestampsInSnapshots: true });
   }
 
@@ -30,6 +32,18 @@ export class PreviousReflectionComponent implements OnInit {
 
   reflectionChangedHandler(reflections) {
     this.reflections = reflections;
+  }
+
+  onEdit(id) {
+    this.router.navigateByUrl('refleksionsark/' + id);
+  }
+
+  onDelete(id, title, sheetNumber) {
+    if (confirm("Er du sikker på, du vil slette Refleksionsark " + sheetNumber + " - " + title + "?")) {
+      this.reflectionService.updateSheetNumber(sheetNumber);
+
+      this.reflectionService.deleteReflection(id);
+    }
   }
 
   onDownload(isPrint, title, id, sheetNumber, fullName, term, teacher, birth, shiftNumber, week, date, descriptionOfTheCourseSituation, jdmAcademicConsiderationsForCareMm, individualGoals, reflectionText, whatWillIContinueWith, literature, commentsOnReflection, commentsOnSeenActions, signatureAndDate) {
@@ -124,7 +138,7 @@ export class PreviousReflectionComponent implements OnInit {
         },
         {
           text: [
-            { text: descriptionOfTheCourseSituation }
+            { text: jdmAcademicConsiderationsForCareMm }
           ],
         },
         {

@@ -12,6 +12,7 @@ export class TermComponent implements OnInit {
   labelledBy: string;
   angleDown: boolean;
   angleRight: boolean;
+  DescriptionOfTheCourseSituation: string;
 
   terms = [
     { name: '7. semester', angleDown: false, angleRight: true },

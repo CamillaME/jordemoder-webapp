@@ -5,6 +5,8 @@ import { Reflection } from '../Models/reflection.model';
 import { DocumentReference } from '@firebase/firestore-types';
 import { Observable } from 'rxjs/Observable';
 
+import * as firebase from 'firebase/app';
+
 // import * as firebase from 'firebase';
 
 @Injectable()
@@ -24,6 +26,27 @@ export class ReflectionService {
 
     updateReflection(id, reflection: Reflection) {
         this.reflections.doc(id).update(reflection);
+    }
+
+    updateSheetNumber(number) {
+        var collectionReference = this.db.collection('ReflectionSheet');
+        var query = collectionReference;
+
+        let self = this;
+
+        query.ref.get().then(function (querySnapshot) {
+            querySnapshot.forEach(function (documentSnapshot) {
+                var data = documentSnapshot.data();
+
+                if (data.SheetNumber > number) {
+                    self.db.collection("ReflectionSheet").doc(data.Id).update({ SheetNumber: data.SheetNumber - 1 });
+                }
+            });
+        });
+    }
+
+    deleteReflection(id) {
+        this.reflections.doc(id).delete();
     }
 
     getReflection(id) {
