@@ -30,6 +30,7 @@ import { EditReflectionComponent } from './reflection/edit-reflection/edit-refle
 import { TermComponent } from './reflection/previous-reflection/term/term.component';
 
 import { AuthGuard } from './core/authGuard.service';
+import { CreateUserComponent } from './login/create-user/create-user.component';
 
 const routes: Routes = [
   { path: "", component: CalendarComponent },
@@ -68,7 +69,8 @@ const routes: Routes = [
     EuSchemaComponent,
     LoginComponent,
     EditReflectionComponent,
-    TermComponent
+    TermComponent,
+    CreateUserComponent
   ],
   imports: [
     BrowserModule,

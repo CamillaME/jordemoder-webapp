@@ -8,7 +8,6 @@ export class AuthService {
 
   email: string;
   password: string;
-  loggedin:boolean = false;
 
   constructor() {}
 
@@ -26,7 +25,6 @@ export class AuthService {
       console.log(errorCode);
       console.log(errorMessage);
      });
-     this.loggedin = true;
    }
 
    signOut(){
@@ -37,6 +35,5 @@ export class AuthService {
       console.log(errorCode);
       console.log(errorMessage);
      });
-     this.loggedin = false;
    }
 }

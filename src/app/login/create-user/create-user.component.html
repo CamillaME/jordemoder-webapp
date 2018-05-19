@@ -1,0 +1,28 @@
+<div class="container-fluid">
+  <div class="row">
+    <form class="createUser" (ngSubmit)="" #f="ngForm">
+      <h3>Opret en bruger</h3>
+      <label>E-mail:</label>
+      <input type="email" email required name="email" ngModel class="form-control" />
+      <label>Password</label>
+      <input type="password" name='password' required minlength="6" placeholder="Enter password" ngModel class="form-control" />
+      <label>Navn:</label>
+      <input type="text" name="firstName" placeholder="Fornavn" ngModel class="form-control" />
+      <label>Mellemnavn:</label>
+      <input type="text" name="middelName" placeholder="Mellemnavn" ngModel class="form-control" />
+      <label>Efternavn:</label>
+      <input type="text" name="lastName" placeholder="Efternavn" ngModel class="form-control" />
+      <label>Telefonnummer:</label>
+      <input type="text" name="phoneNumber" placeholder="Telefonnummer" ngModel class="form-control" />
+      <label>Studienummer:</label>
+      <input type="text" name="studentNumber" placeholder="Studienummer" ngModel class="form-control" />
+      <label>Gade:</label>
+      <input type="text" name="street" placeholder="Gade, nummer og etage" ngModel class="form-control" />
+      <label>Postnummer:</label>
+      <input type="text" name="zip" placeholder="Postnummer" ngModel class="form-control" />
+      <label>By:</label>
+      <input type="text" name="City" placeholder="By" ngModel class="form-control" />
+      <button type="submit">Opret bruger</button>
+    </form>
+  </div>
+</div>
