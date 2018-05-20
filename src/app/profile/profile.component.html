@@ -1,1 +1,26 @@
+<!-- <div class="row">
+    <div class="col-12">
+        {{}}
+    </div>
+</div> -->
 
+<div *ngFor="let profile of profiles | async">
+    <div class="row">
+        <div class="col-6"></div>
+        <div class="col-6">
+            <div class="row">
+                <div class="col-12">
+                    {{profile.FirstName}} {{profile.MiddelName}} {{profile.LastName}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    UCN Jordmoder
+                </div>
+                <div class="col-6">
+                        {{profile.Term}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
