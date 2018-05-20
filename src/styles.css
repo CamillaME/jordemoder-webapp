@@ -5,3 +5,48 @@ h1 {
 label {
   font-weight: bold;
 }
+input {
+  outline: none;
+  color: #A0A09F;
+  max-width: 100%;
+  background-color: transparent;
+  border: none;
+}
+#title::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  font: normal normal normal 18px/1.4em futura-lt-w01-light, sans-serif;
+  opacity: 1;
+  /* Firefox */
+}
+#title:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  font: normal normal normal 18px/1.4em futura-lt-w01-light, sans-serif;
+}
+#title::-ms-input-placeholder {
+  /* Microsoft Edge */
+  font: normal normal normal 18px/1.4em futura-lt-w01-light, sans-serif;
+}
+textarea {
+  width: 100%;
+  height: 100px;
+  resize: none;
+  padding: 5px;
+  outline: none;
+}
+textarea::placeholder,
+input::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #A0A09F;
+  opacity: 1;
+  /* Firefox */
+}
+textarea:-ms-input-placeholder,
+input::placeholder {
+  /* Internet Explorer 10-11 */
+  color: #A0A09F;
+}
+textarea::-ms-input-placeholder,
+input::placeholder {
+  /* Microsoft Edge */
+  color: #A0A09F;
+}

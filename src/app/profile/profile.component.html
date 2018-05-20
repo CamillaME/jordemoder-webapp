@@ -1,15 +1,15 @@
-<!-- <div class="row">
-    <div class="col-12">
-        {{}}
-    </div>
-</div> -->
-
+<h1>Min profil</h1>
 <div *ngFor="let profile of profiles | async">
     <div class="row justify-content-center profileText">
         <div class="col-4">
             <img src="{{imagePath}}" id="profilePic" />
         </div>
         <div class="col-5">
+            <div class="row">
+                <div class="col-12">
+                    Studienummer: {{profile.StudentNumber}}
+                </div>
+            </div>
             <div class="row">
                 <div class="col-12">
                     {{profile.FirstName}} {{profile.MiddelName}} {{profile.LastName}}
@@ -39,6 +39,11 @@
             <div class="row">
                 <div class="col-12">
                     {{profile.Email}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    {{profile.Street}} {{profile.Zip}} {{profile.City}}
                 </div>
             </div>
         </div>

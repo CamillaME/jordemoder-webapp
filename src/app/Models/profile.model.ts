@@ -2,7 +2,7 @@ export class Profile {
     UserID: string;
     StudentNumber: number;
     FirstName: string;
-    MiddleName: string;
+    MiddelName: string;
     LastName: string;
     Street: string;
     City: string;
@@ -18,7 +18,7 @@ export class Profile {
         this.UserID = userID;
         this.StudentNumber = studentNumber;
         this.FirstName = firstName;
-        this.MiddleName = middleName;
+        this.MiddelName = middleName;
         this.LastName = lastName;
         this.Street = street;
         this.City = city;

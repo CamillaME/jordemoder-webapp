@@ -3,7 +3,6 @@ import { AuthService } from '../core/auth.service';
 import { FirebaseApp } from 'angularfire2';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
-import { config } from '../Shared/profile.config';
 import { ProfileService } from '../Shared/profile.service';
 import * as firebase from 'firebase/app';
 
