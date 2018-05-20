@@ -13,25 +13,21 @@
       <div class="col-12">
         <div class="line">
           <strong>Jordemorder studerende</strong>
-          <!-- <span>Julie Bang Larsen, 4. semester</span> -->
-          <span id="fullName">{{r.FullName}}</span>
+          <span id="fullName">{{r.FullName}}, {{r.Term}}</span>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="col-12 col-md-4">
         <strong>Underviser</strong>
-        <!-- <span>Anne Mette Krøgh</span> -->
         <input id="teacher" name="teacher" type="text" placeholder="Indtast her..." [(ngModel)]="teacher">
       </div>
       <div class="col-12 col-md-4">
         <strong>Refleksion nr.</strong>
-        <!-- <span>11/13</span> -->
         <input id="reflectionCount" name="reflectionCount" type="text" [(ngModel)]="reflectionCount" disabled>
       </div>
       <div class="col-12 col-md-4">
         <strong>Fødsel</strong>
-        <!-- <span>14</span> -->
         <input id="birth" name="birth" type="number" placeholder="Indtast her..." [(ngModel)]="birth">
       </div>
       <div class="col-12">
@@ -42,17 +38,14 @@
     <div class="row">
       <div class="col-12 col-md-4">
         <strong>Vagt nr.</strong>
-        <!-- <span>16</span> -->
         <input id="number" name="number" type="number" placeholder="Indtast her..." [(ngModel)]="number">
       </div>
       <div class="col-12 col-md-4">
         <strong>Uge i perioden</strong>
-        <!-- <span>5</span> -->
         <input id="week" name="week" type="number" placeholder="Indtast her..." [(ngModel)]="week">
       </div>
       <div class="col-12 col-md-4">
         <strong>Dato</strong>
-        <!-- <span>25.11.2017</span> -->
         <input id="date" name="date" type="date" [(ngModel)]="date">
       </div>
       <div class="col-12">
@@ -117,6 +110,3 @@
     </div>
   </form>
 </div>
-<!-- <div *ngFor="let reflection of reflections | async">
-  {{reflection.FullName}}
-</div> -->

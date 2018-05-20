@@ -43,7 +43,8 @@
           <a class="dropdown-item" routerLink="praktik" routerLinkActive="active">Praktikforløb</a>
           <a class="dropdown-item" routerLink="indstillinger" routerLinkActive="active">Indstillinger</a>
           <a class="dropdown-item" routerLink="hjaelp" routerLinkActive="active">Hjælp</a>
-          <a class="dropdown-item" routerLink="login" routerLinkActive="active">Log ind</a>
+          <a class="dropdown-item" routerLink="login" routerLinkActive="active" *ngIf="login">Log ind</a>
+          <a class="dropdown-item" routerLink="login" routerLinkActive="active" *ngIf="logout" (click)="onLogOut()">Log ud</a>
         </div>
       </li>
     </ul>
