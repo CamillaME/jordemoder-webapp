@@ -6,6 +6,7 @@ import { ReflectionService } from '../../Shared/reflection.service';
 import { config } from '../../Shared/reflection.config';
 import { Reflection } from '../../Models/reflection.model';
 import { Router } from "@angular/router";
+import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'app-fill-out-reflection',
@@ -28,6 +29,7 @@ export class FillOutReflectionComponent implements OnInit {
   individualGoals: string = "";
   literature: string = "";
   continueWith: string = "";
+  fullName: string = "";
 
   reflections: Observable<any[]>;
 
@@ -51,6 +53,23 @@ export class FillOutReflectionComponent implements OnInit {
 
     this.db.collection("ReflectionSheet", ref => ref.where("Term", "==", "4. semester")).ref.get().then(function (querySnapshot) {
       self.reflectionCount = (querySnapshot.docs.length + 1);
+    });
+  }
+
+  getFullName() {
+    var currentUser;
+    let self = this;
+
+    var db = firebase.firestore();
+
+    firebase.auth().onAuthStateChanged(function (user) {
+      db.collection("users").where("UserID", "==", user.uid)
+        .get()
+        .then(function (querySnapshot) {
+          querySnapshot.forEach(function (doc) {
+            self.fullName = doc.data().FirstName + " " + doc.data().MiddelName + " " + doc.data().LastName;
+          });
+        })
     });
   }
 
@@ -87,6 +106,7 @@ export class FillOutReflectionComponent implements OnInit {
   ngOnInit() {
     this.getDate();
     this.getReflectionNumber();
+    this.getFullName();
     this.reflections = this.db.collection(config.collection_endpoint).valueChanges();
   }
 

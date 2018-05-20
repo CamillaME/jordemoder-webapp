@@ -30,24 +30,6 @@ export class TermComponent implements OnInit {
 
     this.reflections.forEach(item => {
       this.labelledBy = this.reflections.length > 0 ? item[0].Id + "-tab" : "";
-
-      // if (term == item[0].Term) {
-      //   this.angleDown = true;
-      //   this.angleRight = false;
-      // }
-      // else {
-      //   this.angleDown = false;
-      //   this.angleRight = true;
-      // }
-
-      // if (term == item[0].Term) {
-      // this.terms.forEach(term => {
-      //   if (term[0].name == item[0].Term) {
-      //     term[0].angleDown = true;
-      //   }
-      // });
-      // }
-
     });
 
     this.terms.forEach(termItem => {
@@ -60,10 +42,6 @@ export class TermComponent implements OnInit {
         termItem.angleRight = true;
       }
     });
-
-    // this.terms.forEach(term => {
-
-    // });
 
     this.reflectionChanged.emit(this.reflections);
   }
