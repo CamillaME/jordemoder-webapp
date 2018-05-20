@@ -52,7 +52,8 @@ export class CreateUserComponent implements OnInit {
       "Street": this.street,
       "Zip": this.zip,
       "City": this.city,
-      "Term": this.term
+      "Term": this.term,
+      "ImagePath": ""
     });
   }
 
