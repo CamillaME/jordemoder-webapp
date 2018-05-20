@@ -26,6 +26,7 @@ export class CreateUserComponent implements OnInit {
   zip: number = null;
   city: string = "";
   ID: string;
+  term: string;
 
   usersCol: AngularFirestoreCollection<any>;
   users: Observable<any[]>;
@@ -50,7 +51,8 @@ export class CreateUserComponent implements OnInit {
       "StudentNumber": this.studentNumber,
       "Street": this.street,
       "Zip": this.zip,
-      "City": this.city
+      "City": this.city,
+      "Term": this.term
     });
   }
 
