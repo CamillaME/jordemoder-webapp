@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FirebaseApp } from 'angularfire2';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Router } from '@angular/router';
+import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'app-menu',
@@ -8,9 +11,10 @@ import { Router } from '@angular/router';
 })
 export class MenuComponent implements OnInit {
 
-  // test: boolean = true;
+  constructor(private db: AngularFirestore, private router: Router) { }
 
-  constructor(private router: Router) { }
+  login: boolean;
+  logout: boolean;
 
   schemaClass() {
     if (this.router.url.indexOf('/udfyld-erfaringsskema') > -1 || this.router.url.indexOf('/tidligere-erfaringsskema') > -1) {
@@ -36,8 +40,27 @@ export class MenuComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
+  getLogInAndOut() {
+    let self = this;
 
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        self.login = false;
+        self.logout = true;
+      }
+      else {
+        self.login = true;
+        self.logout = false;
+      }
+    });
+  }
+
+  onLogOut() {
+    firebase.auth().signOut();
+  }
+
+  ngOnInit() {
+    this.getLogInAndOut();
   }
 
 }

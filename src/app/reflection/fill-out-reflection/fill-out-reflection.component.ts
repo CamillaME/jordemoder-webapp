@@ -6,6 +6,7 @@ import { ReflectionService } from '../../Shared/reflection.service';
 import { config } from '../../Shared/reflection.config';
 import { Reflection } from '../../Models/reflection.model';
 import { Router } from "@angular/router";
+import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'app-fill-out-reflection',
@@ -16,7 +17,7 @@ import { Router } from "@angular/router";
 export class FillOutReflectionComponent implements OnInit {
 
   date: string = "";
-  reflectionCount: number = null;
+  reflectionCount: number = 1;
   title: string = "";
   teacher: string = "";
   reflectionText: string = "";
@@ -28,6 +29,8 @@ export class FillOutReflectionComponent implements OnInit {
   individualGoals: string = "";
   literature: string = "";
   continueWith: string = "";
+  fullName: string = "";
+  term: string = "";
 
   reflections: Observable<any[]>;
 
@@ -48,9 +51,48 @@ export class FillOutReflectionComponent implements OnInit {
 
   getReflectionNumber() {
     let self = this;
+    var db = firebase.firestore();
 
-    this.db.collection("ReflectionSheet", ref => ref.where("Term", "==", "4. semester")).ref.get().then(function (querySnapshot) {
-      self.reflectionCount = (querySnapshot.docs.length + 1);
+    firebase.auth().onAuthStateChanged(function (user) {
+      db.collection("ReflectionSheet").where("Term", "==", "4. semester").where("UserID", "==", user.uid)
+        .get()
+        .then(function (querySnapshot) {
+          querySnapshot.forEach(function (doc) {
+            self.reflectionCount = (querySnapshot.docs.length + 1);
+          });
+        })
+    });
+  }
+
+  getFullName() {
+    let self = this;
+
+    var db = firebase.firestore();
+
+    firebase.auth().onAuthStateChanged(function (user) {
+      db.collection("users").where("UserID", "==", user.uid)
+        .get()
+        .then(function (querySnapshot) {
+          querySnapshot.forEach(function (doc) {
+            self.fullName = doc.data().FirstName + " " + doc.data().MiddelName + " " + doc.data().LastName;
+          });
+        })
+    });
+  }
+
+  getTerm() {
+    let self = this;
+
+    var db = firebase.firestore();
+
+    firebase.auth().onAuthStateChanged(function (user) {
+      db.collection("users").where("UserID", "==", user.uid)
+        .get()
+        .then(function (querySnapshot) {
+          querySnapshot.forEach(function (doc) {
+            self.term = doc.data().Term;
+          });
+        })
     });
   }
 
@@ -58,10 +100,10 @@ export class FillOutReflectionComponent implements OnInit {
     var idBefore = this.db.createId();
 
     let reflection = {
-      UserID: "RandomUserID",
+      UserID: firebase.auth().currentUser.uid,
       Id: idBefore,
-      FullName: "Julie Bang Larsen",
-      Term: "4. semester",
+      FullName: this.fullName,
+      Term: this.term,
       Title: this.title,
       Teacher: this.teacher,
       SheetNumber: this.reflectionCount,
@@ -87,6 +129,8 @@ export class FillOutReflectionComponent implements OnInit {
   ngOnInit() {
     this.getDate();
     this.getReflectionNumber();
+    this.getFullName();
+    this.getTerm();
     this.reflections = this.db.collection(config.collection_endpoint).valueChanges();
   }
 
