@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ReflectionService } from '../../../Shared/reflection.service';
+import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'app-term',
@@ -26,24 +27,28 @@ export class TermComponent implements OnInit {
   constructor(private reflectionService: ReflectionService) { }
 
   getReflections(term) {
-    this.reflections = this.reflectionService.getReflectionByTermAndUserID(term, "RandomUserID").valueChanges();
+    let self = this;
 
-    this.reflections.forEach(item => {
-      this.labelledBy = this.reflections.length > 0 ? item[0].Id + "-tab" : "";
+    firebase.auth().onAuthStateChanged(function (user) {
+      self.reflections = self.reflectionService.getReflectionByTermAndUserID(term, user.uid).valueChanges();
+
+      self.reflections.forEach(item => {
+        self.labelledBy = self.reflections.length > 0 ? item[0].Id + "-tab" : "";
+      });
+
+      self.terms.forEach(termItem => {
+        if (termItem.name == term) {
+          termItem.angleDown = true;
+          termItem.angleRight = false;
+        }
+        else {
+          termItem.angleDown = false;
+          termItem.angleRight = true;
+        }
+      });
+
+      self.reflectionChanged.emit(self.reflections);
     });
-
-    this.terms.forEach(termItem => {
-      if (termItem.name == term) {
-        termItem.angleDown = true;
-        termItem.angleRight = false;
-      }
-      else {
-        termItem.angleDown = false;
-        termItem.angleRight = true;
-      }
-    });
-
-    this.reflectionChanged.emit(this.reflections);
   }
 
   ngOnInit() {

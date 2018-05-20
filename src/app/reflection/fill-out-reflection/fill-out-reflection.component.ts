@@ -17,7 +17,7 @@ import * as firebase from 'firebase/app';
 export class FillOutReflectionComponent implements OnInit {
 
   date: string = "";
-  reflectionCount: number = null;
+  reflectionCount: number = 1;
   title: string = "";
   teacher: string = "";
   reflectionText: string = "";
@@ -51,8 +51,20 @@ export class FillOutReflectionComponent implements OnInit {
   getReflectionNumber() {
     let self = this;
 
-    this.db.collection("ReflectionSheet", ref => ref.where("Term", "==", "4. semester")).ref.get().then(function (querySnapshot) {
-      self.reflectionCount = (querySnapshot.docs.length + 1);
+    // this.db.collection("ReflectionSheet", ref => ref.where("Term", "==", "4. semester").where("UserID","==",firebase.auth().currentUser.uid)).ref.get().then(function (querySnapshot) {
+    //   self.reflectionCount = (querySnapshot.docs.length + 1);
+    // });
+
+    var db = firebase.firestore();
+
+    firebase.auth().onAuthStateChanged(function (user) {
+      db.collection("ReflectionSheet").where("Term", "==", "4. semester").where("UserID", "==", user.uid)
+        .get()
+        .then(function (querySnapshot) {
+          querySnapshot.forEach(function (doc) {
+            self.reflectionCount = (querySnapshot.docs.length + 1);
+          });
+        })
     });
   }
 
@@ -77,9 +89,9 @@ export class FillOutReflectionComponent implements OnInit {
     var idBefore = this.db.createId();
 
     let reflection = {
-      UserID: "RandomUserID",
+      UserID: firebase.auth().currentUser.uid,
       Id: idBefore,
-      FullName: "Julie Bang Larsen",
+      FullName: this.fullName,
       Term: "4. semester",
       Title: this.title,
       Teacher: this.teacher,
