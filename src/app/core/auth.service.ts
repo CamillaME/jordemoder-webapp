@@ -27,9 +27,9 @@ export class AuthService {
      });
    }
 
-   signOut(){
-     firebase.auth().signOut().then(function(){
-     }).catch(function(error){
+   signOut() {
+     firebase.auth().signOut().then(function() {
+     }).catch(function(error) {
       var errorCode = error.code;
       var errorMessage = error.message;
       console.log(errorCode);
