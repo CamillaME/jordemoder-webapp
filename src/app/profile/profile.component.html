@@ -5,9 +5,11 @@
 </div> -->
 
 <div *ngFor="let profile of profiles | async">
-    <div class="row">
-        <div class="col-6"></div>
-        <div class="col-6">
+    <div class="row justify-content-center profileText">
+        <div class="col-4">
+            <img src="assets/images/placeholder.jpg" id="profilePic" />
+        </div>
+        <div class="col-5">
             <div class="row">
                 <div class="col-12">
                     {{profile.FirstName}} {{profile.MiddelName}} {{profile.LastName}}
@@ -18,7 +20,25 @@
                     UCN Jordmoder
                 </div>
                 <div class="col-6">
-                        {{profile.Term}}
+                    {{profile.Term}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    Praktik
+                </div>
+                <div class="col-6">
+                    Sygehus Syd
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    {{profile.PhoneNumber}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    {{profile.Email}}
                 </div>
             </div>
         </div>

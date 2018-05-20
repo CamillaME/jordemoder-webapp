@@ -10,7 +10,7 @@ import * as firebase from 'firebase/app';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css'],
+  styleUrls: ['./profile.component.less'],
   providers: [AuthService, ProfileService]
 })
 export class ProfileComponent implements OnInit {

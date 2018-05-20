@@ -173,3 +173,19 @@ pre {
   font-family: helvetica-w01-bold, helvetica-w02-bold, helvetica-lt-w10-bold, sans-serif;
   margin-bottom: 0;
 }
+.bigScreen {
+  display: none;
+}
+.smallScreen {
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  .smallScreen {
+    display: block;
+  }
+}
+@media screen and (min-width: 768px) {
+  .bigScreen {
+    display: block;
+  }
+}

@@ -71,7 +71,9 @@
             <strong>Beskrivelse af forløbet / situationen</strong> (kvinden/familien)
           </div>
           <div class="col-12">
-            <span><pre>{{r.DescriptionOfTheCourseSituation}}</pre></span>
+            <span>
+              <pre>{{r.DescriptionOfTheCourseSituation}}</pre>
+            </span>
           </div>
         </div>
         <div class="row description">
@@ -134,12 +136,32 @@
             </div>
           </div>
         </div>
-        <div class="row description">
+        <div class="row description bigScreen">
           <div class="col-12">
             <button id="edit" type="button" class="btn btn-success" (click)="onEdit(r.Id)">Rediger</button>
             <button id="download" type="button" class="btn btn-success" (click)="onDownload(false, r.Title, r.Id, r.SheetNumber, r.FullName, r.Term, r.Teacher, r.Birth, r.ShiftNumber, r.Week, r.Date, r.DescriptionOfTheCourseSituation, r.JdmAcademicConsiderationsForCareMm, r.IndividualGoals, r.ReflectionText, r.WhatWillIContinueWith, r.Literature, r.CommentsOnReflection, r.CommentsOnSeenActions, r.SignatureAndDate)">Download</button>
             <button id="print" type="button" class="btn btn-success" (click)="onDownload(true, r.Title, r.Id, r.SheetNumber, r.FullName, r.Term, r.Teacher, r.Birth, r.ShiftNumber, r.Week, r.Date, r.DescriptionOfTheCourseSituation, r.JdmAcademicConsiderationsForCareMm, r.IndividualGoals, r.ReflectionText, r.WhatWillIContinueWith, r.Literature, r.CommentsOnReflection, r.CommentsOnSeenActions, r.SignatureAndDate)">Print</button>
-          <button id="delete" type="button" class="btn btn-danger" (click)="onDelete(r.Id, r.Title, r.SheetNumber)">Slet</button>
+            <button id="delete" type="button" class="btn btn-danger" (click)="onDelete(r.Id, r.Title, r.SheetNumber)">Slet</button>
+          </div>
+        </div>
+        <div class="row description smallScreen">
+          <div class="col-12">
+            <button id="edit" type="button" class="btn btn-success" (click)="onEdit(r.Id)">Rediger</button>
+          </div>
+        </div>
+        <div class="row description smallScreen">
+          <div class="col-12">
+            <button id="download" type="button" class="btn btn-success" (click)="onDownload(false, r.Title, r.Id, r.SheetNumber, r.FullName, r.Term, r.Teacher, r.Birth, r.ShiftNumber, r.Week, r.Date, r.DescriptionOfTheCourseSituation, r.JdmAcademicConsiderationsForCareMm, r.IndividualGoals, r.ReflectionText, r.WhatWillIContinueWith, r.Literature, r.CommentsOnReflection, r.CommentsOnSeenActions, r.SignatureAndDate)">Download</button>
+          </div>
+        </div>
+        <div class="row description smallScreen">
+          <div class="col-12">
+            <button id="print" type="button" class="btn btn-success" (click)="onDownload(true, r.Title, r.Id, r.SheetNumber, r.FullName, r.Term, r.Teacher, r.Birth, r.ShiftNumber, r.Week, r.Date, r.DescriptionOfTheCourseSituation, r.JdmAcademicConsiderationsForCareMm, r.IndividualGoals, r.ReflectionText, r.WhatWillIContinueWith, r.Literature, r.CommentsOnReflection, r.CommentsOnSeenActions, r.SignatureAndDate)">Print</button>
+          </div>
+        </div>
+        <div class="row description smallScreen">
+          <div class="col-12">
+            <button id="delete" type="button" class="btn btn-danger" (click)="onDelete(r.Id, r.Title, r.SheetNumber)">Slet</button>
           </div>
         </div>
       </form>
