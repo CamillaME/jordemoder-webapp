@@ -30,6 +30,7 @@ export class FillOutReflectionComponent implements OnInit {
   literature: string = "";
   continueWith: string = "";
   fullName: string = "";
+  term: string = "";
 
   reflections: Observable<any[]>;
 
@@ -50,11 +51,6 @@ export class FillOutReflectionComponent implements OnInit {
 
   getReflectionNumber() {
     let self = this;
-
-    // this.db.collection("ReflectionSheet", ref => ref.where("Term", "==", "4. semester").where("UserID","==",firebase.auth().currentUser.uid)).ref.get().then(function (querySnapshot) {
-    //   self.reflectionCount = (querySnapshot.docs.length + 1);
-    // });
-
     var db = firebase.firestore();
 
     firebase.auth().onAuthStateChanged(function (user) {
@@ -69,7 +65,6 @@ export class FillOutReflectionComponent implements OnInit {
   }
 
   getFullName() {
-    var currentUser;
     let self = this;
 
     var db = firebase.firestore();
@@ -85,6 +80,22 @@ export class FillOutReflectionComponent implements OnInit {
     });
   }
 
+  getTerm() {
+    let self = this;
+
+    var db = firebase.firestore();
+
+    firebase.auth().onAuthStateChanged(function (user) {
+      db.collection("users").where("UserID", "==", user.uid)
+        .get()
+        .then(function (querySnapshot) {
+          querySnapshot.forEach(function (doc) {
+            self.term = doc.data().Term;
+          });
+        })
+    });
+  }
+
   onSubmit() {
     var idBefore = this.db.createId();
 
@@ -92,7 +103,7 @@ export class FillOutReflectionComponent implements OnInit {
       UserID: firebase.auth().currentUser.uid,
       Id: idBefore,
       FullName: this.fullName,
-      Term: "4. semester",
+      Term: this.term,
       Title: this.title,
       Teacher: this.teacher,
       SheetNumber: this.reflectionCount,
@@ -119,6 +130,7 @@ export class FillOutReflectionComponent implements OnInit {
     this.getDate();
     this.getReflectionNumber();
     this.getFullName();
+    this.getTerm();
     this.reflections = this.db.collection(config.collection_endpoint).valueChanges();
   }
 
