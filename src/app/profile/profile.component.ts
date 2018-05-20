@@ -16,6 +16,7 @@ import * as firebase from 'firebase/app';
 export class ProfileComponent implements OnInit {
 
   profiles;
+  imagePath: string = "assets/images/placeholder.jpg";
 
   constructor(private db: AngularFirestore, private profileService: ProfileService, public auth: AuthService) {
     db.firestore.settings({ timestampsInSnapshots: true });
@@ -25,7 +26,10 @@ export class ProfileComponent implements OnInit {
     let self = this;
     firebase.auth().onAuthStateChanged(function (user) {
       self.profiles = self.profileService.getProfile(user.uid).valueChanges();
+
+      self.profiles.forEach(item => {
+        self.imagePath = item[0].ImagePath == "" ? self.imagePath: item[0].ImagePath;
+      });
     });
   }
-
 }
