@@ -40,10 +40,12 @@ export class CreateUserComponent implements OnInit {
       "LastName": this.lastName,
       "PhoneNumber": this.phoneNumber,
       "StudentNumber": this.studentNumber
-    })
+    });
   }
 
   ngOnInit() {
+    this.usersCol = this.db.collection('users');
+    this.users = this.usersCol.valueChanges();
   }
 
 }
