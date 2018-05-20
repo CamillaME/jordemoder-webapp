@@ -5,6 +5,8 @@ import { AngularFireDatabase, snapshotChanges } from 'angularfire2/database';
 import { FirebaseApp } from 'angularfire2';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
+import { firestore } from 'firebase';
+import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'app-create-user',
@@ -13,13 +15,17 @@ import { Observable } from 'rxjs/Observable';
   providers: [AuthService]
 })
 export class CreateUserComponent implements OnInit {
-  email: string = "";
-  password: string = "";
+  email: string;
+  password: string;
   firstName: string = "";
   middelName: string = "";
   lastName: string = "";
   phoneNumber: string = "";
   studentNumber: number = null;
+  street: string = "";
+  zip: number = null;
+  city: string = "";
+  ID: string;
 
   usersCol: AngularFirestoreCollection<any>;
   users: Observable<any[]>;
@@ -29,17 +35,22 @@ export class CreateUserComponent implements OnInit {
   }
 
   onCreate(form: NgForm) {
-    const email = form.value.email;
-    const password = form.value.password;
-    this.authService.onCreateUser(email, password);
-    var docID = this.db.createId();
+    // const email = form.value.email;
+    // const password = form.value.password;
+    this.authService.onCreateUser(this.email, this.password);
+    const docID = this.db.createId();
+    this.ID = firebase.auth().currentUser.uid;
     this.db.collection('users').doc(docID).set({
       "Email": this.email,
+      "UserID": this.ID,
       "FirstName": this.firstName,
       "MiddelName": this.middelName,
       "LastName": this.lastName,
       "PhoneNumber": this.phoneNumber,
-      "StudentNumber": this.studentNumber
+      "StudentNumber": this.studentNumber,
+      "Street": this.street,
+      "Zip": this.zip,
+      "City": this.city
     });
   }
 
