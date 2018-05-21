@@ -14,6 +14,7 @@ import * as firebase from 'firebase/app';
 })
 export class CreateInternshipComponent implements OnInit {
 
+  studentNumber: number;
   term: string;
   place: string;
   street: string;
@@ -37,6 +38,24 @@ export class CreateInternshipComponent implements OnInit {
   }
 
   onsubmitIntership() {
+    const docID = this.db.createId();
+    this.db.collection('Internships').doc(docID).set({
+      "studentNumber": this.studentNumber,
+      "Term": this.term,
+      "Place": this.place,
+      "Street": this.street,
+      "Zip": this.zip,
+      "City": this.city,
+      "MidwifeName": this.midwifeName,
+      "MidwifePhoneNumber": this.midwifePhoneNumber,
+      "MidwifeEmail": this.midwifeEmail,
+      "InternshipSupervisorName": this.internshipSupervisorName,
+      "InternshipSupervisorPhone": this.internshipSupervisorPhone,
+      "InternshipSupervisorEmail": this.internshipSupervisorEmail,
+      "InternshipTeacherName": this.internshipTeacherName,
+      "InternshipTeacherPhone": this.internshipTeacherPhone,
+      "InternshipTeacherEmail": this.internshipTeacherEmail
+    });
   }
 
   ngOnInit() {

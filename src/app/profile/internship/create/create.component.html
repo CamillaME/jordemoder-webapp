@@ -7,6 +7,10 @@
         <input type="text" required name="term" [(ngModel)]="term" class="form-control" placeholder="Semester" />
       </div>
       <div class="form-group">
+        <label>Studienummer</label>
+        <input type="number" required name="studentNumber" placeholder="Den studerendes studienummer" [(ngModel)]="studentNumber" class="form-control" />
+      </div>
+      <div class="form-group">
         <label>Praktik sted</label>
         <input type="text" required name="place" placeholder="Praktik sted" [(ngModel)]="place" class="form-control" />
       </div>
@@ -61,7 +65,7 @@
         <label>Email</label>
         <input type="email" name="internshipTeacherEmail" placeholder="Email til praktikansvarlig underviser" [(ngModel)]="internshipTeacherEmail" class="form-control" />
       </div>
-      <button class="btn btn-primary" type="submit"(click)="onCreate()" [disabled]="!f.form.valid">Opret bruger</button>
+      <button class="btn btn-primary" type="submit"(click)="onsubmitIntership()" [disabled]="!f.form.valid">Opret bruger</button>
     </form>
   </div>
 </div>
