@@ -11,15 +11,39 @@ import * as firebase from 'firebase/app';
 })
 export class MenuComponent implements OnInit {
 
-  constructor(private db: AngularFirestore, private router: Router) { }
+  constructor(private db: AngularFirestore, private router: Router) {
+    db.firestore.settings({ timestampsInSnapshots: true });
+  }
 
   login: boolean;
   logout: boolean;
+
+  teacher: boolean;
 
   schemaClass() {
     if (this.router.url.indexOf('/udfyld-erfaringsskema') > -1 || this.router.url.indexOf('/tidligere-erfaringsskema') > -1) {
       return "active";
     }
+  }
+
+  getTeacherStyle() {
+    let self = this;
+    var db = firebase.firestore();
+
+    firebase.auth().onAuthStateChanged(function (user) {
+      db.collection("users").where("UserID", "==", user.uid)
+        .get()
+        .then(function (querySnapshot) {
+          querySnapshot.forEach(function (doc) {
+            if (doc.data().StudentNumber == "") {
+              self.teacher = false;
+            }
+            else {
+              self.teacher = true;
+            }
+          });
+        });
+    });
   }
 
   reflectionClass() {
@@ -61,6 +85,7 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {
     this.getLogInAndOut();
+    this.getTeacherStyle();
   }
 
 }
