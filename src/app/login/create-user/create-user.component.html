@@ -40,14 +40,14 @@
         <input type="number" name="zip" placeholder="Postnummer" [(ngModel)]="zip" class="form-control" />
       </div>
       <div class="form-group">
-        <label>Semester</label>
-        <input type="text" name="term" [(ngModel)]="term" class="form-control" placeholder="Semester" />
-      </div>
-      <div class="form-group">
         <label>By</label>
         <input type="text" name="city" placeholder="By" [(ngModel)]="city" class="form-control" />
       </div>
-      <button class="btn btn-primary" type="submit"(click)="onCreate()" [disabled]="!f.form.valid">Opret bruger</button>
+      <div class="form-group">
+        <label>Semester</label>
+        <input type="text" name="term" [(ngModel)]="term" class="form-control" placeholder="Semester" />
+      </div>
+      <button class="btn btn-primary" type="submit" (click)="onCreate()" [disabled]="!f.form.valid">Opret bruger</button>
     </form>
   </div>
 </div>
