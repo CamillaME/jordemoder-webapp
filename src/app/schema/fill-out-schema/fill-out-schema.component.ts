@@ -18,6 +18,7 @@ import * as firebase from 'firebase';
 export class FillOutSchemaComponent implements OnInit {
 
   date: Date;
+  textDatetest: string;
 
   constructor(private db: AngularFirestore) {
     db.firestore.settings({ timestampsInSnapshots: true });
@@ -40,6 +41,26 @@ export class FillOutSchemaComponent implements OnInit {
       'test': [{
         'Date': this.date
       }]
+    });
+  }
+  OnAddDate2() {
+    this.db.collection('Experienceschema').doc('first').set({
+      'test2': [{
+        'Date': this.date
+      }]
+    });
+  }
+  OnAddDate3() {
+    this.db.collection('Experienceschema').doc('first').set({
+      'test3': [{
+        'Date': this.date
+      }]
+    });
+  }
+
+  OnAddTextDate() {
+    this.db.collection('Experienceschema').doc('first').set({
+      'test4': this.textDatetest
     });
   }
 

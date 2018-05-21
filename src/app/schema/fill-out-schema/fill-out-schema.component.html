@@ -29,8 +29,8 @@
                       Samtale om og planlæggelse af barselsomsorg
                     </td>
                     <td class="col-5">
-                      <input type="date" name="date" [(ngModel)]="date">
-                      <button name="sdf" class="btn btn-secondary btn-sm" (click)="OnAddDate()">Tilføj dato</button>
+                      <input type="date" name="date2" [(ngModel)]="date2">
+                      <button name="sdf" class="btn btn-secondary btn-sm" (click)="OnAddDate2()">Tilføj dato</button>
                     </td>
                   </tr>
                   <tr>
@@ -38,8 +38,8 @@
                       Vejledning i personlig hygiejne
                     </td>
                     <td class="col-5">
-                      <input type="date" name="date" [(ngModel)]="date">
-                      <button name="sdf" class="btn btn-secondary btn-sm" (click)="OnAddDate()">Tilføj dato</button>
+                      <input type="date" name="date3" [(ngModel)]="date3">
+                      <button name="sdf" class="btn btn-secondary btn-sm" (click)="OnAddDate3()">Tilføj dato</button>
                     </td>
                   </tr>
                   <tr>
@@ -390,7 +390,17 @@
           </div>
           <div id="collapseTwo"class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionExample">
             <div class="card-body">
-              sdgfsdf
+              <table class="table table-bordered">
+                  <tbody>
+                    <tr>
+                      <td class="col-5" scope="row">sdgfsdf</td>
+                      <td class="col-5">
+                        <input type="text" name="textDatetest" [(ngModel)]="textDatetest">
+                        <button name="sdf" class="btn btn-secondary btn-sm" (click)="OnAddTextDate()">Tilføj datoer</button>
+                      </td>
+                    </tr>
+                  </tbody>
+              </table>
             </div>
           </div>
         </div>
