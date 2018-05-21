@@ -19,6 +19,7 @@ export class ProfileComponent implements OnInit {
   imagePath: string = "assets/images/placeholder.jpg";
   downloadURL;
   studentNumber: number;
+  internship: string;
 
   constructor(private db: AngularFirestore, private profileService: ProfileService, public auth: AuthService, private afStorage: AngularFireStorage) {
     db.firestore.settings({ timestampsInSnapshots: true });
@@ -26,6 +27,8 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     let self = this;
+    var db = firebase.firestore();
+
     firebase.auth().onAuthStateChanged(function (user) {
       self.profiles = self.profileService.getProfile(user.uid).valueChanges();
 
@@ -34,6 +37,14 @@ export class ProfileComponent implements OnInit {
         var ref = storage.ref();
 
         self.studentNumber = item[0].StudentNumber;
+
+        db.collection("Internships").where("studentNumber", "==", self.studentNumber).where("Term", "==", item[0].Term)
+          .get()
+          .then(function (querySnapshot) {
+            querySnapshot.forEach(function (doc) {
+              self.internship = doc.data().Place;
+            });
+          });
 
         if (item[0].ImagePath == "") {
           self.imagePath = self.imagePath;

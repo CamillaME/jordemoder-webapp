@@ -48,7 +48,8 @@ const routes: Routes = [
   { path: "min-profil", component: ProfileComponent },
   { path: "eu-erfaringsskema", component: EuSchemaComponent },
   { path: "login", component: LoginComponent },
-  { path: "refleksionsark/:id", component: EditReflectionComponent }
+  { path: "refleksionsark/:id", component: EditReflectionComponent },
+  { path: "refleksionsark", component: ReflectionComponent }
 ]
 
 @NgModule({

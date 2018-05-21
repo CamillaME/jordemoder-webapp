@@ -6,13 +6,13 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item" *ngIf="teacher">
+      <li class="nav-item" *ngIf="student">
         <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Vagtplan
         </a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="false" [ngClass]="schemaClass()" *ngIf="teacher">
+          aria-expanded="false" [ngClass]="schemaClass()" *ngIf="student">
           Erfaringsskema
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -27,9 +27,10 @@
           Refleksionsark
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" routerLink="udfyld-refleksionsark" routerLinkActive="active" *ngIf="teacher">Udfyld refleksionsark</a>
-          <a class="dropdown-item" routerLink="tidligere-refleksionsark" routerLinkActive="active" *ngIf="teacher">Tidligere refleksionsark</a>
-          <a class="dropdown-item" routerLink="noter" routerLinkActive="active" *ngIf="teacher">Noter</a>
+          <a class="dropdown-item" routerLink="udfyld-refleksionsark" routerLinkActive="active" *ngIf="student">Udfyld refleksionsark</a>
+          <a class="dropdown-item" routerLink="tidligere-refleksionsark" routerLinkActive="active" *ngIf="student">Tidligere refleksionsark</a>
+          <a class="dropdown-item" routerLink="noter" routerLinkActive="active" *ngIf="student">Noter</a>
+          <a class="dropdown-item" routerLink="refleksionsark" routerLinkActive="active" *ngIf="teacher">Oversigt over refleksionsark</a>
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -39,8 +40,8 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" routerLink="min-profil" routerLinkActive="active">Min profil</a>
-          <a class="dropdown-item" routerLink="laeringsstatistik" routerLinkActive="active" *ngIf="teacher">Læringsstatistik</a>
-          <a class="dropdown-item" routerLink="praktik" routerLinkActive="active" *ngIf="teacher">Praktikforløb</a>
+          <a class="dropdown-item" routerLink="laeringsstatistik" routerLinkActive="active" *ngIf="student">Læringsstatistik</a>
+          <a class="dropdown-item" routerLink="praktik" routerLinkActive="active" *ngIf="student">Praktikforløb</a>
           <a class="dropdown-item" routerLink="indstillinger" routerLinkActive="active">Indstillinger</a>
           <a class="dropdown-item" routerLink="hjaelp" routerLinkActive="active">Hjælp</a>
           <a class="dropdown-item" routerLink="login" routerLinkActive="active" *ngIf="login">Log ind</a>

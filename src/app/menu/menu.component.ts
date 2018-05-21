@@ -15,10 +15,11 @@ export class MenuComponent implements OnInit {
     db.firestore.settings({ timestampsInSnapshots: true });
   }
 
-  login: boolean;
-  logout: boolean;
+  login: boolean = true;
+  logout: boolean = false;
 
   teacher: boolean;
+  student: boolean;
 
   schemaClass() {
     if (this.router.url.indexOf('/udfyld-erfaringsskema') > -1 || this.router.url.indexOf('/tidligere-erfaringsskema') > -1) {
@@ -37,10 +38,12 @@ export class MenuComponent implements OnInit {
           .then(function (querySnapshot) {
             querySnapshot.forEach(function (doc) {
               if (doc.data().StudentNumber == null) {
-                self.teacher = false;
+                self.student = false;
+                self.teacher = true;
               }
               else {
-                self.teacher = true;
+                self.student = true;
+                self.teacher = false;
               }
             });
           });
