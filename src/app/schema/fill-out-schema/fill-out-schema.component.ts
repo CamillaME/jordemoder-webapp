@@ -32,28 +32,10 @@ export class FillOutSchemaComponent implements OnInit {
     // });
   }
 
-  // docId: string = this.randomDocNumber();
-  // id: string;
-
   experienceSchemaCol: AngularFirestoreCollection<any>;
   experienceSchemas: Observable<any[]>;
 
-  // randomDocNumber() {
-  //   var text = '';
-  //   var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-
-  //   for (var i = 0; i < 5; i++)
-  //     text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-  //   return text;
-  //   }
-
   OnAddDate() {
-    // this.db.collection('Experienceschema').doc('first').push({test: this.sdf});
-    // const docDate = db.database.array('docDate');
-    // this.
-    // docDate.push(this.sdf);
-
     this.db.collection('Experienceschema').doc('first').set({
       'test': [{
         'Date': this.date
