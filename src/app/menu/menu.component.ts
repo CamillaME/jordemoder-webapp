@@ -31,18 +31,20 @@ export class MenuComponent implements OnInit {
     var db = firebase.firestore();
 
     firebase.auth().onAuthStateChanged(function (user) {
-      db.collection("users").where("UserID", "==", user.uid)
-        .get()
-        .then(function (querySnapshot) {
-          querySnapshot.forEach(function (doc) {
-            if (doc.data().StudentNumber == "") {
-              self.teacher = false;
-            }
-            else {
-              self.teacher = true;
-            }
+      if (user) {
+        db.collection("users").where("UserID", "==", user.uid)
+          .get()
+          .then(function (querySnapshot) {
+            querySnapshot.forEach(function (doc) {
+              if (doc.data().StudentNumber == "") {
+                self.teacher = false;
+              }
+              else {
+                self.teacher = true;
+              }
+            });
           });
-        });
+      }
     });
   }
 

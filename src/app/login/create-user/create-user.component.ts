@@ -26,7 +26,7 @@ export class CreateUserComponent implements OnInit {
   zip: number = null;
   city: string = "";
   ID: string;
-  term: string;
+  term: string = "";
 
   usersCol: AngularFirestoreCollection<any>;
   users: Observable<any[]>;
@@ -36,24 +36,30 @@ export class CreateUserComponent implements OnInit {
   }
 
   onCreate(form: NgForm) {
+    let self = this;
     // const email = form.value.email;
     // const password = form.value.password;
     this.authService.onCreateUser(this.email, this.password);
     const docID = this.db.createId();
-    this.ID = firebase.auth().currentUser.uid;
-    this.db.collection('users').doc(docID).set({
-      "Email": this.email,
-      "UserID": this.ID,
-      "FirstName": this.firstName,
-      "MiddelName": this.middelName,
-      "LastName": this.lastName,
-      "PhoneNumber": this.phoneNumber,
-      "StudentNumber": this.studentNumber,
-      "Street": this.street,
-      "Zip": this.zip,
-      "City": this.city,
-      "Term": this.term,
-      "ImagePath": ""
+    // this.ID = firebase.auth().currentUser.uid;
+
+    firebase.auth().signInWithEmailAndPassword(this.email, this.password);
+
+    firebase.auth().onAuthStateChanged(function (user) {
+      self.db.collection('users').doc(docID).set({
+        "Email": self.email,
+        "UserID": user.uid,
+        "FirstName": self.firstName,
+        "MiddelName": self.middelName,
+        "LastName": self.lastName,
+        "PhoneNumber": self.phoneNumber,
+        "StudentNumber": self.studentNumber,
+        "Street": self.street,
+        "Zip": self.zip,
+        "City": self.city,
+        "Term": self.term,
+        "ImagePath": ""
+      });
     });
   }
 
