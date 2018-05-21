@@ -21,7 +21,6 @@
                     </td>
                     <td class="col-5">
                       <input type="date" name="date" [(ngModel)]="date">
-                      <div *ngFor="let experience of experienceSchemas"><label>{{experience.test.length}}</label></div>
                       <button name="Modtagelse af familie" class="btn btn-secondary btn-sm" (click)="OnAddDate()">Tilføj dato</button>
                     </td>
                   </tr>
@@ -30,14 +29,7 @@
                       Samtale om og planlæggelse af barselsomsorg
                     </td>
                     <td class="col-5">
-                      <button name="sdf" class="btn btn-secondary btn-sm" (click)="OnAddDate()">Tilføj dato</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="col-5" scope="row">
-                      Modtagelse af familie
-                    </td>
-                    <td class="col-5">
+                      <input type="date" name="date" [(ngModel)]="date">
                       <button name="sdf" class="btn btn-secondary btn-sm" (click)="OnAddDate()">Tilføj dato</button>
                     </td>
                   </tr>
@@ -46,6 +38,7 @@
                       Vejledning i personlig hygiejne
                     </td>
                     <td class="col-5">
+                      <input type="date" name="date" [(ngModel)]="date">
                       <button name="sdf" class="btn btn-secondary btn-sm" (click)="OnAddDate()">Tilføj dato</button>
                     </td>
                   </tr>
@@ -54,6 +47,7 @@
                       Vejledning om kvindes fysiologiske forandringer pp
                     </td>
                     <td class="col-5">
+                      <input type="date" name="date" [(ngModel)]="date">
                       <button name="sdf" class="btn btn-secondary btn-sm" (click)="OnAddDate()">Tilføj dato</button>
                     </td>
                   </tr>
@@ -62,6 +56,7 @@
                       Observation af bristning og episisotomi
                     </td>
                     <td class="col-5">
+                      <input type="date" name="date" [(ngModel)]="date">
                       <button name="sdf" class="btn btn-secondary btn-sm" (click)="OnAddDate()">Tilføj dato</button>
                     </td>
                   </tr>
@@ -70,6 +65,7 @@
                       vejledning ved bristning og episisotomi
                     </td>
                     <td class="col-5">
+                      <input type="date" name="date" [(ngModel)]="date">
                       <button name="sdf" class="btn btn-secondary btn-sm" (click)="OnAddDate()">Tilføj dato</button>
                     </td>
                   </tr>
@@ -78,6 +74,7 @@
                       Palpation af uterus p.p.
                     </td>
                     <td class="col-5">
+                      <input type="date" name="date" [(ngModel)]="date">
                       <button name="sdf" class="btn btn-secondary btn-sm" (click)="OnAddDate()">Tilføj dato</button>
                     </td>
                   </tr>
@@ -86,6 +83,7 @@
                       Observation og vejledning omkring lokkier
                     </td>
                     <td class="col-5">
+                      <input type="date" name="date" [(ngModel)]="date">
                       <button name="sdf" class="btn btn-secondary btn-sm" (click)="OnAddDate()">Tilføj dato</button>
                     </td>
                   </tr>
@@ -94,6 +92,7 @@
                       Observartion af vandladning (mor)
                     </td>
                     <td class="col-5">
+                      <input type="date" name="date" [(ngModel)]="date">
                       <button name="sdf" class="btn btn-secondary btn-sm" (click)="OnAddDate()">Tilføj dato</button>
                     </td>
                   </tr>
@@ -102,6 +101,7 @@
                       Give orientering og vejledning i knibeøvelser
                     </td>
                     <td class="col-5">
+                      <input type="date" name="date" [(ngModel)]="date">
                       <button name="sdf" class="btn btn-secondary btn-sm" (click)="OnAddDate()">Tilføj dato</button>
                     </td>
                   </tr>
@@ -110,6 +110,88 @@
                       vejledning i ammeteknik
                     </td>
                     <td class="col-5">
+                      <input type="date" name="date" [(ngModel)]="date">
+                      <button name="sdf" class="btn btn-secondary btn-sm" (click)="OnAddDate()">Tilføj dato</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="col-5" scope="row">
+                      Observation af og vejlede ved brystspænding
+                    </td>
+                    <td class="col-5">
+                      <input type="date" name="date" [(ngModel)]="date">
+                      <button name="sdf" class="btn btn-secondary btn-sm" (click)="OnAddDate()">Tilføj dato</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="col-5" scope="row">
+                      Forebyggelse og pleje af ømme papiller
+                    </td>
+                    <td class="col-5">
+                      <input type="date" name="date" [(ngModel)]="date">
+                      <button name="sdf" class="btn btn-secondary btn-sm" (click)="OnAddDate()">Tilføj dato</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="col-5" scope="row">
+                      Forebyggelse og pleje af papiller med fissurer
+                    </td>
+                    <td class="col-5">
+                      <input type="date" name="date" [(ngModel)]="date">
+                      <button name="sdf" class="btn btn-secondary btn-sm" (click)="OnAddDate()">Tilføj dato</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="col-5" scope="row">
+                      Vejledning / observation omkring mastitis
+                    </td>
+                    <td class="col-5">
+                      <input type="date" name="date" [(ngModel)]="date">
+                      <button name="sdf" class="btn btn-secondary btn-sm" (click)="OnAddDate()">Tilføj dato</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="col-5" scope="row">
+                      Vejledning om suttebrik
+                    </td>
+                    <td class="col-5">
+                      <input type="date" name="date" [(ngModel)]="date">
+                      <button name="sdf" class="btn btn-secondary btn-sm" (click)="OnAddDate()">Tilføj dato</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="col-5" scope="row">
+                      Vejledning om / give mælk på kop
+                    </td>
+                    <td class="col-5">
+                      <input type="date" name="date" [(ngModel)]="date">
+                      <button name="sdf" class="btn btn-secondary btn-sm" (click)="OnAddDate()">Tilføj dato</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="col-5" scope="row">
+                      Vejledning i Udmalkning manuelt, brystpumpe, håndpumpe
+                    </td>
+                    <td class="col-5">
+                      <input type="date" name="date" [(ngModel)]="date">
+                      <button name="sdf" class="btn btn-secondary btn-sm" (click)="OnAddDate()">Tilføj dato</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="col-5" scope="row">
+                      Amning af gemelli
+                    </td>
+                    <td class="col-5">
+                      <input type="date" name="date" [(ngModel)]="date">
+                      <button name="sdf" class="btn btn-secondary btn-sm" (click)="OnAddDate()">Tilføj dato</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="col-5" scope="row">
+                      Vejlede mor, der ikke ønsker at amme
+                    </td>
+                    <td class="col-5">
+                      <input type="date" name="date" [(ngModel)]="date">
                       <button name="sdf" class="btn btn-secondary btn-sm" (click)="OnAddDate()">Tilføj dato</button>
                     </td>
                   </tr>
