@@ -36,7 +36,7 @@ export class MenuComponent implements OnInit {
           .get()
           .then(function (querySnapshot) {
             querySnapshot.forEach(function (doc) {
-              if (doc.data().StudentNumber == "") {
+              if (doc.data().StudentNumber == null) {
                 self.teacher = false;
               }
               else {
