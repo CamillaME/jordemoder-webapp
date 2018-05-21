@@ -1,10 +1,11 @@
 <h1>Min profil</h1>
 <div *ngFor="let profile of profiles | async">
     <div class="row justify-content-center profileText">
-        <div class="col-4">
-            <img src="{{imagePath}}" id="profilePic" />
+        <div class="col-3" *ngIf="downloadURL | async; let url">
+            <!-- <img src="{{imagePath}}" id="profilePic" /> -->
+            <img [src]="url" id="profilePic" class="rounded-circle">
         </div>
-        <div class="col-5">
+        <div class="col-5 offset-1">
             <div class="row">
                 <div class="col-12">
                     Studienummer: {{profile.StudentNumber}}

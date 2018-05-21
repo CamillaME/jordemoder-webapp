@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { ProfileService } from '../../Shared/profile.service';
 import * as firebase from 'firebase/app';
 import { NgForm } from "@angular/forms";
+import { AngularFireStorage } from 'angularfire2/storage';
 
 @Component({
   selector: 'app-settings',
@@ -27,13 +28,22 @@ export class SettingsComponent implements OnInit {
   term: string = "";
   imagePath: string = "";
 
-  constructor(private db: AngularFirestore, private profileService: ProfileService) {
+  selectedFiles = "";
+  fileName: string = "";
+
+  constructor(private db: AngularFirestore, private profileService: ProfileService, private afStorage: AngularFireStorage) {
     db.firestore.settings({ timestampsInSnapshots: true });
 
     let self = this;
     firebase.auth().onAuthStateChanged(function (user) {
       self.profiles = self.profileService.getProfile(user.uid).valueChanges();
     });
+  }
+
+  upload(event) {
+    // this.afStorage.upload('/upload/to/this-path', event.target.files[0]);
+    this.selectedFiles = event.target.files[0];
+    this.fileName = event.target.files[0].name;
   }
 
   getInputValues() {
@@ -60,32 +70,36 @@ export class SettingsComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    // let self = this;
-    // var db = firebase.firestore();
+    let self = this;
+    var db = firebase.firestore();
 
-    // firebase.auth().onAuthStateChanged(function (user) {
-    //   db.collection("users").where("UserID", "==", user.uid)
-    //     .get()
-    //     .then(function (querySnapshot) {
-    //       querySnapshot.forEach(function (doc) {
-    //         let profile = {
-    //           UserID: user.uid,
-    //           StudentNumber: doc.data().StudentNumber,
-    //           FirstName: form.value.firstName,
-    //           MiddelName: form.value.middleName,
-    //           LastName: form.value.lastName,
-    //           Street: form.value.street,
-    //           Zip: form.value.zip,
-    //           City: form.value.city,
-    //           PhoneNumber: form.value.phoneNumber,
-    //           Email: form.value.email,
-    //           ImagePath: doc.data().ImagePath,
-    //           Term: doc.data().Term
-    //         }
+    firebase.auth().onAuthStateChanged(function (user) {
+      db.collection("users").where("UserID", "==", user.uid)
+        .get()
+        .then(function (querySnapshot) {
+          querySnapshot.forEach(function (doc) {
+            let profile = {
+              UserID: user.uid,
+              StudentNumber: doc.data().StudentNumber,
+              FirstName: form.value.firstName,
+              MiddelName: form.value.middleName,
+              LastName: form.value.lastName,
+              Street: form.value.street,
+              Zip: form.value.zip,
+              City: form.value.city,
+              PhoneNumber: form.value.phoneNumber,
+              Email: form.value.email,
+              ImagePath: self.selectedFiles != "" ? ('/images/' + user.uid + '/' + self.fileName) : doc.data().ImagePath,
+              Term: doc.data().Term
+            }
 
-    //         self.profileService.updateSettings(doc.id, profile);
-    //       });
-    //     })
-    // });
+            self.profileService.updateSettings(doc.id, profile);
+
+            if (self.selectedFiles != "") {
+              self.afStorage.upload(('/images/' + user.uid + '/' + self.fileName), self.selectedFiles);
+            }
+          });
+        })
+    });
   }
 }
