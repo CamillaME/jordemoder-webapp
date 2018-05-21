@@ -5,6 +5,7 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { Observable } from 'rxjs/Observable';
 import { ProfileService } from '../Shared/profile.service';
 import * as firebase from 'firebase/app';
+import { AngularFireStorage } from 'angularfire2/storage';
 
 @Component({
   selector: 'app-profile',
@@ -16,8 +17,9 @@ export class ProfileComponent implements OnInit {
 
   profiles;
   imagePath: string = "assets/images/placeholder.jpg";
+  downloadURL;
 
-  constructor(private db: AngularFirestore, private profileService: ProfileService, public auth: AuthService) {
+  constructor(private db: AngularFirestore, private profileService: ProfileService, public auth: AuthService, private afStorage: AngularFireStorage) {
     db.firestore.settings({ timestampsInSnapshots: true });
   }
 
@@ -27,7 +29,12 @@ export class ProfileComponent implements OnInit {
       self.profiles = self.profileService.getProfile(user.uid).valueChanges();
 
       self.profiles.forEach(item => {
-        self.imagePath = item[0].ImagePath == "" ? self.imagePath: item[0].ImagePath;
+        var storage = firebase.storage();
+        var ref = storage.ref(); 
+
+        self.imagePath = item[0].ImagePath == "" ? self.imagePath : item[0].ImagePath;
+
+        self.downloadURL = self.afStorage.ref(self.imagePath).getDownloadURL();
       });
     });
   }

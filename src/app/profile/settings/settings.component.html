@@ -52,7 +52,7 @@
         <div class="row">
             <div class="col-12">
                 <strong>Billede</strong>
-                <input id="imagePath" [(ngModel)]="imagePath" name="imagePath" type="file" (change)="detectFiles($event)">
+                <input id="imagePath" [(ngModel)]="imagePath" name="imagePath" type="file" (change)="upload($event)" accept=".png,.jpg">
             </div>
         </div>
         <div class="row">
