@@ -40,12 +40,10 @@ export class FillOutSchemaComponent implements OnInit {
 
   OnAddDate() {
     this.newDate = this.date.toString();
-    this.moreDates = this.newDate;
-    // this.db.collection('Experienceschema').doc('first').set({
-    //   'test': [{
-    //     'Date': this.date
-    //   }]
-    // });
+    this.moreDates = this.moreDates + " " + this.newDate;
+    this.db.collection('Experienceschema').doc('first').set({
+        'Modtagelse af familie': this.moreDates
+    });
   }
   OnAddDate2() {
     this.db.collection('Experienceschema').doc('first').set({
