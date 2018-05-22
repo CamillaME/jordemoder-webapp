@@ -132,6 +132,7 @@
               <strong>Kommentarer på refleksion</strong>
               <p>
                 {{r.CommentsOnReflection}}
+                <app-add-comment></app-add-comment>
               </p>
             </div>
           </div>
@@ -144,11 +145,11 @@
                 {{r.CommentsOnSeenActions}}
               </p>
             </div>
+            <button id="commentSeenActions" type="button" class="btn btn-success" (click)="addComment()">Tilføj kommentar</button>
           </div>
         </div>
         <div class="row description bigScreen">
           <div class="col-12">
-              <button id="comment" type="button" class="btn btn-success" (click)="addComment()">Tilføj kommentar</button>
             <button id="download" type="button" class="btn btn-success" (click)="onDownload(false, r.Title, r.Id, r.SheetNumber, r.FullName, r.Term, r.Teacher, r.Birth, r.ShiftNumber, r.Week, r.Date, r.DescriptionOfTheCourseSituation, r.JdmAcademicConsiderationsForCareMm, r.IndividualGoals, r.ReflectionText, r.WhatWillIContinueWith, r.Literature, r.CommentsOnReflection, r.CommentsOnSeenActions, r.SignatureAndDate)">Download</button>
             <button id="print" type="button" class="btn btn-success" (click)="onDownload(true, r.Title, r.Id, r.SheetNumber, r.FullName, r.Term, r.Teacher, r.Birth, r.ShiftNumber, r.Week, r.Date, r.DescriptionOfTheCourseSituation, r.JdmAcademicConsiderationsForCareMm, r.IndividualGoals, r.ReflectionText, r.WhatWillIContinueWith, r.Literature, r.CommentsOnReflection, r.CommentsOnSeenActions, r.SignatureAndDate)">Print</button>
           </div>

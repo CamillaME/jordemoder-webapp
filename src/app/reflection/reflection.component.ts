@@ -92,6 +92,6 @@ export class ReflectionComponent implements OnInit {
   }
 
   addComment() {
-
+    
   }
 }

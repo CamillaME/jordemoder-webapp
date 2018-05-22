@@ -117,8 +117,8 @@ export class FillOutReflectionComponent implements OnInit {
       ReflectionText: this.reflectionText,
       WhatWillIContinueWith: this.continueWith,
       Literature: this.literature,
-      CommentsOnReflection: "Dette er en kommentar",
-      CommentsOnSeenActions: "Dette er en kommentar",
+      CommentsOnReflection: "Ingen kommentarer endnu...",
+      CommentsOnSeenActions: "Ingen kommentarer endnu...",
       SignatureAndDate: "12-02-2018 Jdm. Anne Mette Dahl Krøgh"
     };
 
