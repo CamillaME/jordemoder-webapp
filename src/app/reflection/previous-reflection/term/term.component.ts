@@ -32,9 +32,9 @@ export class TermComponent implements OnInit {
     firebase.auth().onAuthStateChanged(function (user) {
       self.reflections = self.reflectionService.getReflectionByTermAndUserID(term, user.uid).valueChanges();
 
-      self.reflections.forEach(item => {
-        self.labelledBy = self.reflections.length > 0 ? item[0].Id + "-tab" : "";
-      });
+      // self.reflections.forEach(item => {
+      //   self.labelledBy = self.reflections.length > 0 ? item[0].Id + "-tab" : "";
+      // });
 
       self.terms.forEach(termItem => {
         if (termItem.name == term) {

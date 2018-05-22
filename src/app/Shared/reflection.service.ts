@@ -56,4 +56,16 @@ export class ReflectionService {
     getReflectionByTermAndUserID(term, userID) {
         return this.db.collection('ReflectionSheet', ref => ref.where("Term", "==", term).where("UserID", "==", userID).orderBy("SheetNumber"));
     }
+
+    getReflectionStudents(email) {
+        return this.db.collection("Internships", ref => ref.where("InternshipTeacherEmail", "==", email));
+    }
+
+    getReflectionsByUserID(userID) {
+        return this.db.collection('ReflectionSheet', ref => ref.where("UserID", "==", userID).orderBy("SheetNumber"));
+    }
+
+    getReflectionByStudentNumber(studentNumber) {
+        return this.db.collection('users', ref => ref.where("StudentNumber", "==", studentNumber));
+    }
 }

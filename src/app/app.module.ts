@@ -33,6 +33,7 @@ import { TermComponent } from './reflection/previous-reflection/term/term.compon
 import { AuthGuard } from './core/authGuard.service';
 import { CreateUserComponent } from './login/create-user/create-user.component';
 import { CreateInternshipComponent } from './profile/internship/create/create.component';
+import { AddCommentComponent } from './reflection/add-comment/add-comment.component';
 
 const routes: Routes = [
   { path: "", component: CalendarComponent },
@@ -75,6 +76,7 @@ const routes: Routes = [
     TermComponent,
     CreateUserComponent,
     CreateInternshipComponent,
+    AddCommentComponent,
   ],
   imports: [
     BrowserModule,
