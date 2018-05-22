@@ -18,7 +18,9 @@ import * as firebase from 'firebase';
 export class FillOutSchemaComponent implements OnInit {
 
   date: Date;
+  moreDates: string = "";
   textDatetest: string;
+  newDate: string;
 
   constructor(private db: AngularFirestore) {
     db.firestore.settings({ timestampsInSnapshots: true });
@@ -37,11 +39,13 @@ export class FillOutSchemaComponent implements OnInit {
   experienceSchemas: Observable<any[]>;
 
   OnAddDate() {
-    this.db.collection('Experienceschema').doc('first').set({
-      'test': [{
-        'Date': this.date
-      }]
-    });
+    this.newDate = this.date.toString();
+    this.moreDates = this.newDate;
+    // this.db.collection('Experienceschema').doc('first').set({
+    //   'test': [{
+    //     'Date': this.date
+    //   }]
+    // });
   }
   OnAddDate2() {
     this.db.collection('Experienceschema').doc('first').set({

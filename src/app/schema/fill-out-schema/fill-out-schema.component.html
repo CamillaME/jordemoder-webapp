@@ -20,8 +20,9 @@
                       Modtagelse af familie
                     </td>
                     <td class="col-5">
-                      <input type="date" name="date" [(ngModel)]="date">
+                      <input id="Firstdate" type="date" name="date" [(ngModel)]="date" value="">
                       <button name="Modtagelse af familie" class="btn btn-secondary btn-sm" (click)="OnAddDate()">Tilføj dato</button>
+                      <input name="Dates" type="text" [(ngModel)]="moreDates" >
                     </td>
                   </tr>
                   <tr>
