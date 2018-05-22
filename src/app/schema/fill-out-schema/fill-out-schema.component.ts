@@ -18,6 +18,9 @@ import * as firebase from 'firebase';
 export class FillOutSchemaComponent implements OnInit {
 
   date: Date;
+  moreDates: string = "";
+  textDatetest: string;
+  newDate: string;
 
   constructor(private db: AngularFirestore) {
     db.firestore.settings({ timestampsInSnapshots: true });
@@ -32,32 +35,36 @@ export class FillOutSchemaComponent implements OnInit {
     // });
   }
 
-  // docId: string = this.randomDocNumber();
-  // id: string;
-
   experienceSchemaCol: AngularFirestoreCollection<any>;
   experienceSchemas: Observable<any[]>;
 
-  // randomDocNumber() {
-  //   var text = '';
-  //   var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-
-  //   for (var i = 0; i < 5; i++)
-  //     text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-  //   return text;
-  //   }
-
   OnAddDate() {
-    // this.db.collection('Experienceschema').doc('first').push({test: this.sdf});
-    // const docDate = db.database.array('docDate');
-    // this.
-    // docDate.push(this.sdf);
-
+    this.newDate = this.date.toString();
+    this.moreDates = this.newDate;
+    // this.db.collection('Experienceschema').doc('first').set({
+    //   'test': [{
+    //     'Date': this.date
+    //   }]
+    // });
+  }
+  OnAddDate2() {
     this.db.collection('Experienceschema').doc('first').set({
-      'test': [{
+      'test2': [{
         'Date': this.date
       }]
+    });
+  }
+  OnAddDate3() {
+    this.db.collection('Experienceschema').doc('first').set({
+      'test3': [{
+        'Date': this.date
+      }]
+    });
+  }
+
+  OnAddTextDate() {
+    this.db.collection('Experienceschema').doc('first').set({
+      'test4': this.textDatetest
     });
   }
 

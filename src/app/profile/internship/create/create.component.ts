@@ -40,7 +40,7 @@ export class CreateInternshipComponent implements OnInit {
   onsubmitIntership() {
     const docID = this.db.createId();
     this.db.collection('Internships').doc(docID).set({
-      "studentNumber": this.studentNumber,
+      "StudentNumber": this.studentNumber,
       "Term": this.term,
       "Place": this.place,
       "Street": this.street,
