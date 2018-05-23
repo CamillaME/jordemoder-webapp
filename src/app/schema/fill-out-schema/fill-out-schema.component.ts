@@ -3,6 +3,7 @@ import { AngularFireDatabase, snapshotChanges } from 'angularfire2/database';
 import { FirebaseApp } from 'angularfire2';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/mergeMap';
 
 import * as firebase from 'firebase';
 
@@ -19,8 +20,13 @@ export class FillOutSchemaComponent implements OnInit {
 
   date: Date;
   moreDates: string = "";
+  moreDates2: string = "";
+  moreDates3: string = "";
   textDatetest: string;
   newDate: string;
+  newDate2: string;
+  newDate3: string;
+  docData: Observable<any>;
 
   constructor(private db: AngularFirestore) {
     db.firestore.settings({ timestampsInSnapshots: true });
@@ -42,21 +48,21 @@ export class FillOutSchemaComponent implements OnInit {
     this.newDate = this.date.toString();
     this.moreDates = this.moreDates + " " + this.newDate;
     this.db.collection('Experienceschema').doc('first').set({
-        'Modtagelse af familie': this.moreDates
+        'Modtagelseaffamilie': this.moreDates
     });
   }
   OnAddDate2() {
+    this.newDate2 = this.date.toString();
+    this.moreDates2 = this.moreDates2 + " " + this.newDate2;
     this.db.collection('Experienceschema').doc('first').set({
-      'test2': [{
-        'Date': this.date
-      }]
+        'SamtaleOmOgPlanlæggelseAfBarselsomsorg': this.moreDates
     });
   }
   OnAddDate3() {
+    this.newDate3 = this.date.toString();
+    this.moreDates3 = this.moreDates3 + " " + this.newDate3;
     this.db.collection('Experienceschema').doc('first').set({
-      'test3': [{
-        'Date': this.date
-      }]
+        'SamtaleOmOgPlanlæggelseAfBarselsomsorg': this.moreDates
     });
   }
 
