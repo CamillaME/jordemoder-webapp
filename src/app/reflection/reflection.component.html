@@ -3,7 +3,7 @@
   <li *ngFor="let student of studentList; let i=index">
     <div class="term " (click)="getReflections(student.studentNumber) ">
       <h2>
-        {{student.studentNumber}} {{student.studentName}}
+        {{student.studentNumber}} - {{student.studentName}}
         <i class="fa fa-angle-down " aria-hidden="true " *ngIf="student.angleDown "></i>
         <i class="fa fa-angle-right " aria-hidden="true " *ngIf="student.angleRight "></i>
       </h2>
@@ -130,10 +130,9 @@
           <div class="col-12">
             <div class="comment">
               <strong>Kommentarer på refleksion</strong>
-              <p>
-                {{r.CommentsOnReflection}}
-                <app-add-comment></app-add-comment>
-              </p>
+              <textarea id="commentOnReflection" name="commentOnReflection" placeholder="Tilføj kommentar..." [(ngModel)]="commentOnReflection"
+                class="addcomment"></textarea>
+              <button type="button" class="btn btn-success" (click)="addCommentOnReflection(r.Id)">Tilføj kommentar</button>
             </div>
           </div>
         </div>
@@ -141,11 +140,10 @@
           <div class="col-12">
             <div class="comment">
               <strong>Kommentarer på sete handlinger</strong>
-              <p>
-                {{r.CommentsOnSeenActions}}
-              </p>
+              <textarea id="commentSeenActions" name="commentSeenActions" placeholder="Tilføj kommentar..." [(ngModel)]="commentSeenActions"
+                class="addcomment"></textarea>
+              <button type="button" class="btn btn-success" (click)="addCommentOnSeenActions(r.Id)">Tilføj kommentar</button>
             </div>
-            <button id="commentSeenActions" type="button" class="btn btn-success" (click)="addComment()">Tilføj kommentar</button>
           </div>
         </div>
         <div class="row description bigScreen">

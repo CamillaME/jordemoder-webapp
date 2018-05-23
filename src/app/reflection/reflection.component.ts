@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { FirebaseApp } from 'angularfire2';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
@@ -26,6 +26,8 @@ export class ReflectionComponent implements OnInit {
   studentList = [];
   labelledBy: string;
   SheetNumber;
+  commentOnReflection: string = "";
+  commentSeenActions: string = "";
 
   constructor(private db: AngularFirestore, private reflectionService: ReflectionService, private router: Router) {
     db.firestore.settings({ timestampsInSnapshots: true });
@@ -87,11 +89,26 @@ export class ReflectionComponent implements OnInit {
           self.reflections = self.reflectionService.getReflectionsByUserID(doc.data().UserID).valueChanges();
           self.angleDown = true;
           self.angleRight = false;
+
+          self.getInputValues();
         });
       });
   }
 
-  addComment() {
-    
+  addCommentOnReflection(id) {
+    this.reflectionService.updateCommentOnReflection(id, this.commentOnReflection);
+  }
+
+  addCommentOnSeenActions(id) {
+    this.reflectionService.updateCommentOnSeenActions(id, this.commentSeenActions);
+  }
+
+  getInputValues() {
+    let self = this;
+
+    this.reflections.forEach(item => {
+      self.commentOnReflection = item[0].CommentsOnReflection;
+      self.commentSeenActions = item[0].CommentsOnSeenActions;
+    });
   }
 }

@@ -65,7 +65,11 @@ export class ReflectionService {
         return this.db.collection('ReflectionSheet', ref => ref.where("UserID", "==", userID).orderBy("SheetNumber"));
     }
 
-    getReflectionByStudentNumber(studentNumber) {
-        return this.db.collection('users', ref => ref.where("StudentNumber", "==", studentNumber));
+    updateCommentOnReflection(id, text) {
+        this.db.collection("ReflectionSheet").doc(id).update({ "CommentsOnReflection": text });
+    }
+
+    updateCommentOnSeenActions(id, text) {
+        this.db.collection("ReflectionSheet").doc(id).update({ "CommentsOnSeenActions": text });
     }
 }

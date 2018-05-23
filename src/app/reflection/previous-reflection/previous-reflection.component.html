@@ -121,7 +121,7 @@
             <div class="comment">
               <strong>Kommentarer på refleksion</strong>
               <p>
-                {{r.CommentsOnReflection}}
+                {{r.CommentsOnReflection == '' ? 'Ingen kommentarer endnu...' : r.CommentsOnReflection}}
               </p>
             </div>
           </div>
@@ -131,7 +131,7 @@
             <div class="comment">
               <strong>Kommentarer på sete handlinger</strong>
               <p>
-                {{r.CommentsOnSeenActions}}
+                {{r.CommentsOnSeenActions == '' ? 'Ingen kommentarer endnu...' : r.CommentsOnSeenActions}}
               </p>
             </div>
           </div>
