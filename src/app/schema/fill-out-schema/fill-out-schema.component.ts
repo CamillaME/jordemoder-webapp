@@ -72,6 +72,14 @@ export class FillOutSchemaComponent implements OnInit {
     });
   }
 
+  getUser() {
+    firebase.auth().currentUser.
+  }
+  GetExperienceDoc(StudentNumber) {
+    this.db.collection('Experienceschema', ref =>
+    ref.where('StudentNumber', '==', StudentNumber).limit(1)).valueChanges().flatMap(result => result);
+  }
+
   ngOnInit() {
     this.experienceSchemaCol = this.db.collection('Experienceschema');
     this.experienceSchemas = this.experienceSchemaCol.valueChanges();
