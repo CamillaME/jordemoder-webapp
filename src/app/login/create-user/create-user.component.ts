@@ -39,11 +39,16 @@ export class CreateUserComponent implements OnInit {
     let self = this;
     // const email = form.value.email;
     // const password = form.value.password;
+    const ExperienceschemaID = this.db.createId();
     this.authService.onCreateUser(this.email, this.password);
     const docID = this.db.createId();
     // this.ID = firebase.auth().currentUser.uid;
 
     firebase.auth().signInWithEmailAndPassword(this.email, this.password);
+
+    self.db.collection('Experienceschema').doc(ExperienceschemaID).set({
+      "StudentNumber": self.studentNumber
+    });
 
     firebase.auth().onAuthStateChanged(function (user) {
       self.db.collection('users').doc(docID).set({
