@@ -90,22 +90,22 @@ export class FillOutSchemaComponent implements OnInit {
   //   });
   // }
 
-  GetExperienceDoc(StudentNumber) {
-    let self = this;
-    var db = firebase.firestore();
+  // GetExperienceDoc(StudentNumber) {
+  //   let self = this;
+  //   var db = firebase.firestore();
 
-    firebase.auth().onAuthStateChanged(function (user) {
-      self.profiles = self.profileService.getProfile(user.uid).valueChanges();
+  //   firebase.auth().onAuthStateChanged(function (user) {
+  //     self.profiles = self.profileService.getProfile(user.uid).valueChanges();
 
-      self.profiles.forEach(item => {
+  //     self.profiles.forEach(item => {
 
-        self.studentNumber = item[0].StudentNumber;
-        this.db.collection('Experienceschema', ref =>
-        ref.where('StudentNumber', '==', self.studentNumber).limit(1)).valueChanges().flatMap(result => result);
-        console.log(self.studentNumber);
-      });
-    });
-  }
+  //       self.studentNumber = item[0].StudentNumber;
+  //       this.db.collection('Experienceschema', ref =>
+  //       ref.where('StudentNumber', '==', self.studentNumber).limit(1)).valueChanges().flatMap(result => result);
+  //       console.log(self.studentNumber);
+  //     });
+  //   });
+  // }
 
   ngOnInit() {
     let self = this;
