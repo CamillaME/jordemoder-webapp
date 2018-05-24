@@ -62,7 +62,7 @@ export class CreateUserComponent implements OnInit {
         "Street": self.street,
         "Zip": self.zip,
         "City": self.city,
-        "Term": self.term,
+        "Term": self.term.length == 1 ? self.term + ". semester" : self.term,
         "ImagePath": ""
       });
     });
