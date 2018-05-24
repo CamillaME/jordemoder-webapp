@@ -74,22 +74,6 @@ export class FillOutSchemaComponent implements OnInit {
     });
   }
 
-  // getUser() {
-  //   let self = this;
-  //   var db = firebase.firestore();
-
-  //   firebase.auth().onAuthStateChanged(function (user) {
-  //     self.profiles = self.profileService.getProfile(user.uid).valueChanges();
-
-  //     self.profiles.forEach(item => {
-  //       var storage = firebase.storage();
-  //       var ref = storage.ref();
-
-  //       self.studentNumber = item[0].StudentNumber;
-  //     });
-  //   });
-  // }
-
   // GetExperienceDoc(StudentNumber) {
   //   let self = this;
   //   var db = firebase.firestore();
@@ -113,17 +97,16 @@ export class FillOutSchemaComponent implements OnInit {
 
     firebase.auth().onAuthStateChanged(function (user) {
       self.profiles = self.profileService.getProfile(user.uid).valueChanges();
-
+      var studentNumber = self.profiles.studentNumber;
       self.profiles.forEach(item => {
 
         self.studentNumber = item[0].StudentNumber;
-        console.log(self.studentNumber);
-        this.db.collection('Experienceschema').where('StudentNumber', '==', self.studentNumber).get().then(function (doc) {
-        console.log(doc.data());
+        console.log(studentNumber);
+        // this.db.collection('Experienceschema').where('StudentNumber', '==', self.studentNumber).get().then(function (doc) {
+        // console.log(doc.data());
       });
       });
 
-    });
     this.experienceSchemaCol = this.db.collection('Experienceschema');
     this.experienceSchemas = this.experienceSchemaCol.valueChanges();
   }

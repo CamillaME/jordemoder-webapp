@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-10">
       <h1>Erfaringsskema</h1>
-      <div class="accordion" id="accordion">
+      <div class="accordion" id="accordion" *ngFor="let erfaring of Erfaringsskema | async">
         <div class="card">
           <div class="card-header">
             <h5 class="mb-0">
@@ -23,7 +23,7 @@
                     <td class="col-5">
                       <input id="Firstdate" type="date" name="date" [(ngModel)]="date" value="">
                       <button name="Modtagelse af familie" class="btn btn-secondary btn-sm" (click)="OnAddDate()">Tilføj dato</button>
-                      <input name="Dates" hidden type="text" [(ngModel)]="moreDates" >
+                      <input name="Dates" hidden type="text" [(ngModel)]="moreDates" value="{{erfaring.Modtagelseaffamilie}}" >
                     </td>
                   </tr>
                   <tr>
