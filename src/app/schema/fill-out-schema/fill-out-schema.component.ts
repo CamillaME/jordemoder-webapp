@@ -2,9 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase, snapshotChanges } from 'angularfire2/database';
 import { FirebaseApp } from 'angularfire2';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { Schema } from '../../Models/schema.model';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/mergeMap';
 
 import * as firebase from 'firebase';
+import { first } from 'rxjs/operator/first';
 
 // export interface Experienceschema { name: string; dates: Date; }
 // export interface ExperienceschemaId extends Experienceschema { id: string; }
@@ -18,9 +21,18 @@ import * as firebase from 'firebase';
 export class FillOutSchemaComponent implements OnInit {
 
   date: Date;
+  date2: Date;
+  date3: Date;
   moreDates: string = "";
+  moreDates2: string = "";
+  moreDates3: string = "";
   textDatetest: string;
   newDate: string;
+  newDate2: string;
+  newDate3: string;
+  docData: Observable<any>;
+
+ 
 
   constructor(private db: AngularFirestore) {
     db.firestore.settings({ timestampsInSnapshots: true });
@@ -41,29 +53,31 @@ export class FillOutSchemaComponent implements OnInit {
   OnAddDate() {
     this.newDate = this.date.toString();
     this.moreDates = this.moreDates + " " + this.newDate;
-    this.db.collection('Experienceschema').doc('first').set({
-        'Modtagelse af familie': this.moreDates
+    this.db.collection('Experienceschema').doc('first').update({
+        'Modtagelseaffamilie': this.moreDates
     });
   }
   OnAddDate2() {
-    this.db.collection('Experienceschema').doc('first').set({
-      'test2': [{
-        'Date': this.date
-      }]
+    this.newDate2 = this.date2.toString();
+    this.moreDates2 = this.moreDates2 + " " + this.newDate2;
+    this.db.collection('Experienceschema').doc('first').update({
+        'SamtaleOmOgPlanlæggelseAfBarselsomsorg': this.moreDates2
     });
   }
   OnAddDate3() {
-    this.db.collection('Experienceschema').doc('first').set({
-      'test3': [{
-        'Date': this.date
-      }]
+    this.newDate3 = this.date3.toString();
+    this.moreDates3 = this.moreDates3 + " " + this.newDate3;
+    this.db.collection('Experienceschema').doc('first').update({
+        'VejledningIPersonligHygiejne': this.moreDates3
     });
   }
 
-  OnAddTextDate() {
-    this.db.collection('Experienceschema').doc('first').set({
-      'test4': this.textDatetest
-    });
+  getUser() {
+    firebase.auth().currentUser.
+  }
+  GetExperienceDoc(StudentNumber) {
+    this.db.collection('Experienceschema', ref =>
+    ref.where('StudentNumber', '==', StudentNumber).limit(1)).valueChanges().flatMap(result => result);
   }
 
   ngOnInit() {
