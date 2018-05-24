@@ -3,6 +3,7 @@ import { AngularFireDatabase, snapshotChanges } from 'angularfire2/database';
 import { FirebaseApp } from 'angularfire2';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Schema } from '../../Models/schema.model';
+import { ProfileService } from '../../Shared/profile.service';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/mergeMap';
 
@@ -16,6 +17,7 @@ import { first } from 'rxjs/operator/first';
   selector: 'app-fill-out-schema',
   templateUrl: './fill-out-schema.component.html',
   styleUrls: ['./fill-out-schema.component.css'],
+  providers: [ProfileService]
 })
 
 export class FillOutSchemaComponent implements OnInit {
@@ -73,8 +75,10 @@ export class FillOutSchemaComponent implements OnInit {
   }
 
   getUser() {
-    firebase.auth().currentUser.
+    var uID = firebase.auth().currentUser.uid;
+
   }
+
   GetExperienceDoc(StudentNumber) {
     this.db.collection('Experienceschema', ref =>
     ref.where('StudentNumber', '==', StudentNumber).limit(1)).valueChanges().flatMap(result => result);
