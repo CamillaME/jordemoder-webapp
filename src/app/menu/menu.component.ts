@@ -86,6 +86,7 @@ export class MenuComponent implements OnInit {
 
   onLogOut() {
     firebase.auth().signOut();
+    window.location.replace('login');
   }
 
   ngOnInit() {
