@@ -96,6 +96,28 @@ export class FillOutReflectionComponent implements OnInit {
     });
   }
 
+  getTeacher() {
+    let self = this;
+
+    var db = firebase.firestore();
+
+    firebase.auth().onAuthStateChanged(function (user) {
+      db.collection("users").where("UserID", "==", user.uid)
+        .get()
+        .then(function (querySnapshot) {
+          querySnapshot.forEach(function (doc) {
+            db.collection("Internships").where("studentNumber", "==", doc.data().StudentNumber)
+              .get()
+              .then(function (querySnapshot) {
+                querySnapshot.forEach(function (doc) {
+                  self.teacher = doc.data().InternshipTeacherName;
+                });
+              })
+          });
+        })
+    });
+  }
+
   onSubmit() {
     var idBefore = this.db.createId();
 
@@ -117,9 +139,9 @@ export class FillOutReflectionComponent implements OnInit {
       ReflectionText: this.reflectionText,
       WhatWillIContinueWith: this.continueWith,
       Literature: this.literature,
-      CommentsOnReflection: "Ingen kommentarer endnu...",
-      CommentsOnSeenActions: "Ingen kommentarer endnu...",
-      SignatureAndDate: "12-02-2018 Jdm. Anne Mette Dahl Krøgh"
+      CommentsOnReflection: "",
+      CommentsOnSeenActions: "",
+      SignatureAndDate: ""
     };
 
     this.reflectionService.addReflection(idBefore, reflection);
@@ -131,6 +153,7 @@ export class FillOutReflectionComponent implements OnInit {
     this.getReflectionNumber();
     this.getFullName();
     this.getTerm();
+    this.getTeacher();
     this.reflections = this.db.collection(config.collection_endpoint).valueChanges();
   }
 

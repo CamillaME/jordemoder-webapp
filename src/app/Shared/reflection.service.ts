@@ -65,11 +65,11 @@ export class ReflectionService {
         return this.db.collection('ReflectionSheet', ref => ref.where("UserID", "==", userID).orderBy("SheetNumber"));
     }
 
-    updateCommentOnReflection(id, text) {
-        this.db.collection("ReflectionSheet").doc(id).update({ "CommentsOnReflection": text });
+    updateCommentOnReflection(id, text, dateAndSignature) {
+        this.db.collection("ReflectionSheet").doc(id).update({ "CommentsOnReflection": text, "DateAndSignature": dateAndSignature });
     }
 
-    updateCommentOnSeenActions(id, text) {
-        this.db.collection("ReflectionSheet").doc(id).update({ "CommentsOnSeenActions": text });
+    updateCommentOnSeenActions(id, text, dateAndSignature) {
+        this.db.collection("ReflectionSheet").doc(id).update({ "CommentsOnSeenActions": text, "DateAndSignature": dateAndSignature });
     }
 }

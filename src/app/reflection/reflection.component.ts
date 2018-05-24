@@ -28,6 +28,7 @@ export class ReflectionComponent implements OnInit {
   SheetNumber;
   commentOnReflection: string = "";
   commentSeenActions: string = "";
+  teacher: string = "";
 
   constructor(private db: AngularFirestore, private reflectionService: ReflectionService, private router: Router) {
     db.firestore.settings({ timestampsInSnapshots: true });
@@ -35,6 +36,7 @@ export class ReflectionComponent implements OnInit {
 
   ngOnInit() {
     this.getStudents();
+    this.getTeacher();
   }
 
   getStudents() {
@@ -95,12 +97,36 @@ export class ReflectionComponent implements OnInit {
       });
   }
 
+  getTeacher() {
+    let self = this;
+    var db = firebase.firestore();
+
+    firebase.auth().onAuthStateChanged(function (user) {
+      db.collection("users").where("UserID", "==", user.uid)
+        .get()
+        .then(function (querySnapshot) {
+          querySnapshot.forEach(function (doc) {
+            self.teacher = doc.data().FirstName + " " + doc.data().MiddelName + " " + doc.data().LastName;
+            console.log(self.teacher);
+          });
+        });
+    });
+  }
+
   addCommentOnReflection(id) {
-    this.reflectionService.updateCommentOnReflection(id, this.commentOnReflection);
+    let date = new Date();
+
+    let today = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
+
+    this.reflectionService.updateCommentOnReflection(id, this.commentOnReflection, today + " Jdm. " + this.teacher);
   }
 
   addCommentOnSeenActions(id) {
-    this.reflectionService.updateCommentOnSeenActions(id, this.commentSeenActions);
+    let date = new Date();
+
+    let today = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
+
+    this.reflectionService.updateCommentOnSeenActions(id, this.commentSeenActions, today + " Jdm. " + this.teacher);
   }
 
   getInputValues() {

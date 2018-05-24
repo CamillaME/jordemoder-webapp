@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { ReflectionService } from '../../Shared/reflection.service';
 import { Reflection } from '../../Models/reflection.model';
 import { Route, ActivatedRoute } from '@angular/router';
+import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'app-edit-reflection',
@@ -29,6 +30,11 @@ export class EditReflectionComponent implements OnInit {
   individualGoals: string = "";
   literature: string = "";
   continueWith: string = "";
+  fullName: string = "";
+  term: string = "";
+  commentsOnReflection: string = "";
+  commentsOnSeenActions: string = "";
+  signatureAndDate: string = "";
 
   constructor(private db: AngularFirestore, private reflectionService: ReflectionService, private route: ActivatedRoute) {
     db.firestore.settings({ timestampsInSnapshots: true });
@@ -39,7 +45,6 @@ export class EditReflectionComponent implements OnInit {
   getInputValues() {
     this.reflections.forEach(item => {
       this.title = item[0].Title;
-      this.teacher = item[0].Teacher;
       this.reflectionCount = item[0].SheetNumber;
       this.birth = item[0].Birth;
       this.number = item[0].ShiftNumber;
@@ -54,12 +59,114 @@ export class EditReflectionComponent implements OnInit {
     });
   }
 
+  getFullName() {
+    let self = this;
+
+    var db = firebase.firestore();
+
+    firebase.auth().onAuthStateChanged(function (user) {
+      db.collection("users").where("UserID", "==", user.uid)
+        .get()
+        .then(function (querySnapshot) {
+          querySnapshot.forEach(function (doc) {
+            self.fullName = doc.data().FirstName + " " + doc.data().MiddelName + " " + doc.data().LastName;
+          });
+        })
+    });
+  }
+
+  getTerm() {
+    let self = this;
+
+    var db = firebase.firestore();
+
+    firebase.auth().onAuthStateChanged(function (user) {
+      db.collection("users").where("UserID", "==", user.uid)
+        .get()
+        .then(function (querySnapshot) {
+          querySnapshot.forEach(function (doc) {
+            self.term = doc.data().Term;
+          });
+        })
+    });
+  }
+
+  getTeacher() {
+    let self = this;
+
+    var db = firebase.firestore();
+
+    firebase.auth().onAuthStateChanged(function (user) {
+      db.collection("users").where("UserID", "==", user.uid)
+        .get()
+        .then(function (querySnapshot) {
+          querySnapshot.forEach(function (doc) {
+            db.collection("Internships").where("studentNumber", "==", doc.data().StudentNumber)
+              .get()
+              .then(function (querySnapshot) {
+                querySnapshot.forEach(function (doc) {
+                  self.teacher = doc.data().InternshipTeacherName;
+                });
+              })
+          });
+        })
+    });
+  }
+
+  getCommentsOnReflection() {
+    let self = this;
+
+    var db = firebase.firestore();
+
+    firebase.auth().onAuthStateChanged(function (user) {
+      db.collection("ReflectionSheet").where("UserID", "==", user.uid)
+        .get()
+        .then(function (querySnapshot) {
+          querySnapshot.forEach(function (doc) {
+            self.commentsOnReflection = doc.data().CommentsOnReflection;
+          });
+        })
+    });
+  }
+
+  getCommentsOnSeenActions() {
+    let self = this;
+
+    var db = firebase.firestore();
+
+    firebase.auth().onAuthStateChanged(function (user) {
+      db.collection("ReflectionSheet").where("UserID", "==", user.uid)
+        .get()
+        .then(function (querySnapshot) {
+          querySnapshot.forEach(function (doc) {
+            self.commentsOnSeenActions = doc.data().CommentsOnSeenActions;
+          });
+        })
+    });
+  }
+
+  getSignatureAndDate() {
+    let self = this;
+
+    var db = firebase.firestore();
+
+    firebase.auth().onAuthStateChanged(function (user) {
+      db.collection("ReflectionSheet").where("UserID", "==", user.uid)
+        .get()
+        .then(function (querySnapshot) {
+          querySnapshot.forEach(function (doc) {
+            self.signatureAndDate = doc.data().SignatureAndDate;
+          });
+        })
+    });
+  }
+
   onUpdate() {
     let reflection = {
-      UserID: "RandomUserID",
+      UserID: firebase.auth().currentUser.uid,
       Id: this.route.snapshot.params["id"],
-      FullName: "Julie Bang Larsen",
-      Term: "4. semester",
+      FullName: this.fullName,
+      Term: this.term,
       Title: this.title,
       Teacher: this.teacher,
       SheetNumber: this.reflectionCount,
@@ -73,41 +180,23 @@ export class EditReflectionComponent implements OnInit {
       ReflectionText: this.reflectionText,
       WhatWillIContinueWith: this.continueWith,
       Literature: this.literature,
-      CommentsOnReflection: "Dette er en kommentar",
-      CommentsOnSeenActions: "Dette er en kommentar",
-      SignatureAndDate: "12-02-2018 Jdm. Anne Mette Dahl Krøgh"
+      CommentsOnReflection: this.commentsOnReflection,
+      CommentsOnSeenActions: this.commentsOnSeenActions,
+      SignatureAndDate: this.signatureAndDate
     };
 
     this.reflectionService.updateReflection(this.route.snapshot.params["id"], reflection);
   }
 
-  // onUpdate() {
-  //   this.reflectionService.updateReflection(
-  //     "RandomUserID",
-  //     this.route.snapshot.params["id"],
-  //     "Julie Bang Larsen",
-  //     "4. semester",
-  //     this.title,
-  //     this.teacher,
-  //     this.reflectionCount,
-  //     this.birth,
-  //     this.number,
-  //     this.week,
-  //     this.date,
-  //     this.birthDescription,
-  //     this.considerations,
-  //     this.individualGoals,
-  //     this.reflection,
-  //     this.continueWith,
-  //     this.literature,
-  //     "Dette er en kommentar",
-  //     "Dette er en kommentar",
-  //     "12-02-2018 Jdm. Anne Mette Dahl Krøgh");
-  // }
-
   ngOnInit() {
-    this.reflections = this.reflectionService.getReflection(this.route.snapshot.params["id"]).valueChanges();
     this.getInputValues();
+    this.getFullName();
+    this.getTerm();
+    this.getTeacher();
+    this.getCommentsOnReflection();
+    this.getCommentsOnSeenActions();
+    this.getSignatureAndDate();
+    this.reflections = this.reflectionService.getReflection(this.route.snapshot.params["id"]).valueChanges();
   }
 
 }
