@@ -32,11 +32,11 @@ export class FillOutSchemaComponent implements OnInit {
   newDate: string;
   newDate2: string;
   newDate3: string;
-  docData: Observable<any>;
+  docData: string;
+  profiles;
+  studentNumber: number;
 
- 
-
-  constructor(private db: AngularFirestore) {
+  constructor(private db: AngularFirestore, private profileService: ProfileService) {
     db.firestore.settings({ timestampsInSnapshots: true });
 
     // this.experienceSchemaCol = db.collection<Experienceschema>('expSchema');
@@ -74,17 +74,39 @@ export class FillOutSchemaComponent implements OnInit {
     });
   }
 
-  getUser() {
-    var uID = firebase.auth().currentUser.uid;
+  // GetExperienceDoc(StudentNumber) {
+  //   let self = this;
+  //   var db = firebase.firestore();
 
-  }
+  //   firebase.auth().onAuthStateChanged(function (user) {
+  //     self.profiles = self.profileService.getProfile(user.uid).valueChanges();
 
-  GetExperienceDoc(StudentNumber) {
-    this.db.collection('Experienceschema', ref =>
-    ref.where('StudentNumber', '==', StudentNumber).limit(1)).valueChanges().flatMap(result => result);
-  }
+  //     self.profiles.forEach(item => {
+
+  //       self.studentNumber = item[0].StudentNumber;
+  //       this.db.collection('Experienceschema', ref =>
+  //       ref.where('StudentNumber', '==', self.studentNumber).limit(1)).valueChanges().flatMap(result => result);
+  //       console.log(self.studentNumber);
+  //     });
+  //   });
+  // }
 
   ngOnInit() {
+    let self = this;
+    // var db = firebase.firestore();
+
+    firebase.auth().onAuthStateChanged(function (user) {
+      self.profiles = self.profileService.getProfile(user.uid).valueChanges();
+      var studentNumber = self.profiles.studentNumber;
+      self.profiles.forEach(item => {
+
+        self.studentNumber = item[0].StudentNumber;
+        console.log(studentNumber);
+        // this.db.collection('Experienceschema').where('StudentNumber', '==', self.studentNumber).get().then(function (doc) {
+        // console.log(doc.data());
+      });
+      });
+
     this.experienceSchemaCol = this.db.collection('Experienceschema');
     this.experienceSchemas = this.experienceSchemaCol.valueChanges();
   }
