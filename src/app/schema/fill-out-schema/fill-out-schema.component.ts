@@ -105,8 +105,6 @@ export class FillOutSchemaComponent implements OnInit {
         self.experienceSchemas = self.db.collection('Experienceschema', ref => ref.where('StudentNumber', '==', self.studentNumber)).valueChanges();
         var docID = self.experienceSchemas
         console.log(self.experienceSchemas);
-        // this.db.collection('Experienceschema').where('StudentNumber', '==', self.studentNumber).get().then(function (doc) {
-        // console.log(doc.data());
       });
     });
 
