@@ -1,6 +1,7 @@
 @primarycolor:#E99F86;
 @secondcolor:#DE5021;
 @grey:#A0A09F;
+@third-color:#41BAAE;
 
 h1 {
     font: normal normal normal 25px/1.4em futura-lt-w01-light, sans-serif;
@@ -51,4 +52,28 @@ textarea:-ms-input-placeholder, input::placeholder { /* Internet Explorer 10-11 
 
 textarea::-ms-input-placeholder, input::placeholder { /* Microsoft Edge */
     color: @grey;
+}
+
+.fc-toolbar h2 {
+    font: normal normal normal 16px/1.4em futura-lt-w01-light,sans-serif;
+    text-transform: capitalize;
+    color: @third-color;
+}
+
+.fc-day-header {
+    text-transform: capitalize;
+}
+
+.fc button, .fc-state-default {
+    background-color: transparent;
+    background-image: none;
+    border: 0;
+    border-color: none;
+    box-shadow: none;
+    height: auto !important;
+    outline: none;
+}
+
+.fc button .fc-icon {
+    color: @third-color;
 }

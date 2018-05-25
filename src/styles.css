@@ -50,3 +50,24 @@ input::placeholder {
   /* Microsoft Edge */
   color: #A0A09F;
 }
+.fc-toolbar h2 {
+  font: normal normal normal 16px/1.4em futura-lt-w01-light, sans-serif;
+  text-transform: capitalize;
+  color: #41BAAE;
+}
+.fc-day-header {
+  text-transform: capitalize;
+}
+.fc button,
+.fc-state-default {
+  background-color: transparent;
+  background-image: none;
+  border: 0;
+  border-color: none;
+  box-shadow: none;
+  height: auto !important;
+  outline: none;
+}
+.fc button .fc-icon {
+  color: #41BAAE;
+}

@@ -9,10 +9,11 @@ import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
 import { CoreModule } from './core/core.module';
 import { HttpModule } from '@angular/http';
+import { FullCalendarModule } from 'ng-fullcalendar';
 
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
-import { CalendarComponent } from './calendar/calendar.component';
+import { MyCalendarComponent } from './calendar/calendar.component';
 import { SchemaComponent } from './schema/schema.component';
 import { FillOutSchemaComponent } from './schema/fill-out-schema/fill-out-schema.component';
 import { PreviousSchemaComponent } from './schema/previous-schema/previous-schema.component';
@@ -35,7 +36,7 @@ import { CreateUserComponent } from './login/create-user/create-user.component';
 import { CreateInternshipComponent } from './profile/internship/create/create.component';
 
 const routes: Routes = [
-  { path: "", component: CalendarComponent },
+  { path: "", component: MyCalendarComponent },
   { path: "udfyld-erfaringsskema", component: FillOutSchemaComponent },
   { path: "tidligere-erfaringsskema", component: PreviousSchemaComponent },
   { path: "udfyld-refleksionsark", component: FillOutReflectionComponent },
@@ -56,7 +57,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    CalendarComponent,
+    MyCalendarComponent,
     MenuComponent,
     SchemaComponent,
     FillOutSchemaComponent,
@@ -85,7 +86,8 @@ const routes: Routes = [
     AngularFirestoreModule,
     FormsModule,
     CoreModule,
-    HttpModule
+    HttpModule,
+    FullCalendarModule,
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]
