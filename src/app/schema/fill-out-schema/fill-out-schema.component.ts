@@ -101,11 +101,14 @@ export class FillOutSchemaComponent implements OnInit {
       self.profiles.forEach(item => {
 
         self.studentNumber = item[0].StudentNumber;
-        console.log(studentNumber);
+        console.log(self.studentNumber);
+        self.experienceSchemas = self.db.collection('Experienceschema', ref => ref.where('StudentNumber', '==', self.studentNumber)).valueChanges();
+        var docID = self.experienceSchemas
+        console.log(self.experienceSchemas);
         // this.db.collection('Experienceschema').where('StudentNumber', '==', self.studentNumber).get().then(function (doc) {
         // console.log(doc.data());
       });
-      });
+    });
 
     this.experienceSchemaCol = this.db.collection('Experienceschema');
     this.experienceSchemas = this.experienceSchemaCol.valueChanges();
