@@ -4,6 +4,7 @@ import { FirebaseApp } from 'angularfire2';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Schema } from '../../Models/schema.model';
 import { ProfileService } from '../../Shared/profile.service';
+import { SchemaService } from '../../Shared/schema.service';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/mergeMap';
 
@@ -17,7 +18,7 @@ import { first } from 'rxjs/operator/first';
   selector: 'app-fill-out-schema',
   templateUrl: './fill-out-schema.component.html',
   styleUrls: ['./fill-out-schema.component.css'],
-  providers: [ProfileService]
+  providers: [ProfileService, SchemaService]
 })
 
 export class FillOutSchemaComponent implements OnInit {
@@ -35,14 +36,15 @@ export class FillOutSchemaComponent implements OnInit {
   docData: string;
   profiles;
   studentNumber: number;
+  docID: string;
 
-  constructor(private db: AngularFirestore, private profileService: ProfileService) {
+  constructor(private db: AngularFirestore, private profileService: ProfileService, private schemaService: SchemaService) {
     db.firestore.settings({ timestampsInSnapshots: true });
 
-    // this.experienceSchemaCol = db.collection<Experienceschema>('expSchema');
+    // this.experienceSchemaCol = db.collection<Experienceschema>;
     // this.experienceSchemas = this.experienceSchemaCol.snapshotChanges().map(actions => {
     //   return actions.map(a => {
-    //     const data = a.payload.doc.data() as Experienceschema;
+    //     const data = a.payload.doc.data();
     //     const id = a.payload.doc.id;
     //     return { id, ...data };
     //   });
@@ -51,8 +53,9 @@ export class FillOutSchemaComponent implements OnInit {
 
   experienceSchemaCol: AngularFirestoreCollection<any>;
   experienceSchemas: Observable<any[]>;
-
+  
   OnAddDate() {
+    this.schemaService.getDocID(this.studentNumber);
     this.newDate = this.date.toString();
     this.moreDates = this.moreDates + " " + this.newDate;
     this.db.collection('Experienceschema').doc('first').update({
@@ -74,26 +77,8 @@ export class FillOutSchemaComponent implements OnInit {
     });
   }
 
-  // GetExperienceDoc(StudentNumber) {
-  //   let self = this;
-  //   var db = firebase.firestore();
-
-  //   firebase.auth().onAuthStateChanged(function (user) {
-  //     self.profiles = self.profileService.getProfile(user.uid).valueChanges();
-
-  //     self.profiles.forEach(item => {
-
-  //       self.studentNumber = item[0].StudentNumber;
-  //       this.db.collection('Experienceschema', ref =>
-  //       ref.where('StudentNumber', '==', self.studentNumber).limit(1)).valueChanges().flatMap(result => result);
-  //       console.log(self.studentNumber);
-  //     });
-  //   });
-  // }
-
   ngOnInit() {
     let self = this;
-    // var db = firebase.firestore();
 
     firebase.auth().onAuthStateChanged(function (user) {
       self.profiles = self.profileService.getProfile(user.uid).valueChanges();
@@ -101,11 +86,16 @@ export class FillOutSchemaComponent implements OnInit {
       self.profiles.forEach(item => {
 
         self.studentNumber = item[0].StudentNumber;
-        console.log(studentNumber);
-        // this.db.collection('Experienceschema').where('StudentNumber', '==', self.studentNumber).get().then(function (doc) {
-        // console.log(doc.data());
-      });
-      });
+        console.log(self.studentNumber);
+        self.experienceSchemas = self.db.collection('Experienceschema', ref => ref.where('StudentNumber', '==', self.studentNumber)).valueChanges();
+        var db = firebase.firestore();
+        // db.collection('Experienceschema').where('StudentNumber', '==', self.studentNumber).get().then(function(querySnapshot) {
+        //   querySnapshot.forEach(function(doc) {
+        //     doc.id
+        //   });
+        // })
+        });
+    });
 
     this.experienceSchemaCol = this.db.collection('Experienceschema');
     this.experienceSchemas = this.experienceSchemaCol.valueChanges();

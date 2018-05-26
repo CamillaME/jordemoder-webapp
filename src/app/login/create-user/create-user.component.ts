@@ -45,10 +45,13 @@ export class CreateUserComponent implements OnInit {
     // this.ID = firebase.auth().currentUser.uid;
 
     firebase.auth().signInWithEmailAndPassword(this.email, this.password);
-
-    self.db.collection('Experienceschema').doc(ExperienceschemaID).set({
-      "StudentNumber": self.studentNumber
-    });
+    
+    if (self.studentNumber != null) {
+      self.db.collection('Experienceschema').doc(ExperienceschemaID).set({
+      "StudentNumber": self.studentNumber});
+    };
+    
+    
 
     firebase.auth().onAuthStateChanged(function (user) {
       self.db.collection('users').doc(docID).set({
