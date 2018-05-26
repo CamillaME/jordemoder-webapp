@@ -20,31 +20,39 @@ export class MyCalendarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.calendarService.getEvents().subscribe(data => {
-      this.calendarOptions = {
-        editable: true,
-        eventLimit: false,
-        header: {
-          left: '',
-          center: 'prev, title, next',
-          right: '',
-        },
-        locale: 'Da',
-        events: data,
-        columnFormat: 'dddd',
-        views: {
-          month: { // name of view
-            titleFormat: 'MMMM YYYY'
-            // other view-specific options here
-          }
-        }
-      };
+    let self = this;
+
+    firebase.auth().onAuthStateChanged(function (user) {
+      self.calendarService.getEvents(user.uid).subscribe(data => {
+        self.calendarOptions = {
+          editable: true,
+          eventLimit: false,
+          header: {
+            left: '',
+            center: 'prev, title, next',
+            right: 'list',
+          },
+          locale: 'Da',
+          events: data,
+          columnFormat: 'dddd',
+          views: {
+            month: { // name of view
+              titleFormat: 'MMMM YYYY',
+              // other view-specific options here
+            }
+          },
+        };
+      });
     });
   }
 
   // loadevents() {
-  //   this.calendarService.getEvents().subscribe(data => {
-  //     this.events = data;
+  //   let self = this;
+
+  //   firebase.auth().onAuthStateChanged(function (user) {
+  //     self.calendarService.getEvents(user.uid).subscribe(data => {
+  //       self.events = data;
+  //     });
   //   });
   // }
 }
