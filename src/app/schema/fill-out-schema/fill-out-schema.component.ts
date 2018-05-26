@@ -40,34 +40,20 @@ export class FillOutSchemaComponent implements OnInit {
 
   constructor(private db: AngularFirestore, private profileService: ProfileService, private schemaService: SchemaService) {
     db.firestore.settings({ timestampsInSnapshots: true });
-
-    // this.experienceSchemaCol = db.collection<Experienceschema>;
-    // this.experienceSchemas = this.experienceSchemaCol.snapshotChanges().map(actions => {
-    //   return actions.map(a => {
-    //     const data = a.payload.doc.data();
-    //     const id = a.payload.doc.id;
-    //     return { id, ...data };
-    //   });
-    // });
   }
 
   experienceSchemaCol: AngularFirestoreCollection<any>;
   experienceSchemas: Observable<any[]>;
   
   OnAddDate() {
-    var db = firebase.firestore();
-    db.collection('Experienceschema').where('StudentNumber', '==', this.studentNumber).get().then(function(querySnapshot) {
-      querySnapshot.forEach(function(doc) {
-        console.log(doc.id);
-      });
-    })        
+
     this.newDate = this.date.toString();
     this.moreDates = this.moreDates + " " + this.newDate;
-    this.db.collection('Experienceschema').doc('first').update({
+    this.db.collection('Experienceschema').doc(this.docID).update({
       'Modtagelseaffamilie': this.moreDates 
     }); 
   }
-  
+
   OnAddDate2() {
     this.newDate2 = this.date2.toString();
     this.moreDates2 = this.moreDates2 + " " + this.newDate2;
@@ -94,8 +80,6 @@ export class FillOutSchemaComponent implements OnInit {
         self.studentNumber = item[0].StudentNumber;
         console.log(self.studentNumber);
         self.experienceSchemas = self.db.collection('Experienceschema', ref => ref.where('StudentNumber', '==', self.studentNumber)).valueChanges();
-        var db = firebase.firestore();
-
         });
     });
 
