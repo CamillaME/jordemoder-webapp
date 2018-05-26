@@ -22,8 +22,7 @@
                     </td>
                     <td class="col-5">
                       <input id="Firstdate" type="date" name="date" [(ngModel)]="date">
-                      <button name="Modtagelse af familie" class="btn btn-secondary btn-sm" (click)="OnAddDate(erfaring.id)">Tilføj dato</button>
-                      <input name="Dates" type="text" [(ngModel)]="moreDates" value="{{erfaring.Modtagelseaffamilie}}" >
+                      <button name="Modtagelse af familie" class="btn btn-secondary btn-sm" (click)="OnAddDate(erfaring.id, erfaring.Modtagelseaffamilie)">Tilføj dato</button>
                     </td>
                   </tr>
                   <tr>
@@ -32,8 +31,7 @@
                     </td>
                     <td class="col-5">
                       <input type="date" name="date2" [(ngModel)]="date2">
-                      <button name="Samtale om og planlæggelse af barselsomsorg" class="btn btn-secondary btn-sm" (click)="OnAddDate2(erfaring.id)">Tilføj dato</button>
-                      <input name="Dates2" hidden type="text" [(ngModel)]="moreDates2" >
+                      <button name="Samtale om og planlæggelse af barselsomsorg" class="btn btn-secondary btn-sm" (click)="OnAddDate2(erfaring.id, erfaring.SamtaleOmOgPlanlaeggelseAfBarselsomsorg)">Tilføj dato</button>
                     </td>
                   </tr>
                   <tr>
@@ -42,8 +40,7 @@
                     </td>
                     <td class="col-5">
                       <input type="date" name="date3" [(ngModel)]="date3">
-                      <button name="Vejledning i personlig hygiejne" class="btn btn-secondary btn-sm" (click)="OnAddDate3(erfaring.id)">Tilføj dato</button>
-                      <input name="Dates3" hidden type="text" [(ngModel)]="moreDates3" >
+                      <button name="Vejledning i personlig hygiejne" class="btn btn-secondary btn-sm" (click)="OnAddDate3(erfaring.id, erfaring.VejledningIPersonligHygiejne)">Tilføj dato</button>
                     </td>
                   </tr>
                   <tr>

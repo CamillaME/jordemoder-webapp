@@ -45,27 +45,27 @@ export class FillOutSchemaComponent implements OnInit {
   experienceSchemaCol: AngularFirestoreCollection<any>;
   experienceSchemas: Observable<any[]>;
   
-  OnAddDate(id) {
+  OnAddDate(id, Dates) {
     this.docID = id;
     this.newDate = this.date.toString();
-    this.moreDates = this.moreDates + " " + this.newDate;
+    this.moreDates = Dates + " " + this.newDate;
     this.db.collection('Experienceschema').doc(this.docID).update({
       'Modtagelseaffamilie': this.moreDates 
     }); 
   }
 
-  OnAddDate2(id) {
+  OnAddDate2(id, Dates) {
     this.docID = id;
     this.newDate2 = this.date2.toString();
-    this.moreDates2 = this.moreDates2 + " " + this.newDate2;
+    this.moreDates2 = Dates + " " + this.newDate2;
     this.db.collection('Experienceschema').doc(this.docID).update({
         'SamtaleOmOgPlanlæggelseAfBarselsomsorg': this.moreDates2
     });
   }
-  OnAddDate3(id) {
+  OnAddDate3(id, Dates) {
     this.docID = id;
     this.newDate3 = this.date3.toString();
-    this.moreDates3 = this.moreDates3 + " " + this.newDate3;
+    this.moreDates3 = Dates + " " + this.newDate3;
     this.db.collection('Experienceschema').doc(this.docID).update({
         'VejledningIPersonligHygiejne': this.moreDates3
     });
