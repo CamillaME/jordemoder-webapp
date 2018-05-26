@@ -55,13 +55,19 @@ export class FillOutSchemaComponent implements OnInit {
   experienceSchemas: Observable<any[]>;
   
   OnAddDate() {
-    this.schemaService.getDocID(this.studentNumber);
+    var db = firebase.firestore();
+    db.collection('Experienceschema').where('StudentNumber', '==', this.studentNumber).get().then(function(querySnapshot) {
+      querySnapshot.forEach(function(doc) {
+        console.log(doc.id);
+      });
+    })        
     this.newDate = this.date.toString();
     this.moreDates = this.moreDates + " " + this.newDate;
     this.db.collection('Experienceschema').doc('first').update({
-        'Modtagelseaffamilie': this.moreDates
-    });
+      'Modtagelseaffamilie': this.moreDates 
+    }); 
   }
+  
   OnAddDate2() {
     this.newDate2 = this.date2.toString();
     this.moreDates2 = this.moreDates2 + " " + this.newDate2;
@@ -89,11 +95,7 @@ export class FillOutSchemaComponent implements OnInit {
         console.log(self.studentNumber);
         self.experienceSchemas = self.db.collection('Experienceschema', ref => ref.where('StudentNumber', '==', self.studentNumber)).valueChanges();
         var db = firebase.firestore();
-        // db.collection('Experienceschema').where('StudentNumber', '==', self.studentNumber).get().then(function(querySnapshot) {
-        //   querySnapshot.forEach(function(doc) {
-        //     doc.id
-        //   });
-        // })
+
         });
     });
 
