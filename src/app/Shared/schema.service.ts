@@ -20,7 +20,8 @@ export class SchemaService {
         var db = firebase.firestore();
         db.collection('Experienceschema').where('StudentNumber', '==', studentNumber).get().then(function(querySnapshot) {
             querySnapshot.forEach(function(doc) {
-              doc.id
+               return console.log(doc.id);
             });
+        })
     }
 }
