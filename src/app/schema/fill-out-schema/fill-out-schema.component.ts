@@ -6,7 +6,7 @@ import { Schema } from '../../Models/schema.model';
 import { ProfileService } from '../../Shared/profile.service';
 import { SchemaService } from '../../Shared/schema.service';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/mergeMap';
+import { Route, ActivatedRoute } from '@angular/router';
 
 import * as firebase from 'firebase';
 import { first } from 'rxjs/operator/first';
@@ -38,7 +38,7 @@ export class FillOutSchemaComponent implements OnInit {
   studentNumber: number;
   docID: string;
 
-  constructor(private db: AngularFirestore, private profileService: ProfileService, private schemaService: SchemaService) {
+  constructor(private db: AngularFirestore, private profileService: ProfileService, private schemaService: SchemaService, private route: ActivatedRoute) {
     db.firestore.settings({ timestampsInSnapshots: true });
   }
 
@@ -46,7 +46,7 @@ export class FillOutSchemaComponent implements OnInit {
   experienceSchemas: Observable<any[]>;
   
   OnAddDate() {
-
+    this.docID = this.route.snapshot.params["id"];
     this.newDate = this.date.toString();
     this.moreDates = this.moreDates + " " + this.newDate;
     this.db.collection('Experienceschema').doc(this.docID).update({

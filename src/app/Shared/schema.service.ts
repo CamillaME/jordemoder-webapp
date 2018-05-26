@@ -13,15 +13,5 @@ export class SchemaService {
 
     constructor(private db: AngularFirestore){}
 
-    experienceSchemaCol: AngularFirestoreCollection<any>;
-    experienceSchemas: Observable<any[]>;
 
-    getDocID(studentNumber){
-        var db = firebase.firestore();
-        db.collection('Experienceschema').where('StudentNumber', '==', studentNumber).get().then(function(querySnapshot) {
-            querySnapshot.forEach(function(doc) {
-               return console.log(doc.id);
-            });
-        })
-    }
 }

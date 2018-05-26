@@ -19,10 +19,9 @@
                   <tr>
                     <td class="col-5" scope="row">
                       Modtagelse af familie
-                      <input name="docID" hidden type="text" [(ngModel)]="docID" value="{{erfaring.id}}">
                     </td>
                     <td class="col-5">
-                      <input id="Firstdate" type="date" name="date" [(ngModel)]="date" value="">
+                      <input id="Firstdate" type="date" name="date" [(ngModel)]="date">
                       <button name="Modtagelse af familie" class="btn btn-secondary btn-sm" (click)="OnAddDate()">Tilføj dato</button>
                       <input name="Dates" type="text" [(ngModel)]="moreDates" value="{{erfaring.Modtagelseaffamilie}}" >
                     </td>
