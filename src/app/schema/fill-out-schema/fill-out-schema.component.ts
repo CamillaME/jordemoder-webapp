@@ -47,6 +47,7 @@ export class FillOutSchemaComponent implements OnInit {
   
   OnAddDate() {
     this.docID = this.route.snapshot.params["id"];
+    console.log(this.docID);
     this.newDate = this.date.toString();
     this.moreDates = this.moreDates + " " + this.newDate;
     this.db.collection('Experienceschema').doc(this.docID).update({
