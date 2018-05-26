@@ -39,7 +39,7 @@ export class MyCalendarComponent implements OnInit {
             month: { // name of view
               titleFormat: 'MMMM YYYY',
               // other view-specific options here
-            }
+            },
           },
         };
       });

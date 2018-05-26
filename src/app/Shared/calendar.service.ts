@@ -29,7 +29,7 @@ export class CalendarService {
             items.forEach(item => {
                 self.data.push(
                     {
-                        title: item.Shift + " " + item.WorkHours,
+                        title: item.WorkHours + item.Shift,
                         start: item.Date
                     });
             });
