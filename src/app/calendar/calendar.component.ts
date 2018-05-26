@@ -25,22 +25,25 @@ export class MyCalendarComponent implements OnInit {
     firebase.auth().onAuthStateChanged(function (user) {
       self.calendarService.getEvents(user.uid).subscribe(data => {
         self.calendarOptions = {
-          editable: true,
+          editable: false,
           eventLimit: false,
           header: {
             left: '',
             center: 'prev, title, next',
-            right: 'list',
+            right: '',
           },
           locale: 'Da',
           events: data,
-          columnFormat: 'dddd',
+          columnFormat: 'dd',
           views: {
             month: { // name of view
               titleFormat: 'MMMM YYYY',
               // other view-specific options here
             },
           },
+          eventAfterRender: function (event, element) {
+            element.find('.fc-title').append("<div class='shift'>" + event.description + "</div>");
+          }
         };
       });
     });

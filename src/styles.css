@@ -71,3 +71,8 @@ input::placeholder {
 .fc button .fc-icon {
   color: #41BAAE;
 }
+.shift {
+  color: #41BAAE;
+  font-size: 26px;
+  text-align: right;
+}

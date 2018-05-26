@@ -29,8 +29,10 @@ export class CalendarService {
             items.forEach(item => {
                 self.data.push(
                     {
-                        title: item.WorkHours + item.Shift,
-                        start: item.Date
+                        title: item.WorkHours,
+                        start: item.Date,
+                        description: item.Shift,
+                        color: "transparent"
                     });
             });
         });
