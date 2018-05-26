@@ -6,6 +6,7 @@ import { FirebaseApp } from 'angularfire2';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
+import * as firebase from 'firebase';
 
 @Injectable()
 export class SchemaService {
@@ -15,14 +16,11 @@ export class SchemaService {
     experienceSchemaCol: AngularFirestoreCollection<any>;
     experienceSchemas: Observable<any[]>;
 
-    getDocID(){
-        this.experienceSchemaCol = db.collection<Experienceschema>;
-        this.experienceSchemas = this.experienceSchemaCol.snapshotChanges().map(actions => {
-          return actions.map(a => {
-            const data = a.payload.doc.data();
-            const id = a.payload.doc.id;
-            return { id, ...data };
-          });
-        });
+    getDocID(studentNumber){
+        var db = firebase.firestore();
+        db.collection('Experienceschema').where('StudentNumber', '==', studentNumber).get().then(function(querySnapshot) {
+            querySnapshot.forEach(function(doc) {
+              doc.id
+            });
     }
 }
