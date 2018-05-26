@@ -39,10 +39,10 @@ export class FillOutSchemaComponent implements OnInit {
   constructor(private db: AngularFirestore, private profileService: ProfileService) {
     db.firestore.settings({ timestampsInSnapshots: true });
 
-    // this.experienceSchemaCol = db.collection<Experienceschema>('expSchema');
+    // this.experienceSchemaCol = db.collection<Experienceschema>;
     // this.experienceSchemas = this.experienceSchemaCol.snapshotChanges().map(actions => {
     //   return actions.map(a => {
-    //     const data = a.payload.doc.data() as Experienceschema;
+    //     const data = a.payload.doc.data();
     //     const id = a.payload.doc.id;
     //     return { id, ...data };
     //   });
@@ -74,26 +74,8 @@ export class FillOutSchemaComponent implements OnInit {
     });
   }
 
-  // GetExperienceDoc(StudentNumber) {
-  //   let self = this;
-  //   var db = firebase.firestore();
-
-  //   firebase.auth().onAuthStateChanged(function (user) {
-  //     self.profiles = self.profileService.getProfile(user.uid).valueChanges();
-
-  //     self.profiles.forEach(item => {
-
-  //       self.studentNumber = item[0].StudentNumber;
-  //       this.db.collection('Experienceschema', ref =>
-  //       ref.where('StudentNumber', '==', self.studentNumber).limit(1)).valueChanges().flatMap(result => result);
-  //       console.log(self.studentNumber);
-  //     });
-  //   });
-  // }
-
   ngOnInit() {
     let self = this;
-    // var db = firebase.firestore();
 
     firebase.auth().onAuthStateChanged(function (user) {
       self.profiles = self.profileService.getProfile(user.uid).valueChanges();
