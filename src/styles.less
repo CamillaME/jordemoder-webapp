@@ -4,6 +4,7 @@
 @third-color:#41BAAE;
 @yellow:#E9D0B1; 
 @lightgrey:#EEEEEE;
+@white:#fff;
 
 h1 {
     font: normal normal normal 25px/1.4em futura-lt-w01-light, sans-serif;
@@ -99,7 +100,7 @@ textarea::-ms-input-placeholder, input::placeholder { /* Microsoft Edge */
 }
 
 .fc-unthemed .fc-content, .fc-unthemed .fc-divider, .fc-unthemed .fc-list-heading td, .fc-unthemed .fc-list-view, .fc-unthemed .fc-popover, .fc-unthemed .fc-row, .fc-unthemed tbody, .fc-unthemed td, .fc-unthemed th, .fc-unthemed thead {
-    border-color: #fff !important;
+    border-color: @white !important;
 }
 
 .fc td, .fc th {
@@ -127,4 +128,20 @@ textarea::-ms-input-placeholder, input::placeholder { /* Microsoft Edge */
     background-color: @yellow;
     display: inline-block;
     margin-right: 15px;
+}
+
+.fc-day-header {
+    font-weight: normal !important;
+}
+
+.addToCalendar {
+    background-color: @third-color;
+    border: none;
+    color: @white;
+    padding: 5px 10px;
+    border-radius: 10px;
+    outline: none;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    cursor: pointer;
 }

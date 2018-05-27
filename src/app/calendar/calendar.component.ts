@@ -3,6 +3,7 @@ import { CalendarComponent } from 'ng-fullcalendar';
 import { Options } from 'fullcalendar';
 import { CalendarService } from '../Shared/calendar.service';
 import * as firebase from 'firebase/app';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-calendar',
@@ -15,7 +16,7 @@ export class MyCalendarComponent implements OnInit {
   calendarOptions: Options;
   events;
   @ViewChild(CalendarComponent) ucCalendar: CalendarComponent;
-  constructor(private calendarService: CalendarService) {
+  constructor(private calendarService: CalendarService, private router: Router) {
     // this.loadevents();
   }
 
@@ -34,7 +35,7 @@ export class MyCalendarComponent implements OnInit {
           },
           locale: 'Da',
           events: data,
-          columnFormat: 'dd',
+          columnFormat: 'ddd',
           views: {
             month: { // name of view
               titleFormat: 'MMMM YYYY',
@@ -49,13 +50,7 @@ export class MyCalendarComponent implements OnInit {
     });
   }
 
-  // loadevents() {
-  //   let self = this;
-
-  //   firebase.auth().onAuthStateChanged(function (user) {
-  //     self.calendarService.getEvents(user.uid).subscribe(data => {
-  //       self.events = data;
-  //     });
-  //   });
-  // }
+  addToCalendar() {
+    this.router.navigateByUrl('ny-vagt');
+  }
 }

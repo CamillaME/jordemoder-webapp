@@ -1,7 +1,9 @@
 <h1>Vagtplan</h1>
 <div class="row">
+  <div class="col-12">
+    <button class="addToCalendar" (click)="addToCalendar()">Tilføj vagt til vagtplan</button>
+  </div>
   <div class="col-12 text-center">
-    <!-- <div (click)="loadevents()">Load data</div> -->
     <div *ngIf="calendarOptions">
       <ng-fullcalendar #ucCalendar [options]="calendarOptions" [(eventsModel)]="events"></ng-fullcalendar>
     </div>
