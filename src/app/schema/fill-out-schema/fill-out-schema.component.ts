@@ -26,13 +26,16 @@ export class FillOutSchemaComponent implements OnInit {
   date: Date;
   date2: Date;
   date3: Date;
+  date4: Date;
   moreDates: string = "";
   moreDates2: string = "";
   moreDates3: string = "";
+  moreDates4: string = "";
   textDatetest: string;
   newDate: string;
   newDate2: string;
   newDate3: string;
+  newDate4: string;
   docData: string;
   profiles;
   studentNumber: number;
@@ -59,7 +62,7 @@ export class FillOutSchemaComponent implements OnInit {
     this.newDate2 = this.date2.toString();
     this.moreDates2 = Dates + " " + this.newDate2;
     this.db.collection('Experienceschema').doc(this.docID).update({
-        'SamtaleOmOgPlanlæggelseAfBarselsomsorg': this.moreDates2
+        'SamtaleOmOgPlanlaeggelseAfBarselsomsorg': this.moreDates2
     });
   }
   OnAddDate3(id, Dates) {
@@ -68,6 +71,15 @@ export class FillOutSchemaComponent implements OnInit {
     this.moreDates3 = Dates + " " + this.newDate3;
     this.db.collection('Experienceschema').doc(this.docID).update({
         'VejledningIPersonligHygiejne': this.moreDates3
+    });
+  }
+
+  OnAddDate4(id, Dates) {
+    this.docID = id;
+    this.newDate4 = this.date4.toString();
+    this.moreDates4 = Dates + " " + this.newDate4;
+    this.db.collection('Experienceschema').doc(this.docID).update({
+        'VejledningIPersonligHygiejne': this.moreDates4
     });
   }
 
