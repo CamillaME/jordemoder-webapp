@@ -52,6 +52,14 @@ export class FillOutSchemaComponent implements OnInit {
   date30: Date;
   date31: Date;
   date32: Date;
+  date33: Date;
+  date34: Date;
+  date35: Date;
+  date36: Date;
+  date37: Date;
+  date38: Date;
+  date39: Date;
+  date40: Date;
   moreDates: string = "";
   moreDates2: string = "";
   moreDates3: string = "";
@@ -84,6 +92,14 @@ export class FillOutSchemaComponent implements OnInit {
   moreDates30: string = "";
   moreDates31: string = "";
   moreDates32: string = "";
+  moreDates33: string = "";
+  moreDates34: string = "";
+  moreDates35: string = "";
+  moreDates36: string = "";
+  moreDates37: string = "";
+  moreDates38: string = "";
+  moreDates39: string = "";
+  moreDates40: string = "";
   docData: string;
   profiles;
   studentNumber: number;
@@ -320,6 +336,62 @@ export class FillOutSchemaComponent implements OnInit {
     this.moreDates31 = Dates + " " + this.date31.toString();
     this.db.collection('Experienceschema').doc(this.docID).update({
         'AffoeringOgVandladning': this.moreDates31
+    });
+  }
+  OnAddDate33(id, Dates) {
+    this.docID = id;
+    this.moreDates33 = Dates + " " + this.date33.toString();
+    this.db.collection('Experienceschema').doc(this.docID).update({
+        'LejringAfBarnVedSoevn': this.moreDates33
+    });
+  }
+  OnAddDate34(id, Dates) {
+    this.docID = id;
+    this.moreDates34 = Dates + " " + this.date34.toString();
+    this.db.collection('Experienceschema').doc(this.docID).update({
+        'VejledningOmPKUBlodproeve': this.moreDates34
+    });
+  }
+  OnAddDate35(id, Dates) {
+    this.docID = id;
+    this.moreDates35 = Dates + " " + this.date35.toString();
+    this.db.collection('Experienceschema').doc(this.docID).update({
+        'TilrettelaeggeOgUdfoerePKU': this.moreDates35
+    });
+  }
+  OnAddDate36(id, Dates) {
+    this.docID = id;
+    this.moreDates36 = Dates + " " + this.date36.toString();
+    this.db.collection('Experienceschema').doc(this.docID).update({
+        'ObservationAfOgVejledningIEmnerSomIcterusFoedselssvulstCephalhaematomOsv': this.moreDates36
+    });
+  }
+  OnAddDate37(id, Dates) {
+    this.docID = id;
+    this.moreDates37 = Dates + " " + this.date37.toString();
+    this.db.collection('Experienceschema').doc(this.docID).update({
+        'RapportVedVagtskifte': this.moreDates37
+    });
+  }
+  OnAddDate38(id, Dates) {
+    this.docID = id;
+    this.moreDates38 = Dates + " " + this.date38.toString();
+    this.db.collection('Experienceschema').doc(this.docID).update({
+        'AfholdeUdskrivningssamtaler': this.moreDates38
+    });
+  }
+  OnAddDate39(id, Dates) {
+    this.docID = id;
+    this.moreDates39 = Dates + " " + this.date39.toString();
+    this.db.collection('Experienceschema').doc(this.docID).update({
+        'Journalfoering': this.moreDates39
+    });
+  }
+  OnAddDate40(id, Dates) {
+    this.docID = id;
+    this.moreDates40 = Dates + " " + this.date40.toString();
+    this.db.collection('Experienceschema').doc(this.docID).update({
+        'HygiejneFxSterilteknik': this.moreDates40
     });
   }
 
