@@ -35,17 +35,19 @@ export class MyCalendarComponent implements OnInit {
           },
           locale: 'Da',
           events: data,
-          columnFormat: 'dddd',
+          // columnFormat: 'dddd',
           views: {
             month: { // name of view
               titleFormat: 'MMMM YYYY',
               // other view-specific options here
             },
           },
+          windowResize: function (view) {
+            alert('The calendar has adjusted to a window resize');
+          },
           eventAfterRender: function (event, element) {
             element.find('.fc-title').html("<div class='clock'>" + element.find('.fc-title').html().replace("-", "-<br/>") + "</div>").prepend("<div class='circle'></div>").append("<div class='shift'>" + event.description + "</div>");
-            // element.find('.fc-title').prepend("<div class='circle'></div>").append("<div class='shift'>" + event.description + "</div>");
-          }
+          },
         };
       });
     });

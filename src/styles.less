@@ -158,12 +158,29 @@ textarea::-ms-input-placeholder, input::placeholder { /* Microsoft Edge */
     display: inline-block;
 }
 
+@media screen and (max-width:460px) {
+    .clock {
+        /* Safari */ 
+        -webkit-transform: rotate(90deg) !important;
+
+        /* Firefox */
+        -moz-transform: rotate(90deg) !important;
+        
+        /* IE */
+        -ms-transform: rotate(90deg) !important;
+        
+        /* Opera */
+        -o-transform: rotate(90deg) !important;
+
+        padding-top: 5px;
+    }
+}
+
 @media screen and(max-width:550px) {
     .fc-content {
         padding: 0px;
     }
-
-    
+  
     .fc-title {
         font-size: 10px !important;
     }
