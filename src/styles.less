@@ -2,6 +2,8 @@
 @secondcolor:#DE5021;
 @grey:#A0A09F;
 @third-color:#41BAAE;
+@yellow:#E9D0B1; 
+@lightgrey:#EEEEEE;
 
 h1 {
     font: normal normal normal 25px/1.4em futura-lt-w01-light, sans-serif;
@@ -82,4 +84,47 @@ textarea::-ms-input-placeholder, input::placeholder { /* Microsoft Edge */
     color: @third-color;
     font-size: 26px;
     text-align: right;
+}
+
+.fc-unthemed td.fc-today {
+    background: transparent !important;
+}
+
+.fc-day-header, .fc-day, .fc-unthemed td.fc-today {
+    background-color: @lightgrey !important;
+}
+
+.fc-day-header {
+    padding: 5px !important;
+}
+
+.fc-unthemed .fc-content, .fc-unthemed .fc-divider, .fc-unthemed .fc-list-heading td, .fc-unthemed .fc-list-view, .fc-unthemed .fc-popover, .fc-unthemed .fc-row, .fc-unthemed tbody, .fc-unthemed td, .fc-unthemed th, .fc-unthemed thead {
+    border-color: #fff !important;
+}
+
+.fc td, .fc th {
+    border-width: 5px !important;
+}
+
+.fc-scroller {
+    overflow-y: hidden !important;
+    height: 100% !important;
+}
+
+.fc-unthemed td.fc-today {
+    border-top-style: solid !important;
+    border-left-style: solid !important;
+}
+
+.fc-content {
+    padding: 10px;
+}
+
+.circle {
+    width: 10px;
+    height: 10px;
+    border-radius: 50% 50%;
+    background-color: @yellow;
+    display: inline-block;
+    margin-right: 15px;
 }

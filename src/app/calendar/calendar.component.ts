@@ -42,7 +42,7 @@ export class MyCalendarComponent implements OnInit {
             },
           },
           eventAfterRender: function (event, element) {
-            element.find('.fc-title').append("<div class='shift'>" + event.description + "</div>");
+            element.find('.fc-title').prepend("<div class='circle'></div>").append("<div class='shift'>" + event.description + "</div>");
           }
         };
       });
