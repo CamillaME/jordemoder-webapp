@@ -7,12 +7,12 @@
         <div class="card">
           <div class="card-header">
             <h5 class="mb-0">
-              <button class="btn btn-primary" type="button" data-toggle="collapse show" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                 Barselomsorg generelt:
               </button>
             </h5>
           </div>
-          <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
              <div class="card-body">
                <table class="table table-bordered">
                 <tbody>
@@ -166,7 +166,7 @@
                     </td>
                     <td class="col-5">
                       <input type="date" name="date17" [(ngModel)]="date17">
-                      <button name="Vejledning om / give mælk på kop" class="btn btn-secondary btn-sm" (click)="OnAddDate17(erfaring.id, erfaring.VejledningOmGiveMaelkPåKop)">Tilføj dato</button>
+                      <button name="Vejledning om / give mælk på kop" class="btn btn-secondary btn-sm" (click)="OnAddDate17(erfaring.id, erfaring.VejledningOmGiveMaelkPaaKop)">Tilføj dato</button>
                     </td>
                   </tr>
                   <tr>
@@ -175,7 +175,7 @@
                     </td>
                     <td class="col-5">
                       <input type="date" name="date18" [(ngModel)]="date18">
-                      <button name="Vejledning i Udmalkning manuelt, brystpumpe, håndpumpe" class="btn btn-secondary btn-sm" (click)="OnAddDate18(erfaring.id, erfaring.VejledningIUdmalkningManueltBrystpumpeHåndpumpe)">Tilføj dato</button>
+                      <button name="Vejledning i Udmalkning manuelt, brystpumpe, håndpumpe" class="btn btn-secondary btn-sm" (click)="OnAddDate18(erfaring.id, erfaring.VejledningIUdmalkningManueltBrystpumpeHaandpumpe)">Tilføj dato</button>
                     </td>
                   </tr>
                   <tr>
@@ -193,7 +193,7 @@
                     </td>
                     <td class="col-5">
                       <input type="date" name="date20" [(ngModel)]="date20">
-                      <button name="sdf" class="btn btn-secondary btn-sm" (click)="OnAddDate20(erfaring.id, erfaring.VejledeMorDerIkkeOenskerAtAmme)">Tilføj dato</button>
+                      <button name="Vejlede mor, der ikke ønsker at amme" class="btn btn-secondary btn-sm" (click)="OnAddDate20(erfaring.id, erfaring.VejledeMorDerIkkeOenskerAtAmme)">Tilføj dato</button>
                     </td>
                   </tr>
                   <tr>
@@ -202,7 +202,7 @@
                     </td>
                     <td class="col-5">
                       <input type="date" name="date21" [(ngModel)]="date21">
-                      <button name="sdf" class="btn btn-secondary btn-sm" (click)="OnAddDate21(erfaring.id, erfaring.BrystopereredeKvinderOgAmning)">Tilføj dato</button>
+                      <button name="Brystopererede kvinder og amning" class="btn btn-secondary btn-sm" (click)="OnAddDate21(erfaring.id, erfaring.BrystopereredeKvinderOgAmning)">Tilføj dato</button>
                     </td>
                   </tr>
                   <tr>
@@ -220,7 +220,7 @@
                     </td>
                     <td class="col-5">
                       <input type="date" name="date23" [(ngModel)]="date23">
-                      <button name="sdf" class="btn btn-secondary btn-sm" (click)="OnAddDate23(erfaring.id, erfaring.VejledeIVitaminTilskudTilBarnet)">Tilføj dato</button>
+                      <button name="Vejlede i vitamintilskud til barnet" class="btn btn-secondary btn-sm" (click)="OnAddDate23(erfaring.id, erfaring.VejledeIVitaminTilskudTilBarnet)">Tilføj dato</button>
                     </td>
                   </tr>
                   <tr>
@@ -246,8 +246,8 @@
                       Samtale om familiens nye struktur
                     </td>
                     <td class="col-5">
-                      <input type="date" name="date4" [(ngModel)]="date">
-                      <button name="sdf" class="btn btn-secondary btn-sm" (click)="OnAddDate()">Tilføj dato</button>
+                      <input type="date" name="date26" [(ngModel)]="date26">
+                      <button name="Samtale om familiens nye struktur" class="btn btn-secondary btn-sm" (click)="OnAddDate26(erfaring.id, erfaring.SamtaleOmFamiliensNyeStruktur)">Tilføj dato</button>
                     </td>
                   </tr>
                   <tr>
@@ -255,8 +255,8 @@
                       Samtale om sex og samliv efter fødslen herunder prævention
                     </td>
                     <td class="col-5">
-                      <input type="date" name="date4" [(ngModel)]="date">
-                      <button name="sdf" class="btn btn-secondary btn-sm" (click)="OnAddDate()">Tilføj dato</button>
+                      <input type="date" name="date27" [(ngModel)]="date27">
+                      <button name="Samtale om sex og samliv efter fødslen herunder prævention" class="btn btn-secondary btn-sm" (click)="OnAddDate27(erfaring.id, erfaring.SamtaleOmSexOgSamlivEfterFoedslenHerunderPraevention)">Tilføj dato</button>
                     </td>
                   </tr>
                   <tr>
@@ -264,8 +264,8 @@
                       Vejledning om barnets behov/signaler
                     </td>
                     <td class="col-5">
-                      <input type="date" name="date4" [(ngModel)]="date">
-                      <button name="sdf" class="btn btn-secondary btn-sm" (click)="OnAddDate()">Tilføj dato</button>
+                      <input type="date" name="date28" [(ngModel)]="date28">
+                      <button name="Vejledning om barnets behov/signaler" class="btn btn-secondary btn-sm" (click)="OnAddDate28(erfaring.id, erfaring.VejledningOmBarnetsBehovSignaler)">Tilføj dato</button>
                     </td>
                   </tr>
                   <tr>
@@ -273,8 +273,8 @@
                       Vejledning vedr. forældre-barn relation
                     </td>
                     <td class="col-5">
-                      <input type="date" name="date4" [(ngModel)]="date">
-                      <button name="sdf" class="btn btn-secondary btn-sm" (click)="OnAddDate()">Tilføj dato</button>
+                      <input type="date" name="date29" [(ngModel)]="date29">
+                      <button name="Vejledning vedr. forældre-barn relation" class="btn btn-secondary btn-sm" (click)="OnAddDate29(erfaring.id, erfaring.VejledningVedrForaeldreBarnRelation)">Tilføj dato</button>
                     </td>
                   </tr>
                   <tr>
@@ -282,8 +282,8 @@
                       Observation af og omsorg for det nyfødte barn
                     </td>
                     <td class="col-5">
-                      <input type="date" name="date4" [(ngModel)]="date">
-                      <button name="sdf" class="btn btn-secondary btn-sm" (click)="OnAddDate()">Tilføj dato</button>
+                      <input type="date" name="date30" [(ngModel)]="date30">
+                      <button name="Observation af og omsorg for det nyfødte barn" class="btn btn-secondary btn-sm" (click)="OnAddDate30(erfaring.id, erfaring.ObservationAfOgOmsorgForDetNyfoedteBarn)">Tilføj dato</button>
                     </td>
                   </tr>
                   <tr>
@@ -291,8 +291,8 @@
                       Vejledning omkring spædbarnspleje
                     </td>
                     <td class="col-5">
-                      <input type="date" name="date4" [(ngModel)]="date">
-                      <button name="sdf" class="btn btn-secondary btn-sm" (click)="OnAddDate()">Tilføj dato</button>
+                      <input type="date" name="date31" [(ngModel)]="date31">
+                      <button name="Vejledning omkring spædbarnspleje" class="btn btn-secondary btn-sm" (click)="OnAddDate31(erfaring.id, erfaring.VejledningOmkringSpaedbarnspleje)">Tilføj dato</button>
                     </td>
                   </tr>
                   <tr>
@@ -300,8 +300,8 @@
                       Afføring og vandladning
                     </td>
                     <td class="col-5">
-                      <input type="date" name="date4" [(ngModel)]="date">
-                      <button name="sdf" class="btn btn-secondary btn-sm" (click)="OnAddDate()">Tilføj dato</button>
+                      <input type="date" name="date32" [(ngModel)]="date32">
+                      <button name="Afføring og vandladning" class="btn btn-secondary btn-sm" (click)="OnAddDate32(erfaring.id, erfaring.AffoeringOgVandladning)">Tilføj dato</button>
                     </td>
                   </tr>
                   <tr>
@@ -309,8 +309,8 @@
                       Lejring af barn ved søvn
                     </td>
                     <td class="col-5">
-                      <input type="date" name="date4" [(ngModel)]="date">
-                      <button name="sdf" class="btn btn-secondary btn-sm" (click)="OnAddDate()">Tilføj dato</button>
+                      <input type="date" name="date33" [(ngModel)]="date33">
+                      <button name="Lejring af barn ved søvn" class="btn btn-secondary btn-sm" (click)="OnAddDate33(erfaring.id, erfaring.LejringAfBarnVedSoevn)">Tilføj dato</button>
                     </td>
                   </tr>
                   <tr>
@@ -318,8 +318,8 @@
                       Vejledning om PKU – blodprøve
                     </td>
                     <td class="col-5">
-                      <input type="date" name="date4" [(ngModel)]="date">
-                      <button name="sdf" class="btn btn-secondary btn-sm" (click)="OnAddDate()">Tilføj dato</button>
+                      <input type="date" name="date34" [(ngModel)]="date34">
+                      <button name="Vejledning om PKU – blodprøve" class="btn btn-secondary btn-sm" (click)="OnAddDate34(erfaring.id, erfaring.VejledningOmPKUBlodproeve)">Tilføj dato</button>
                     </td>
                   </tr>
                   <tr>
@@ -327,8 +327,8 @@
                       Tilrettelægge og udføre PKU
                     </td>
                     <td class="col-5">
-                      <input type="date" name="date4" [(ngModel)]="date">
-                      <button name="sdf" class="btn btn-secondary btn-sm" (click)="OnAddDate()">Tilføj dato</button>
+                      <input type="date" name="date35" [(ngModel)]="date35">
+                      <button name="Tilrettelægge og udføre PKU" class="btn btn-secondary btn-sm" (click)="OnAddDate35(erfaring.id, erfaring.TilrettelaeggeOgUdfoerePKU)">Tilføj dato</button>
                     </td>
                   </tr>
                   <tr>
@@ -337,7 +337,7 @@
                     </td>
                     <td class="col-5">
                       <input type="date" name="date4" [(ngModel)]="date">
-                      <button name="sdf" class="btn btn-secondary btn-sm" (click)="OnAddDate()">Tilføj dato</button>
+                      <button name="Observation af og vejledning i emner som: Icterus, fødselssvulst, cephalhæmatom osv" class="btn btn-secondary btn-sm" (click)="OnAddDate36(erfaring.id, erfaring.ObservationAfOgVejledningIEmnerSomIcterusFoedselssvulstCephalhaematomOsv)">Tilføj dato</button>
                     </td>
                   </tr>
                   <tr>
@@ -345,8 +345,8 @@
                       Rapport ved vagtskifte
                     </td>
                     <td class="col-5">
-                      <input type="date" name="date4" [(ngModel)]="date">
-                      <button name="sdf" class="btn btn-secondary btn-sm" (click)="OnAddDate()">Tilføj dato</button>
+                      <input type="date" name="date37" [(ngModel)]="date37">
+                      <button name="Rapport ved vagtskifte" class="btn btn-secondary btn-sm" (click)="OnAddDate37(erfaring.id, erfaring.RapportVedVagtskifte)">Tilføj dato</button>
                     </td>
                   </tr>
                   <tr>
@@ -354,8 +354,8 @@
                       Afholde udskrivningssamtaler
                     </td>
                     <td class="col-5">
-                      <input type="date" name="date4" [(ngModel)]="date">
-                      <button name="sdf" class="btn btn-secondary btn-sm" (click)="OnAddDate()">Tilføj dato</button>
+                      <input type="date" name="date38" [(ngModel)]="date38">
+                      <button name="Afholde udskrivningssamtaler" class="btn btn-secondary btn-sm" (click)="OnAddDate38(erfaring.id, erfaring.AfholdeUdskrivningssamtaler)">Tilføj dato</button>
                     </td>
                   </tr>
                   <tr>
@@ -363,8 +363,8 @@
                       Journalføring
                     </td>
                     <td class="col-5">
-                      <input type="date" name="date4" [(ngModel)]="date">
-                      <button name="sdf" class="btn btn-secondary btn-sm" (click)="OnAddDate()">Tilføj dato</button>
+                      <input type="date" name="date39" [(ngModel)]="date39">
+                      <button name="Journalføring" class="btn btn-secondary btn-sm" (click)="OnAddDate39(erfaring.id, erfaring.Journalfoering)">Tilføj dato</button>
                     </td>
                   </tr>
                   <tr>
@@ -372,8 +372,8 @@
                       Hygiejne, fx sterilteknik
                     </td>
                     <td class="col-5">
-                      <input type="date" name="date4" [(ngModel)]="date">
-                      <button name="sdf" class="btn btn-secondary btn-sm" (click)="OnAddDate()">Tilføj dato</button>
+                      <input type="date" name="date40" [(ngModel)]="date40">
+                      <button name="Hygiejne, fx sterilteknik" class="btn btn-secondary btn-sm" (click)="OnAddDate40(erfaring.id, erfaring.HygiejneFxSterilteknik)">Tilføj dato</button>
                     </td>
                   </tr>
                 </tbody>
@@ -384,12 +384,12 @@
         <div class="card">
           <div class="card-header" id="headingTwo">
             <h2 class="mb-0">
-              <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              <button class="btn btn-primary collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                 Omsorg for mor med kompliceret barsel:
               </button>
             </h2>
           </div>
-          <div id="collapseTwo"class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+          <div id="collapseTwo"class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
             <div class="card-body">
               <table class="table table-bordered">
                   <tbody>
