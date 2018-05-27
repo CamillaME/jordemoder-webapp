@@ -128,10 +128,14 @@ textarea::-ms-input-placeholder, input::placeholder { /* Microsoft Edge */
     background-color: @yellow;
     display: inline-block;
     margin-right: 15px;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 5px;
 }
 
 .fc-day-header {
     font-weight: normal !important;
+    overflow: hidden !important;
 }
 
 .addToCalendar {
@@ -144,4 +148,29 @@ textarea::-ms-input-placeholder, input::placeholder { /* Microsoft Edge */
     margin-bottom: 20px;
     margin-top: 20px;
     cursor: pointer;
+}
+
+.fc .fc-toolbar>*>* {
+    margin-left: 0 !important;
+}
+
+.clock {
+    display: inline-block;
+}
+
+@media screen and(max-width:550px) {
+    .fc-content {
+        padding: 0px;
+    }
+
+    
+    .fc-title {
+        font-size: 10px !important;
+    }
+}
+
+@media screen and(max-width:768px) { 
+    .circle {
+        display: none;
+    }
 }
