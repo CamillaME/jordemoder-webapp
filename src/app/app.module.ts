@@ -50,7 +50,7 @@ const routes: Routes = [
   { path: "min-profil", component: ProfileComponent },
   { path: "eu-erfaringsskema", component: EuSchemaComponent },
   { path: "login", component: LoginComponent },
-  { path: "Opret-bruger", component: CreateUserComponent},
+  { path: "Opret-bruger", component: CreateUserComponent },
   { path: "refleksionsark/:id", component: EditReflectionComponent },
   { path: "refleksionsark", component: ReflectionComponent },
   { path: "ny-vagt", component: AddToCalendarComponent }
@@ -90,9 +90,10 @@ const routes: Routes = [
     FormsModule,
     CoreModule,
     HttpModule,
-    FullCalendarModule,
+    FullCalendarModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
