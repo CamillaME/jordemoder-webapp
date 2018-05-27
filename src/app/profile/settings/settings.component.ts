@@ -31,6 +31,8 @@ export class SettingsComponent implements OnInit {
   selectedFiles = "";
   fileName: string = "";
 
+  result: string = "";
+
   constructor(private db: AngularFirestore, private profileService: ProfileService, private afStorage: AngularFireStorage) {
     db.firestore.settings({ timestampsInSnapshots: true });
 
@@ -41,7 +43,6 @@ export class SettingsComponent implements OnInit {
   }
 
   upload(event) {
-    // this.afStorage.upload('/upload/to/this-path', event.target.files[0]);
     this.selectedFiles = event.target.files[0];
     this.fileName = event.target.files[0].name;
   }
@@ -101,5 +102,7 @@ export class SettingsComponent implements OnInit {
           });
         })
     });
+
+    this.result = "Indstillingerne blevet opdateret...";
   }
 }

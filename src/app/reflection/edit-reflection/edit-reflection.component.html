@@ -20,7 +20,7 @@
     <div class="row">
       <div class="col-12 col-md-4">
         <strong>Underviser</strong>
-        <input id="teacher" name="teacher" type="text" [(ngModel)]="teacher">
+        <input id="teacher" name="teacher" type="text" [(ngModel)]="teacher" disabled>
       </div>
       <div class="col-12 col-md-4">
         <strong>Refleksion nr.</strong>
@@ -105,6 +105,7 @@
     </div>
     <div class="row description">
       <div class="col-12">
+        <label id="result" [(ngModel)]="result">{{result}}</label>
         <button type="button" class="btn btn-success" (click)="onUpdate()">Opdater refleksionsark</button>
       </div>
     </div>

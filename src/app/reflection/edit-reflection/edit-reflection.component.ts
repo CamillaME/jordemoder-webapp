@@ -36,6 +36,8 @@ export class EditReflectionComponent implements OnInit {
   commentsOnSeenActions: string = "";
   signatureAndDate: string = "";
 
+  result: string = "";
+
   constructor(private db: AngularFirestore, private reflectionService: ReflectionService, private route: ActivatedRoute) {
     db.firestore.settings({ timestampsInSnapshots: true });
 
@@ -186,6 +188,8 @@ export class EditReflectionComponent implements OnInit {
     };
 
     this.reflectionService.updateReflection(this.route.snapshot.params["id"], reflection);
+
+    this.result = "Refleksionsarket blevet opdateret...";
   }
 
   ngOnInit() {

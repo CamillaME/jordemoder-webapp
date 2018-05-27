@@ -171,3 +171,8 @@ input::placeholder {
     display: none;
   }
 }
+#result {
+  font-weight: normal;
+  display: block;
+  margin-bottom: 20px;
+}
