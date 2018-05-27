@@ -35,6 +35,7 @@ import { AuthGuard } from './core/authGuard.service';
 import { CreateUserComponent } from './login/create-user/create-user.component';
 import { CreateInternshipComponent } from './profile/internship/create/create.component';
 import { AddToCalendarComponent } from './calendar/add-to-calendar/add-to-calendar.component';
+import { AddNoteComponent } from './reflection/notes/add-note/add-note.component';
 
 const routes: Routes = [
   { path: "", component: MyCalendarComponent },
@@ -53,7 +54,8 @@ const routes: Routes = [
   { path: "Opret-bruger", component: CreateUserComponent },
   { path: "refleksionsark/:id", component: EditReflectionComponent },
   { path: "refleksionsark", component: ReflectionComponent },
-  { path: "ny-vagt", component: AddToCalendarComponent }
+  { path: "ny-vagt", component: AddToCalendarComponent },
+  { path: "ny-note/:type/:id", component: AddNoteComponent }
 ]
 
 @NgModule({
@@ -80,6 +82,7 @@ const routes: Routes = [
     CreateUserComponent,
     CreateInternshipComponent,
     AddToCalendarComponent,
+    AddNoteComponent,
   ],
   imports: [
     BrowserModule,

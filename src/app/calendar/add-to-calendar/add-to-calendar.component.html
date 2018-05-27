@@ -1,21 +1,21 @@
 <h1>Tilføj vagt til vagtplan</h1>
 <form (ngSubmit)="onSubmit(f)" #f="ngForm">
   <div class="row">
-    <div class="col-6">
+    <div class="col-12 col-md-6">
       <strong>Dato for vagt</strong>
       <input id="date" [(ngModel)]="date" name="date" type="date" placeholder="Indtast her...">
     </div>
-    <div class="col-6">
+    <div class="col-12 col-md-6">
       <strong>Vagttype</strong>
       <input id="type" [(ngModel)]="type" name="type" type="text" placeholder="Indtast her... (D for dagvagt, N for nattevagt eller A for aftenvagt)">
     </div>
   </div>
   <div class="row">
-    <div class="col-6">
+    <div class="col-12 col-md-6">
       <strong>Vagten starter</strong>
       <input id="start" [(ngModel)]="start" name="start" type="time" placeholder="Indtast her...">
     </div>
-    <div class="col-6">
+    <div class="col-12 col-md-6">
       <strong>Vagten slutter</strong>
       <input id="end" [(ngModel)]="end" name="end" type="time" placeholder="Indtast her...">
     </div>

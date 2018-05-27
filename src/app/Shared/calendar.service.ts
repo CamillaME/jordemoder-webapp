@@ -33,6 +33,7 @@ export class CalendarService {
                         title: item.WorkHours,
                         start: item.Date,
                         description: item.Shift,
+                        id: item.ID,
                         color: "transparent"
                     });
             });

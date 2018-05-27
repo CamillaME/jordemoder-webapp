@@ -75,6 +75,13 @@ input::placeholder {
   color: #41BAAE;
   font-size: 26px;
   text-align: right;
+  float: right;
+}
+.addNote {
+  float: left;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
 }
 .fc-unthemed td.fc-today {
   background: transparent !important;
@@ -175,4 +182,21 @@ input::placeholder {
   font-weight: normal;
   display: block;
   margin-bottom: 20px;
+}
+.btn-success,
+.btn-success:hover {
+  background-color: #41BAAE;
+  border-color: #41BAAE;
+}
+.btn-success:not(:disabled):not(.disabled).active,
+.btn-success:not(:disabled):not(.disabled):active,
+.show > .btn-success.dropdown-toggle {
+  background-color: #41BAAE;
+  border-color: #41BAAE;
+}
+.btn-success.focus,
+.btn-success:focus {
+  background-color: #41BAAE;
+  border-color: #41BAAE;
+  box-shadow: none;
 }

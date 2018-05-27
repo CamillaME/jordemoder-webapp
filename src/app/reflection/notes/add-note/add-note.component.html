@@ -1,0 +1,20 @@
+<h1>Tilføj note</h1>
+<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+  <div class="row">
+    <div class="col-12">
+      <strong>Overskrift</strong>
+      <input id="headline" [(ngModel)]="headline" name="headline" type="text" placeholder="Indtast her...">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <strong>Note</strong>
+      <textarea id="text" name="text" [(ngModel)]="text" placeholder="Skriv din note her..."></textarea>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <button type="submit" value="Gem" class="btn btn-success">Tilføj note</button>
+    </div>
+  </div>
+</form>

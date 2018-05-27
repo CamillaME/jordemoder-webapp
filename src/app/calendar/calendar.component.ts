@@ -42,11 +42,18 @@ export class MyCalendarComponent implements OnInit {
               // other view-specific options here
             },
           },
-          windowResize: function (view) {
-            alert('The calendar has adjusted to a window resize');
-          },
           eventAfterRender: function (event, element) {
-            element.find('.fc-title').html("<div class='clock'>" + element.find('.fc-title').html().replace("-", "-<br/>") + "</div>").prepend("<div class='circle'></div>").append("<div class='shift'>" + event.description + "</div>");
+            element.find('.fc-title').html("<div class='clock'>" + element.find('.fc-title').html()
+              .replace("-", "-<br/>") + "</div>")
+              .prepend("<div class='circle'></div>")
+              .append("<div><div id='addNote' class='addNote'>+</div>" + "<div class='shift'>" + event.description + "</div></div>");
+
+            // document.getElementById("addNote").addEventListener("click", self.addNote(event.id), false);
+
+            let button = <HTMLElement>document.body.querySelector(".addNote");
+            button.addEventListener("click", () => {
+              self.router.navigateByUrl('ny-note' + "/kalender/" + event.id);
+            });
           },
         };
       });
@@ -56,4 +63,8 @@ export class MyCalendarComponent implements OnInit {
   addToCalendar() {
     this.router.navigateByUrl('ny-vagt');
   }
+
+  // addNote(id) {
+  //   return this.router.navigateByUrl('refleksionsark/' + "hej" + "/kalender");
+  // }
 }
