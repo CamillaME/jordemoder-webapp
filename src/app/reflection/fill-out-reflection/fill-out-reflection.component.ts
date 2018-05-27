@@ -31,6 +31,7 @@ export class FillOutReflectionComponent implements OnInit {
   continueWith: string = "";
   fullName: string = "";
   term: string = "";
+  result = "";
 
   reflections: Observable<any[]>;
 
@@ -145,7 +146,13 @@ export class FillOutReflectionComponent implements OnInit {
     };
 
     this.reflectionService.addReflection(idBefore, reflection);
-    this.router.navigateByUrl('refleksionsark/' + idBefore);
+
+    this.result = "Refleksionsarket blevet oprettet...";
+    let self = this;
+
+    setTimeout(function () {
+      self.router.navigateByUrl('refleksionsark/' + idBefore);
+    }, 3000);
   }
 
   ngOnInit() {

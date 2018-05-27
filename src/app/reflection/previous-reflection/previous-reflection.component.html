@@ -81,7 +81,9 @@
             <strong>Jdm.faglige overvejelser for omsorgen / observationer / handlingsforslag</strong>
           </div>
           <div class="col-12">
-            <span>{{r.JdmAcademicConsiderationsForCareMm}}</span>
+            <span>
+              <pre>{{r.JdmAcademicConsiderationsForCareMm}}</pre>
+            </span>
           </div>
         </div>
         <div class="row description">
@@ -89,7 +91,9 @@
             <strong>Individuelle mål</strong>
           </div>
           <div class="col-12">
-            <span>{{r.IndividualGoals}}</span>
+            <span>
+              <pre>{{r.IndividualGoals}}</pre>
+            </span>
           </div>
         </div>
         <div class="row description">
@@ -97,7 +101,9 @@
             <strong>Refleksion</strong>
           </div>
           <div class="col-12">
-            <span>{{r.ReflectionText}}</span>
+            <span>
+              <pre>{{r.ReflectionText}}</pre>
+            </span>
           </div>
         </div>
         <div class="row description">
@@ -105,7 +111,9 @@
             <strong>Hvad vil jeg arbejde videre med</strong>
           </div>
           <div class="col-12">
-            <span>{{r.WhatWillIContinueWith}}</span>
+            <span>
+              <pre>{{r.WhatWillIContinueWith}}</pre>
+            </span>
           </div>
         </div>
         <div class="row description">
@@ -113,16 +121,16 @@
             <strong>Litteratur</strong>
           </div>
           <div class="col-12">
-            <span>{{r.Literature}}</span>
+            <span>
+              <pre>{{r.Literature}}</pre>
+            </span>
           </div>
         </div>
         <div class="row description">
           <div class="col-12">
             <div class="comment">
               <strong>Kommentarer på refleksion</strong>
-              <p>
-                {{r.CommentsOnReflection == '' ? 'Ingen kommentarer endnu...' : r.CommentsOnReflection}}
-              </p>
+              <pre>{{r.CommentsOnReflection == '' ? 'Ingen kommentarer endnu...' : r.CommentsOnReflection}}</pre>
             </div>
           </div>
         </div>
@@ -130,9 +138,7 @@
           <div class="col-12">
             <div class="comment">
               <strong>Kommentarer på sete handlinger</strong>
-              <p>
-                {{r.CommentsOnSeenActions == '' ? 'Ingen kommentarer endnu...' : r.CommentsOnSeenActions}}
-              </p>
+              <pre>{{r.CommentsOnSeenActions == '' ? 'Ingen kommentarer endnu...' : r.CommentsOnSeenActions}}</pre>
             </div>
           </div>
         </div>

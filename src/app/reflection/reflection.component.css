@@ -150,7 +150,7 @@ ul {
   margin-bottom: -40px;
   transform: rotate(80deg);
 }
-.comment p {
+.comment pre {
   color: #e7e7e7;
 }
 .nav-tabs .nav-item.show .nav-link,
@@ -195,4 +195,9 @@ pre {
   .bigScreen {
     display: block;
   }
+}
+#result {
+  font-weight: normal;
+  display: block;
+  margin-bottom: 20px;
 }
