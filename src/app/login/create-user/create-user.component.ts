@@ -49,6 +49,7 @@ export class CreateUserComponent implements OnInit {
     if (self.studentNumber != null) {
       self.db.collection('Experienceschema').doc(ExperienceschemaID).set({
         "id": ExperienceschemaID,
+        "Term": self.term.length == 1 ? self.term + ". semester" : self.term,
         "StudentNumber": self.studentNumber
       });
     };
