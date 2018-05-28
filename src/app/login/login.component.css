@@ -4,7 +4,9 @@
     width: 25%;
     padding: 1%;
     border: 1px solid lightgray;
+    margin: 0 auto;
 }
-/* .form-control{
-    border: 1px solid black;
-} */
+.button{
+    background-color: rgba(141, 209, 202, 0.74);
+
+}
