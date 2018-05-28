@@ -10,19 +10,9 @@ export class AuthGuard implements CanActivate {
   constructor(private authservice: AuthService, private router: Router) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    let result = false;
+    var user = firebase.auth().currentUser;
 
-    firebase.auth().onAuthStateChanged(function (user) {
-      if (user) {
-        result = true;
-      }
-      else {
-        result = false;
-      }
-    });
-
-
-    if (result) {
+    if (user) {
       return true;
     }
     else {
