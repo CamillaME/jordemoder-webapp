@@ -13,4 +13,8 @@ export class NoteService {
     addNote(id, note: Note) {
         this.db.collection("Notes").doc(id).set(note);
     }
+
+    getNotes(userID) {
+        return this.db.collection('Notes', ref => ref.where("UserID", "==", userID));
+    }
 }

@@ -1,0 +1,20 @@
+@yellow:rgba(244, 234, 177, 1);
+@darkeryellow:rgba(222, 195, 40, 1);
+@black:#2F2E2E;
+
+.list-group-item {
+    background-color: @yellow;
+    font: normal normal normal 22px/1.4em helvetica-w01-light,helvetica-w02-light,sans-serif;
+    color: @black;
+    text-align: center;
+    border: none;
+}
+
+.list-group-item.active {
+    border-color: transparent;
+    background-color: @darkeryellow;
+}
+
+.list-group-item:hover {
+    background-color: @darkeryellow;
+}

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, Route, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-internship',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InternshipComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route: ActivatedRoute,private router: Router) { }
 
   ngOnInit() {
+  }
+
+  addNewNote(id) {
+    this.router.navigateByUrl('ny-note' + "/praktik/" + id);
   }
 
 }

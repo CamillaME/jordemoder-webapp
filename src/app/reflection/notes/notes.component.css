@@ -1,0 +1,14 @@
+.list-group-item {
+  background-color: #f4eab1;
+  font: normal normal normal 22px/1.4em helvetica-w01-light, helvetica-w02-light, sans-serif;
+  color: #2F2E2E;
+  text-align: center;
+  border: none;
+}
+.list-group-item.active {
+  border-color: transparent;
+  background-color: #dec328;
+}
+.list-group-item:hover {
+  background-color: #dec328;
+}
