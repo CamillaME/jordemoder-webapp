@@ -26,8 +26,10 @@ export class AddNoteComponent implements OnInit {
   onSubmit(form: NgForm) {
     var idBefore = this.db.createId();
 
+    var today = new Date();
+
     let note = {
-      Date: "",
+      Date: today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate(),
       ExperienceSchemaID: this.route.snapshot.params["type"] == "erfaringsskema" ? this.route.snapshot.params["id"] : "",
       CalendarID: this.route.snapshot.params["type"] == "kalender" ? this.route.snapshot.params["id"] : "",
       IntershipID: this.route.snapshot.params["type"] == "praktik" ? this.route.snapshot.params["id"] : "",
@@ -39,13 +41,31 @@ export class AddNoteComponent implements OnInit {
 
     this.noteService.addNote(idBefore, note);
 
-    this.result = "Noten blev oprettet. Om et øjeblik sendes du tilbage til vagtplanen...";
-
     let self = this;
 
-    setTimeout(function () {
-      self.router.navigateByUrl('/');
-    }, 3000);
+    if (this.route.snapshot.params["type"] == "kalender") {
+      this.result = "Noten blev oprettet. Om et øjeblik sendes du tilbage til vagtplanen...";
+
+      setTimeout(function () {
+        self.router.navigateByUrl('/');
+      }, 3000);
+    }
+
+    if (this.route.snapshot.params["type"] == "erfaringsskema") {
+      this.result = "Noten blev oprettet. Om et øjeblik sendes du tilbage til erfaringsskemaet...";
+
+      setTimeout(function () {
+        self.router.navigateByUrl('udfyld-erfaringsskema');
+      }, 3000);
+    }
+
+    if (this.route.snapshot.params["type"] == "praktik") {
+      this.result = "Noten blev oprettet. Om et øjeblik sendes du tilbage til praktikforløbet...";
+
+      setTimeout(function () {
+        self.router.navigateByUrl('praktik');
+      }, 3000);
+    }
   }
 
 }
