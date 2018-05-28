@@ -16,16 +16,48 @@ h2 {
   font-size: 20px;
   font-weight: normal;
   margin-top: 0;
-  margin-bottom: 10px;
-  text-align: center;
+  margin-bottom: 20px;
 }
 .notes {
   background-color: rgba(204, 204, 204, 0.14);
   padding: 10px;
 }
 .date {
-  text-align: center;
   font-size: 11px;
   font: futura-lt-w01-light, sans-serif;
   padding-bottom: 10px;
+}
+.sortNotes {
+  color: #41BAAE;
+  font-size: 18px;
+}
+.sort {
+  margin-bottom: 40px;
+  margin-top: 20px;
+}
+.sort .col-12 div span {
+  cursor: pointer;
+}
+pre {
+  font-size: 1rem;
+  font-weight: normal;
+  font-family: helvetica-w01-bold, helvetica-w02-bold, helvetica-lt-w10-bold, sans-serif;
+  margin-bottom: 0;
+  white-space: pre-wrap;
+  /* css-3 */
+  white-space: -moz-pre-wrap;
+  /* Mozilla, since 1999 */
+  white-space: -pre-wrap;
+  /* Opera 4-6 */
+  white-space: -o-pre-wrap;
+  /* Opera 7 */
+  word-wrap: break-word;
+}
+@media screen and (min-width: 768px) {
+  .date {
+    text-align: center;
+  }
+  h2 {
+    text-align: center;
+  }
 }

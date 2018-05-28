@@ -17,4 +17,16 @@ export class NoteService {
     getNotes(userID) {
         return this.db.collection('Notes', ref => ref.where("UserID", "==", userID));
     }
+
+    getNoteBySchema(userID) {
+        return this.db.collection('Notes', ref => ref.where("UserID", "==", userID).where("ExperienceSchemaID", ">", ""));
+    }
+
+    getNoteByInternship(userID) {
+        return this.db.collection('Notes', ref => ref.where("UserID", "==", userID).where("InternshipID", ">", ""));
+    }
+
+    getNoteByCalendar(userID) {
+        return this.db.collection('Notes', ref => ref.where("UserID", "==", userID).where("CalendarID", ">", ""));
+    }
 }

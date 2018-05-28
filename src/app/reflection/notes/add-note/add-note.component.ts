@@ -32,7 +32,7 @@ export class AddNoteComponent implements OnInit {
       Date: today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate(),
       ExperienceSchemaID: this.route.snapshot.params["type"] == "erfaringsskema" ? this.route.snapshot.params["id"] : "",
       CalendarID: this.route.snapshot.params["type"] == "kalender" ? this.route.snapshot.params["id"] : "",
-      IntershipID: this.route.snapshot.params["type"] == "praktik" ? this.route.snapshot.params["id"] : "",
+      InternshipID: this.route.snapshot.params["type"] == "praktik" ? this.route.snapshot.params["id"] : "",
       Headline: form.value.headline,
       ID: idBefore,
       Text: form.value.text,

@@ -2,7 +2,7 @@ export class Note {
     Date: string;
     ExperienceSchemaID: string;
     CalendarID: string;
-    IntershipID: string;
+    InternshipID: string;
     Headline: string;
     ID: string;
     Text: string;
@@ -13,7 +13,7 @@ export class Note {
         this.Date = date;
         this.ExperienceSchemaID = experienceSchemaID;
         this.CalendarID = calendarID;
-        this.IntershipID = internshipID;
+        this.InternshipID = internshipID;
         this.Headline = headline;
         this.ID = id;
         this.Text = text;

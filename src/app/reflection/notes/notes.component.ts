@@ -25,6 +25,24 @@ export class NotesComponent implements OnInit {
     this.notes = this.noteService.getNotes(firebase.auth().currentUser.uid).valueChanges();
   }
 
+  getSotedNotes(schema, internship, calendar) {
+    if (schema == true) {
+      this.notes = this.noteService.getNoteBySchema(firebase.auth().currentUser.uid).valueChanges();
+    }
+
+    if (internship == true) {
+      this.notes = this.noteService.getNoteByInternship(firebase.auth().currentUser.uid).valueChanges();
+    }
+
+    if (calendar == true) {
+      this.notes = this.noteService.getNoteByCalendar(firebase.auth().currentUser.uid).valueChanges();
+    }
+
+    if (schema == false && internship == false && calendar == false) {
+      this.getNotes();
+    }
+  }
+
   ngOnInit() {
     this.getNotes();
   }
