@@ -12,3 +12,20 @@
 .list-group-item:hover {
   background-color: #dec328;
 }
+h2 {
+  font-size: 20px;
+  font-weight: normal;
+  margin-top: 0;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.notes {
+  background-color: rgba(204, 204, 204, 0.14);
+  padding: 10px;
+}
+.date {
+  text-align: center;
+  font-size: 11px;
+  font: futura-lt-w01-light, sans-serif;
+  padding-bottom: 10px;
+}

@@ -7,9 +7,9 @@
         </div>
     </div>
     <div class="col-8">
-        <div class="tab-content" id="nav-tabContent">
+        <div class="tab-content notes" id="nav-tabContent">
             <div *ngFor="let note of (notes | async); let i = index;" class="tab-pane fade" [ngClass]="{'show active':i == 0}" id="{{note.ID}}-list" role="tabpanel" [attr.aria-labelledby]="note.ID">
-                <div>{{note.Date}}</div>
+                <div class="date">{{note.Date | date: 'dd.MM.yyyy'}}</div>
                 <h2>{{note.Headline}}</h2>
                 <pre>{{note.Text}}</pre>
             </div>
