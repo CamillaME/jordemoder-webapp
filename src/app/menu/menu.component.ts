@@ -21,6 +21,8 @@ export class MenuComponent implements OnInit {
   teacher: boolean;
   student: boolean;
 
+  loggedIn: boolean;
+
   schemaClass() {
     if (this.router.url.indexOf('/udfyld-erfaringsskema') > -1 || this.router.url.indexOf('/tidligere-erfaringsskema') > -1) {
       return "active";
@@ -33,6 +35,7 @@ export class MenuComponent implements OnInit {
 
     firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
+        self.loggedIn = true;
         db.collection("users").where("UserID", "==", user.uid)
           .get()
           .then(function (querySnapshot) {
@@ -47,6 +50,9 @@ export class MenuComponent implements OnInit {
               }
             });
           });
+      }
+      else {
+        self.loggedIn = false;
       }
     });
   }

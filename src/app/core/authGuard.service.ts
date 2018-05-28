@@ -1,31 +1,33 @@
-import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
-import { AuthService } from './auth.service';
 import { Observable } from 'rxjs/Observable';
-import * as firebase from 'firebase';
+import { Injectable } from '@angular/core';
+import { AuthService } from './auth.service';
+import * as firebase from 'firebase/app';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
 
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor(private authservice: AuthService, private router: Router) { }
 
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot) {
-      var user = firebase.auth().currentUser;
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    let result = false;
+
+    firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
-        return this.router.navigateByUrl('');
-      } else {
-        return this.router.navigateByUrl('login');
+        result = true;
       }
-    //   const user = firebase.auth().currentUser;
-    //   firebase.auth().onAuthStateChanged(function(user) {
-    //       if(user != null ){
-    //           this.router.navigate('');
-    //       }
-    //       else{
-    //         this.router.navigate('login');
-    //       }
-    //   });
+      else {
+        result = false;
+      }
+    });
+
+
+    if (result) {
+      return true;
+    }
+    else {
+      this.router.navigate(['/login']);
+      return false;
+    }
   }
 }

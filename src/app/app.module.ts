@@ -38,24 +38,24 @@ import { AddToCalendarComponent } from './calendar/add-to-calendar/add-to-calend
 import { AddNoteComponent } from './reflection/notes/add-note/add-note.component';
 
 const routes: Routes = [
-  { path: "", component: MyCalendarComponent },
-  { path: "udfyld-erfaringsskema", component: FillOutSchemaComponent },
-  { path: "tidligere-erfaringsskema", component: PreviousSchemaComponent },
-  { path: "udfyld-refleksionsark", component: FillOutReflectionComponent },
-  { path: "tidligere-refleksionsark", component: PreviousReflectionComponent },
-  { path: "noter", component: NotesComponent },
-  { path: "laeringsstatistik", component: LearningComponent },
-  { path: "praktik", component: InternshipComponent },
-  { path: "indstillinger", component: SettingsComponent },
-  { path: "hjaelp", component: HelpComponent },
-  { path: "min-profil", component: ProfileComponent },
-  { path: "eu-erfaringsskema", component: EuSchemaComponent },
+  { path: "", canActivate: [AuthGuard], component: MyCalendarComponent },
+  { path: "udfyld-erfaringsskema", canActivate: [AuthGuard], component: FillOutSchemaComponent },
+  { path: "tidligere-erfaringsskema", canActivate: [AuthGuard], component: PreviousSchemaComponent },
+  { path: "udfyld-refleksionsark", canActivate: [AuthGuard], component: FillOutReflectionComponent },
+  { path: "tidligere-refleksionsark", canActivate: [AuthGuard], component: PreviousReflectionComponent },
+  { path: "noter", canActivate: [AuthGuard], component: NotesComponent },
+  { path: "laeringsstatistik", canActivate: [AuthGuard], component: LearningComponent },
+  { path: "praktik", canActivate: [AuthGuard], component: InternshipComponent },
+  { path: "indstillinger", canActivate: [AuthGuard], component: SettingsComponent },
+  { path: "hjaelp", canActivate: [AuthGuard], component: HelpComponent },
+  { path: "min-profil", canActivate: [AuthGuard], component: ProfileComponent },
+  { path: "eu-erfaringsskema", canActivate: [AuthGuard], component: EuSchemaComponent },
   { path: "login", component: LoginComponent },
-  { path: "Opret-bruger", component: CreateUserComponent },
-  { path: "refleksionsark/:id", component: EditReflectionComponent },
-  { path: "refleksionsark", component: ReflectionComponent },
-  { path: "ny-vagt", component: AddToCalendarComponent },
-  { path: "ny-note/:type/:id", component: AddNoteComponent }
+  { path: "Opret-bruger", canActivate: [AuthGuard], component: CreateUserComponent },
+  { path: "refleksionsark/:id", canActivate: [AuthGuard], component: EditReflectionComponent },
+  { path: "refleksionsark", canActivate: [AuthGuard], component: ReflectionComponent },
+  { path: "ny-vagt", canActivate: [AuthGuard], component: AddToCalendarComponent },
+  { path: "ny-note/:type/:id", canActivate: [AuthGuard], component: AddNoteComponent }
 ]
 
 @NgModule({
