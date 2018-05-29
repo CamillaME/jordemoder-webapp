@@ -409,7 +409,6 @@ export class FillOutSchemaComponent implements OnInit {
       self.profiles.forEach(item => {
 
         self.studentNumber = item[0].StudentNumber;
-        console.log(self.studentNumber);
         self.experienceSchemas = self.db.collection('Experienceschema', ref => ref.where('StudentNumber', '==', self.studentNumber)).valueChanges();
       });
     });
