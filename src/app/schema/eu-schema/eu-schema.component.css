@@ -1,0 +1,16 @@
+.move{
+    margin:0px;
+
+}
+.empty{
+    visibility: hidden;
+}
+.box{
+    border: 1px solid black;
+}
+.semester{
+    border: 1px solid black;
+}
+input{
+    border: 1px solid black;
+}
