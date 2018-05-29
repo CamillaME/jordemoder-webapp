@@ -1,5 +1,5 @@
-<div class="container-fluid">
-  <div class="row">
+<div class="row">
+  <div class="col-12">
     <form class="createInternship" (ngSubmit)="f" #f="ngForm">
       <h3>Opret praktik sted</h3>
       <div class="form-group">
@@ -8,7 +8,8 @@
       </div>
       <div class="form-group">
         <label>Studienummer</label>
-        <input type="number" required name="studentNumber" placeholder="Den studerendes studienummer" [(ngModel)]="studentNumber" class="form-control" />
+        <input type="number" required name="studentNumber" placeholder="Den studerendes studienummer" [(ngModel)]="studentNumber"
+          class="form-control" />
       </div>
       <div class="form-group">
         <label>Praktik sted</label>
@@ -26,14 +27,19 @@
         <label>By</label>
         <input type="text" name="city" placeholder="By" [(ngModel)]="city" class="form-control" />
       </div>
-      <h4>tildelt jordemoder</h4>
+      <div class="form-group">
+          <label>Telefonnummer</label>
+          <input type="text" name="phoneNumber" placeholder="Telefonnummer" [(ngModel)]="phoneNumber" class="form-control" />
+        </div>
+      <h4>Tildelt jordemoder</h4>
       <div class="form-group">
         <label>Navn</label>
         <input type="text" name="midwifeName" placeholder="Fulde navn" [(ngModel)]="midwifeName" class="form-control" />
       </div>
       <div class="form-group">
         <label>Telefonnummer</label>
-        <input type="text" name="midwifePhoneNumber" placeholder="Telefonnummer" [(ngModel)]="midwifePhoneNumber" class="form-control" />
+        <input type="text" name="midwifePhoneNumber" placeholder="Telefonnummer" [(ngModel)]="midwifePhoneNumber" class="form-control"
+        />
       </div>
       <div class="form-group">
         <label>Email</label>
@@ -42,30 +48,36 @@
       <h4>Praktikvejleder</h4>
       <div class="form-group">
         <label>Navn</label>
-        <input type="text" name="internshipSupervisorName" placeholder="Navn på praktikvejleder" [(ngModel)]="internshipSupervisorName" class="form-control" />
+        <input type="text" name="internshipSupervisorName" placeholder="Navn på praktikvejleder" [(ngModel)]="internshipSupervisorName"
+          class="form-control" />
       </div>
       <div class="form-group">
         <label>Telefonnummer</label>
-        <input type="text" name="internshipSupervisorPhone" placeholder="Telefonnummer til praktikvejleder" [(ngModel)]="internshipSupervisorPhone" class="form-control" />
+        <input type="text" name="internshipSupervisorPhone" placeholder="Telefonnummer til praktikvejleder" [(ngModel)]="internshipSupervisorPhone"
+          class="form-control" />
       </div>
       <div class="form-group">
         <label>Email</label>
-        <input type="email" name="internshipSupervisorEmail" placeholder="Email til praktikvejleder" [(ngModel)]="internshipSupervisorEmail" class="form-control" />
+        <input type="email" name="internshipSupervisorEmail" placeholder="Email til praktikvejleder" [(ngModel)]="internshipSupervisorEmail"
+          class="form-control" />
       </div>
       <h4>Praktikansvarlig underviser</h4>
       <div class="form-group">
         <label>Navn</label>
-        <input type="text" name="internshipTeacherName" placeholder="Navn på praktikansvarlig underviser" [(ngModel)]="internshipTeacherName" class="form-control" />
+        <input type="text" name="internshipTeacherName" placeholder="Navn på praktikansvarlig underviser" [(ngModel)]="internshipTeacherName"
+          class="form-control" />
       </div>
       <div class="form-group">
         <label>Telefonnummer</label>
-        <input type="text" name="internshipTeacherPhone" placeholder="Telefonnummer til praktikansvarlig underviser" [(ngModel)]="internshipTeacherPhone" class="form-control" />
+        <input type="text" name="internshipTeacherPhone" placeholder="Telefonnummer til praktikansvarlig underviser" [(ngModel)]="internshipTeacherPhone"
+          class="form-control" />
       </div>
       <div class="form-group">
         <label>Email</label>
-        <input type="email" name="internshipTeacherEmail" placeholder="Email til praktikansvarlig underviser" [(ngModel)]="internshipTeacherEmail" class="form-control" />
+        <input type="email" name="internshipTeacherEmail" placeholder="Email til praktikansvarlig underviser" [(ngModel)]="internshipTeacherEmail"
+          class="form-control" />
       </div>
-      <button class="btn btn-primary" type="submit"(click)="onsubmitIntership()" [disabled]="!f.form.valid">Opret Praktiksted</button>
+      <button class="btn btn-success" type="submit" (click)="onsubmitIntership()" [disabled]="!f.form.valid">Opret Praktiksted</button>
     </form>
   </div>
 </div>

@@ -1,4 +1,4 @@
-.login{
+.login {
     text-align: center;
     display: inline-block;
     width: 25%;
@@ -6,7 +6,25 @@
     border: 1px solid lightgray;
     margin: 0 auto;
 }
-.button{
-    background-color: rgba(141, 209, 202, 0.74);
 
+.button {
+    background-color: rgba(141, 209, 202, 0.74);
+}
+
+@media screen and (min-width: 0px) {
+    .login {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .login {
+        width: 40%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .login {
+        width: 25%;
+    }
 }

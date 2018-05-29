@@ -29,6 +29,7 @@ export class CreateInternshipComponent implements OnInit {
   internshipTeacherName: string;
   internshipTeacherPhone: string;
   internshipTeacherEmail: string;
+  phoneNumber: string;
 
   internshipsCol: AngularFirestoreCollection<any>;
   internships: Observable<any[]>;
@@ -40,12 +41,14 @@ export class CreateInternshipComponent implements OnInit {
   onsubmitIntership() {
     const docID = this.db.createId();
     this.db.collection('Internships').doc(docID).set({
-      "StudentNumber": this.studentNumber,
+      "ID": docID,
+      "studentNumber": this.studentNumber,
       "Term": this.term,
       "Place": this.place,
       "Street": this.street,
       "Zip": this.zip,
       "City": this.city,
+      "PhoneNumber": this.phoneNumber,
       "MidwifeName": this.midwifeName,
       "MidwifePhoneNumber": this.midwifePhoneNumber,
       "MidwifeEmail": this.midwifeEmail,

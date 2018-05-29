@@ -1,2 +1,59 @@
-<button class="addNewNote" (click)="addNewNote()">Tilføj note</button>
-<app-create></app-create>
+<h1>Praktikforløb</h1>
+<div *ngIf="isStudent">
+    <div *ngFor="let internship of internships | async">
+        <div class="row">
+            <div class="col-12">
+                <button class="addNewNote" (click)="addNewNote(internship.ID)">Tilføj note</button>
+            </div>
+        </div>
+        <div class="row internship">
+            <div class="col-12 col-md-6">
+                <h2>{{internship.Place}}</h2>
+                <p>{{internship.Street}}</p>
+                <p>{{internship.Zip}} {{internship.City}}</p>
+                <p>{{internship.PhoneNumber}}</p>
+            </div>
+            <div class="col-12 col-md-6">
+                <h2>Tildelt jordemoder</h2>
+                <p>{{internship.MidwifeName}}</p>
+                <p>{{internship.MidwifePhoneNumber}}</p>
+                <p>{{internship.MidwifeEmail}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <h2>Praktikvejleder</h2>
+                <p>{{internship.InternshipTeacherName}}</p>
+                <p>{{internship.InternshipTeacherPhone}}</p>
+                <p>{{internship.InternshipTeacherEmail}}</p>
+            </div>
+            <div class="col-12 col-md-6">
+                <h2>Praktikansvarlig underviser</h2>
+                <p>{{internship.InternshipSupervisorName}}</p>
+                <p>{{internship.InternshipSupervisorPhone}}</p>
+                <p>{{internship.InternshipSupervisorEmail}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="isStudent">
+    <h2 class="previous">Tidligere praktikforløb</h2>
+    <div *ngFor="let internship of previousInternships | async">
+        <div class="row">
+            <div class="col-12 col-md-3 internships">
+                {{internship.Term.replace("2. semester", "1. praktik").replace("4. semester", "2. praktik").replace("6. semester", "3. praktik").replace("7.
+                semester", "4. praktik")}}
+            </div>
+            <div class="col-12 col-md-4 internships">
+                {{internship.Place}}
+            </div>
+            <div class="col-12 col-md-2 internships">
+                10 uger
+            </div>
+            <div class="col-12 col-md-3">
+                <button class="addNewNote goTo">Gå til</button>
+            </div>
+        </div>
+    </div>
+</div>
+<app-create *ngIf="isTeacher"></app-create>
