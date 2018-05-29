@@ -14,4 +14,8 @@ export class InternshipService {
     getInternships(studentNumber, term) {
         return this.db.collection('Internships', ref => ref.where("studentNumber", "==", studentNumber).where("Term", "<", term));
     }
+
+    getInternshipByID(studentNumber, id) {
+        return this.db.collection('Internships', ref => ref.where("studentNumber", "==", studentNumber).where("ID", "==", id));
+    }
 }

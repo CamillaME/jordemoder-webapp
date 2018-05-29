@@ -37,6 +37,7 @@ import { CreateInternshipComponent } from './profile/internship/create/create.co
 import { AddToCalendarComponent } from './calendar/add-to-calendar/add-to-calendar.component';
 import { AddNoteComponent } from './reflection/notes/add-note/add-note.component';
 import { AddCommentsComponent } from './reflection/add-comments/add-comments.component';
+import { PreviousComponent } from './profile/internship/previous/previous.component';
 
 const routes: Routes = [
   { path: "", canActivate: [AuthGuard], component: MyCalendarComponent },
@@ -57,7 +58,8 @@ const routes: Routes = [
   { path: "refleksionsark", canActivate: [AuthGuard], component: ReflectionComponent },
   { path: "ny-vagt", canActivate: [AuthGuard], component: AddToCalendarComponent },
   { path: "ny-note/:type/:id", canActivate: [AuthGuard], component: AddNoteComponent },
-  { path: "ny-kommentar/:id", canActivate: [AuthGuard], component: AddCommentsComponent }
+  { path: "ny-kommentar/:id", canActivate: [AuthGuard], component: AddCommentsComponent },
+  { path: "tidligere-praktik/:id", canActivate: [AuthGuard], component: PreviousComponent }
 ]
 
 @NgModule({
@@ -86,6 +88,7 @@ const routes: Routes = [
     AddToCalendarComponent,
     AddNoteComponent,
     AddCommentsComponent,
+    PreviousComponent,
   ],
   imports: [
     BrowserModule,

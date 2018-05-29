@@ -52,4 +52,8 @@ export class InternshipComponent implements OnInit {
     this.router.navigateByUrl('ny-note' + "/praktik/" + id);
   }
 
+  goTo(id) {
+    this.router.navigateByUrl("tidligere-praktik/" + id);
+  }
+
 }
