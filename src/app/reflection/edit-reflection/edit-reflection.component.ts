@@ -189,7 +189,7 @@ export class EditReflectionComponent implements OnInit {
 
     this.reflectionService.updateReflection(this.route.snapshot.params["id"], reflection);
 
-    this.result = "Refleksionsarket blevet opdateret...";
+    this.result = "Refleksionsarket blev opdateret...";
   }
 
   ngOnInit() {

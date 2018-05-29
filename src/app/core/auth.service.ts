@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 import * as firebase from 'firebase';
 
@@ -19,7 +20,7 @@ export class AuthService {
    }
 
    onLogin(email, password) {
-     firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+     return firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
       var errorCode = error.code;
       var errorMessage = error.message;
       console.log(errorCode);

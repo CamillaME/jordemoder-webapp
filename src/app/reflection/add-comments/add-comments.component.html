@@ -1,26 +1,6 @@
-<h1>Oversigt over refleksionsark</h1>
-<ul>
-  <li *ngFor="let student of studentList; let i=index">
-    <div class="term " (click)="getReflections(student.studentNumber) ">
-      <h2>
-        {{student.studentNumber}} - {{student.studentName}}
-        <i class="fa fa-angle-down " aria-hidden="true " *ngIf="student.angleDown "></i>
-        <i class="fa fa-angle-right " aria-hidden="true " *ngIf="student.angleRight "></i>
-      </h2>
-    </div>
-  </li>
-</ul>
-<nav>
-  <div class="nav nav-tabs" id="nav-tab" role="tablist">
-    <a *ngFor="let r of reflections | async" class="nav-item nav-link" [ngClass]="{'active':r.SheetNumber == 1}" id="{{r.Id}}-tab"
-      data-toggle="tab" href="#{{r.Id}}" role="tab" [attr.aria-controls]="r.Id">
-      Ark
-      <span>{{r.SheetNumber}}</span>
-    </a>
-  </div>
-</nav>
+<h1>Tilføj kommentarer</h1>
 <div class="tab-content" id="nav-tabContent">
-  <div *ngFor="let r of (reflections | async); let i=index" class="tab-pane fade" [ngClass]="{'show active':r.SheetNumber == 1}"
+  <div *ngFor="let r of reflections | async" class="show active tab-pane fade"
     id="{{r.Id}}" role="tabpanel" [attr.aria-labelledby]="labelledBy">
     <div id="reflection-{{r.Id}}" class="reflection">
       <form>
@@ -130,7 +110,9 @@
           <div class="col-12">
             <div class="comment">
               <strong>Kommentarer på refleksion</strong>
-              <pre>{{r.CommentsOnReflection == '' ? 'Ingen kommentarer endnu...' : r.CommentsOnReflection}}</pre>
+              <textarea id="commentOnReflection" name="commentOnReflection" placeholder="Tilføj kommentar..."
+                class="addcomment" [(ngModel)]="commentOnReflection"></textarea>
+              <button type="button" class="btn btn-success" (click)="addCommentOnReflection(r.Id)">Tilføj kommentar</button>
             </div>
           </div>
         </div>
@@ -138,13 +120,10 @@
           <div class="col-12">
             <div class="comment">
               <strong>Kommentarer på sete handlinger</strong>
-              <pre>{{r.CommentsOnSeenActions == '' ? 'Ingen kommentarer endnu...' : r.CommentsOnSeenActions}}</pre>
+              <textarea id="commentSeenActions" name="commentSeenActions" placeholder="Tilføj kommentar..." [(ngModel)]="commentSeenActions"
+                class="addcomment"></textarea>
+              <button type="button" class="btn btn-success" (click)="addCommentOnSeenActions(r.Id)">Tilføj kommentar</button>
             </div>
-          </div>
-        </div>
-        <div class="row description">
-          <div class="col-12">
-              <button type="button" class="btn btn-success" (click)="addComments(r.Id)">Tilføj kommentarer</button>
           </div>
         </div>
         <div class="row description bigScreen">

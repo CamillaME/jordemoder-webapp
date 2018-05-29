@@ -66,10 +66,10 @@ export class ReflectionService {
     }
 
     updateCommentOnReflection(id, text, dateAndSignature) {
-        this.db.collection("ReflectionSheet").doc(id).update({ "CommentsOnReflection": text, "DateAndSignature": dateAndSignature });
+        this.db.collection("ReflectionSheet").doc(id).update({ "CommentsOnReflection": text, "SignatureAndDate": dateAndSignature });
     }
 
     updateCommentOnSeenActions(id, text, dateAndSignature) {
-        this.db.collection("ReflectionSheet").doc(id).update({ "CommentsOnSeenActions": text, "DateAndSignature": dateAndSignature });
+        this.db.collection("ReflectionSheet").doc(id).update({ "CommentsOnSeenActions": text, "SignatureAndDate": dateAndSignature });
     }
 }

@@ -2,8 +2,8 @@ import { Component, OnInit, Output, Input, EventEmitter, ViewChild } from '@angu
 import { FirebaseApp } from 'angularfire2';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
-import { ReflectionService } from '../Shared/reflection.service';
-import { Router } from "@angular/router";
+import { ReflectionService } from '../../Shared/reflection.service';
+import { Router, ActivatedRoute } from "@angular/router";
 import * as firebase from 'firebase/app';
 
 import * as pdfMake from 'pdfmake/build/pdfmake.js';
@@ -11,12 +11,12 @@ import * as pdfFonts from 'pdfmake/build/vfs_fonts.js';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
-  selector: 'app-reflection',
-  templateUrl: './reflection.component.html',
-  styleUrls: ['./reflection.component.less'],
+  selector: 'app-add-comments',
+  templateUrl: './add-comments.component.html',
+  styleUrls: ['../reflection.component.less'],
   providers: [ReflectionService]
 })
-export class ReflectionComponent implements OnInit {
+export class AddCommentsComponent implements OnInit {
 
   studentName: string;
   angleDown: boolean = false;
@@ -30,13 +30,15 @@ export class ReflectionComponent implements OnInit {
   commentSeenActions;
   teacher: string = "";
 
-  constructor(private db: AngularFirestore, private reflectionService: ReflectionService, private router: Router) {
+  constructor(private db: AngularFirestore, private reflectionService: ReflectionService, private router: Router, private route: ActivatedRoute) {
     db.firestore.settings({ timestampsInSnapshots: true });
   }
 
   ngOnInit() {
     this.getStudents();
     this.getTeacher();
+    this.getReflections();
+    this.getInputValues();
   }
 
   getStudents() {
@@ -69,30 +71,11 @@ export class ReflectionComponent implements OnInit {
     });
   }
 
-  getReflections(student) {
+  getReflections() {
     let self = this;
     var db = firebase.firestore();
 
-    this.studentList.forEach(item => {
-      if (student == item.studentNumber) {
-        item.angleDown = true;
-        item.angleRight = false;
-      }
-      else {
-        item.angleDown = false;
-        item.angleRight = true;
-      }
-    });
-
-    db.collection("users").where("StudentNumber", "==", student)
-      .get()
-      .then(function (querySnapshot) {
-        querySnapshot.forEach(function (doc) {
-          self.reflections = self.reflectionService.getReflectionsByUserID(doc.data().UserID).valueChanges();
-          self.angleDown = true;
-          self.angleRight = false;
-        });
-      });
+    self.reflections = self.reflectionService.getReflection(this.route.snapshot.params["id"]).valueChanges();
   }
 
   getTeacher() {
@@ -110,8 +93,31 @@ export class ReflectionComponent implements OnInit {
     });
   }
 
-  addComments(id) {
-    this.router.navigateByUrl('ny-kommentar/' + id);
+  addCommentOnReflection(id) {
+    let date = new Date();
+
+    let today = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
+
+    this.reflectionService.updateCommentOnReflection(id, this.commentOnReflection, today + " Jdm. " + this.teacher);
+
+
+  }
+
+  addCommentOnSeenActions(id) {
+    let date = new Date();
+
+    let today = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
+
+    this.reflectionService.updateCommentOnSeenActions(id, this.commentSeenActions, today + " Jdm. " + this.teacher);
+  }
+
+  getInputValues() {
+    let self = this;
+
+    this.reflections.forEach(item => {
+      self.commentOnReflection = item[0].CommentsOnReflection;
+      self.commentSeenActions = item[0].CommentsOnSeenActions;
+    });
   }
 
   onDownload(isPrint, title, id, sheetNumber, fullName, term, teacher, birth, shiftNumber, week, date, descriptionOfTheCourseSituation, jdmAcademicConsiderationsForCareMm, individualGoals, reflectionText, whatWillIContinueWith, literature, commentsOnReflection, commentsOnSeenActions, signatureAndDate) {

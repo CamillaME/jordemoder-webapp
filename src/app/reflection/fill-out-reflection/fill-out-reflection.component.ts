@@ -147,7 +147,7 @@ export class FillOutReflectionComponent implements OnInit {
 
     this.reflectionService.addReflection(idBefore, reflection);
 
-    this.result = "Refleksionsarket blevet oprettet...";
+    this.result = "Refleksionsarket blev oprettet...";
     let self = this;
 
     setTimeout(function () {

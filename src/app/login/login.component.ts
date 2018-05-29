@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../core/auth.service';
 import { NgForm } from '@angular/forms';
 import { Route, Router, ActivatedRoute } from '@angular/router';
+import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'app-login',

@@ -39,12 +39,10 @@ input {
   /* Microsoft Edge */
   font: normal normal normal 18px/1.4em futura-lt-w01-light, sans-serif;
 }
-.addcomment {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
 .addcomment + button {
-  border: 1px solid #2F2E2E;
+  background-color: #fff;
+  color: #41BAAE;
+  margin-top: 10px;
 }
 textarea {
   width: 100%;

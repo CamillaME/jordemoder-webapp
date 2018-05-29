@@ -17,7 +17,6 @@ export class MyCalendarComponent implements OnInit {
   events;
   @ViewChild(CalendarComponent) ucCalendar: CalendarComponent;
   constructor(private calendarService: CalendarService, private router: Router) {
-    // this.loadevents();
   }
 
   ngOnInit() {
