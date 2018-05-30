@@ -10,31 +10,33 @@ export class AuthService {
   email: string;
   password: string;
 
-  constructor() {}
+  constructor() { }
 
-   onCreateUser(email, password) {
-     firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+  onCreateUser(email, password) {
+    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
       var errorCode = error.code;
       var errorMessage = error.message;
-     });
-   }
+    });
+  }
 
-   onLogin(email, password) {
-     return firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+  onLogin(email, password) {
+    const credential = firebase.auth.EmailAuthProvider.credential(email, password);
+    return firebase.auth().signInWithEmailAndPassword(email, password);
+    // firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
+    //   var errorCode = error.code;
+    //   var errorMessage = error.message;
+    //   console.log(errorCode);
+    //   console.log(errorMessage);
+    // });
+  }
+
+  signOut() {
+    firebase.auth().signOut().then(function () {
+    }).catch(function (error) {
       var errorCode = error.code;
       var errorMessage = error.message;
       console.log(errorCode);
       console.log(errorMessage);
-     });
-   }
-
-   signOut() {
-     firebase.auth().signOut().then(function() {
-     }).catch(function(error) {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      console.log(errorCode);
-      console.log(errorMessage);
-     });
-   }
+    });
+  }
 }
