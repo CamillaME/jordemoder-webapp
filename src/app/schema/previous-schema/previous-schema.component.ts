@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, Route, ActivatedRoute } from '@angular/router'
 
 @Component({
   selector: 'app-previous-schema',
@@ -7,8 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PreviousSchemaComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
+  OnFourthSemester() {
+    this.router.navigateByUrl('/udfyld-erfaringsskema')
+  }
   ngOnInit() {
   }
 
