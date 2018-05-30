@@ -7,10 +7,9 @@
 @media screen and(max-width:768px) {
     .smallScreen {
         display: block;
-        font-size: 10pt;
     }
-    table td{
-        font-size: 10pt;
+    table.table-bordered td{
+        font-size: 8pt;
         padding: 0%;
     }
 }
@@ -19,7 +18,7 @@
     .bigScreen {
         display: block;
     }
-    table td{
+    td{
         font-size: 14pt;
     }
 }
